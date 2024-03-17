@@ -1,22 +1,25 @@
-function Footer({ footerText, link1, link1Text, link2, link2Text }) {
+import "./Footer.css";
+
+function Footer({ terms, privacy }) {
   return (
     <footer>
-      <p>{footerText}</p>
       <form>
+        <label htmlFor="email">სიახლეებისთვის გამოგვიწერეთ</label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="Your email address"
+          placeholder="შეიყვანეთ მეილი..."
+          aria-label="email"
         />
         <button type="submit">გამოგვიწერეთ</button>
       </form>
 
-      <a href={link1} className="footer-link">
-        {link1Text}
+      <a href="#" className="footer-link">
+        {terms}
       </a>
-      <a href={link2} className="footer-link">
-        {link2Text}
+      <a href="#" className="footer-link">
+        {privacy}
       </a>
     </footer>
   );
