@@ -2,64 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #12132a;
-  color: #fff;
   text-decoration: none;
+  list-style: none;
+  color: white;
+}
+
+body {
+  overflow-y: hidden;
 }
 
 .App {
-  text-align: center;
-}
-
-header,
-main,
-footer {
-  padding: 20px;
-}
-
-nav ul,
-form {
-  list-style: none;
   display: flex;
-  justify-content: center;
-}
-
-nav li,
-.footer-link {
-  margin: 0 20px;
-  color: #fff;
-}
-
-main div {
-  margin-bottom: 20px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding-top: 100px;
-}
-
-input,
-form button {
-  height: 30px;
-  width: 200px;
-  background-color: white;
-  margin-right: 10px;
-}
-
-.footer-link {
-  font-size: 10px;
-}
-
-form button {
-  width: 75px;
-  color: black;
-  cursor: pointer;
+  flex-direction: column;
+  height: 100vh;
 }
