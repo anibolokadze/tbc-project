@@ -4,9 +4,10 @@ import Card from "../../Temp/Card/Card";
 export default function List() {
   return (
     <div className="wrapper">
-      {cardData.map((item) => {
+      {cardData.map((item, idx) => {
         return (
           <Card
+            key={item.id}
             name={item.name}
             description={item.description}
             price={item.price}
