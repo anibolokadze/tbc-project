@@ -34,7 +34,7 @@ footer {
   padding: 20px 0;
 }
 
-nav ul {
+ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ ul a {
 }
 
 .container {
-  min-height: 100dvh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,4 +78,14 @@ footer ul {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.cardWrapper {
+  border: 1px solid white;
+  margin: 20px;
+  padding: 30px;
+  background-color: aliceblue;
+}
+.cardWrapper h1 {
+  font-size: 18px;
+  margin-bottom: 7px;
 }

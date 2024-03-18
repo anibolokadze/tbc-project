@@ -70,7 +70,7 @@ const cardData = [
     description: "Comfortable cotton t-shirt, perfect for daily wear.",
     price: 19.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10001.jpg",
+    // imageURL: "https://example.com/images/product-10001.jpg",
   },
   {
     id: "10002",
@@ -87,7 +87,7 @@ const cardData = [
       "Experience unparalleled sound quality with our wireless earbuds.",
     price: 59.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10003.jpg",
+    // imageURL: "https://example.com/images/product-10003.jpg",
   },
   {
     id: "10004",
@@ -96,7 +96,7 @@ const cardData = [
       "Premium quality yoga mat for the ultimate workout experience.",
     price: 29.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10004.jpg",
+    // imageURL: "https://example.com/images/product-10004.jpg",
   },
   {
     id: "10005",
@@ -104,7 +104,7 @@ const cardData = [
     description: "Portable and powerful Bluetooth speaker for music anywhere.",
     price: 49.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10005.jpg",
+    // imageURL: "https://example.com/images/product-10005.jpg",
   },
   {
     id: "10006",
@@ -112,7 +112,7 @@ const cardData = [
     description: "Stay connected and track your fitness with our smart watch.",
     price: 199.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10006.jpg",
+    // imageURL: "https://example.com/images/product-10006.jpg",
   },
   {
     id: "10007",
@@ -120,7 +120,7 @@ const cardData = [
     description: "Rich and aromatic coffee beans for the perfect morning cup.",
     price: 15.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10007.jpg",
+    // imageURL: "https://example.com/images/product-10007.jpg",
   },
   {
     id: "10008",
@@ -128,7 +128,7 @@ const cardData = [
     description: "High-quality cookware set for exceptional cooking results.",
     price: 129.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10008.jpg",
+    // imageURL: "https://example.com/images/product-10008.jpg",
   },
   {
     id: "10009",
@@ -136,7 +136,7 @@ const cardData = [
     description: "Innovative toothbrush for a deeper and more efficient clean.",
     price: 39.99,
     currency: "USD",
-    imageURL: "https://example.com/images/product-10009.jpg",
+    // imageURL: "https://example.com/images/product-10009.jpg",
   },
   {
     id: "10010",

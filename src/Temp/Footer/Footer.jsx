@@ -3,6 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer>
+      <span> Logo</span>
       <ul>
         <li>
           <a href="/">Home</a>
