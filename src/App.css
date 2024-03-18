@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,4 +15,14 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+} */
+
+.wrapper {
+  display: flex;
+  column-gap: 50px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
 }
