@@ -1,0 +1,44 @@
+main {
+  flex: 1;
+  overflow-y: auto;
+  margin: 10px 0;
+  gap: 50px 0;
+}
+
+h1,
+p,
+span {
+  color: black;
+}
+
+.product {
+  text-align: center;
+}
+
+button.addToCart {
+  text-align: center;
+  background-image: url("../../assets/svg/add.svg");
+  background-repeat: no-repeat;
+  padding: 3px 11px 3px 40px;
+  background-position: 7px;
+}
+
+@media (min-width: 500px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
