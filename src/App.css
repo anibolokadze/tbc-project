@@ -4,7 +4,7 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  color: white;
+  color: black;
 }
 
 body {
@@ -15,4 +15,10 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+nav ul li a,
+footer a,
+footer label {
+  color: white;
 }
