@@ -17,8 +17,34 @@ body {
   height: 100vh;
 }
 
-nav ul li a,
-footer a,
-footer label {
-  color: white;
+main {
+  flex: 1;
+  overflow-y: auto;
+  margin: 10px 0;
+  gap: 50px 0;
+}
+
+fieldset {
+  border: 0;
+}
+
+/* layout */
+@media (min-width: 500px) {
+  section.layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  section.layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  section.layout {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

@@ -1,20 +1,19 @@
-import React from "react";
 import data from "../data";
-import Content from "../Components/Product/Product";
+import Product from "../Components/Product";
 
 const Home = () => {
   return (
-    <>
-      {data.content.map((content, index) => (
-        <Content
-          key={index}
-          title={content.title}
-          description={content.description}
-          imageUrl={content.imageUrl}
-          imageAlt={content.imageAlt}
+    <section className="layout">
+      {data.products.map((product) => (
+        <Product
+          key={product.id}
+          title={product.title}
+          description={product.description}
+          image={product.image}
+          imageAlt={product.imageAlt}
         />
       ))}
-    </>
+    </section>
   );
 };
 

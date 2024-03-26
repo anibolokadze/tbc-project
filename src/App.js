@@ -1,28 +1,27 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import Search from "./Components/Search/Search";
 import data from "./data";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
+import { Header, Footer } from "./Components/index";
+import { About, Home, Contact, Terms, Privacy } from "./pages/index";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
         <Header {...data.header} />
-        <Search />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         <Footer {...data.footer} />
       </div>
     </Router>
   );
-}
+};
+
 export default App;

@@ -1,0 +1,22 @@
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #12132a;
+  flex: 0 0 auto;
+}
+
+footer a,
+footer label {
+  color: white;
+}
+
+footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 100px;
+}
+
+button {
+  color: black;
+}

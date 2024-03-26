@@ -1,0 +1,17 @@
+h2,
+p,
+span {
+  color: black;
+}
+
+article {
+  text-align: center;
+}
+
+button.addToCart {
+  text-align: center;
+  background-image: url("../../assets/svg/add.svg");
+  background-repeat: no-repeat;
+  padding: 3px 11px 3px 40px;
+  background-position: 7px;
+}
