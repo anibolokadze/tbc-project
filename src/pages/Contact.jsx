@@ -1,37 +1,65 @@
-import React from "react";
+import "../styles/pages/Contact.css";
 
-function Contact() {
+const Contact = () => {
   return (
-    <>
+    <section className="contact">
       <div>
-        <h2>Contact Information</h2>
-        <div>
-          <strong>Email:</strong> example@example.com
-        </div>
-        <div>
-          <strong>Phone:</strong> +1234567890
-        </div>
-        <div>
-          <strong>Address:</strong> 123 Street, City, Country
-        </div>
+        <h3>კონტაქტი</h3>
+        <ul>
+          <li>example@example.com</li>
+          <li>+1234567890</li>
+          <li>#129ა ნუცუბიძის ქუჩა; თბილისი</li>
+        </ul>
       </div>
-      <form>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message" rows="4" />
-        </div>
-        <button type="submit">Submit</button>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <fieldset>
+          <legend>დაგვიტოვეთ შეტყობინება</legend>
+          <label htmlFor="name">სახელი:</label>
+          <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="შეიყვანეთ სახელი"
+              autoComplete="off"
+              required
+            />
+          </div>
+
+          <label htmlFor="email">მეილი:</label>
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="შეიყვანეთ მეილი"
+              autoComplete="off"
+              required
+            />
+          </div>
+
+          <label htmlFor="message">შეტყობინება</label>
+          <div>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="შეიყვანეთ თქვენი შეტყობინება..."
+              autoComplete="off"
+              required
+            />
+          </div>
+
+          <button type="submit">გაგზავნა</button>
+        </fieldset>
       </form>
-    </>
+    </section>
   );
-}
+};
 
 export default Contact;
