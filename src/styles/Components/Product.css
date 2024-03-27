@@ -8,7 +8,7 @@ article {
   text-align: center;
 }
 
-button.addToCart {
+button.add-to-cart {
   text-align: center;
   background-image: url("../../assets/svg/add.svg");
   background-repeat: no-repeat;

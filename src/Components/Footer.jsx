@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/Components/Footer.css";
 
-const Footer = ({ terms, privacy }) => {
+const Footer = ({ terms, privacy, blogPosts }) => {
   return (
     <footer>
       <form
@@ -27,6 +27,9 @@ const Footer = ({ terms, privacy }) => {
           </li>
           <li className="footer-link">
             <Link to="privacy">{privacy}</Link>
+          </li>
+          <li className="footer-link">
+            <Link to="blogs">Blogs</Link>
           </li>
         </ul>
       </nav>

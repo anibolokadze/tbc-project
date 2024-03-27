@@ -29,3 +29,7 @@ nav ul li a {
 .search label {
   color: black;
 }
+
+img.profile {
+  border-radius: 50%;
+}
