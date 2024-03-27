@@ -9,8 +9,8 @@ const Product = ({ title, description, image, imageAlt }) => {
         <img src={image} alt={imageAlt} />
       </section>
 
-      <button type="button" className="addToCart">
-        Add To Cart
+      <button type="button" className="add-to-cart">
+        დამატება
       </button>
     </article>
   );

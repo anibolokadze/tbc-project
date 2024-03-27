@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import search from "../assets/svg/search.svg";
 import "../styles/Components/Header.css";
 
-const Header = ({ about, contact, logo }) => {
+const Header = ({ about, contact, logo, profile }) => {
   return (
     <header>
       <nav>
@@ -20,6 +20,11 @@ const Header = ({ about, contact, logo }) => {
               <Link to="/contact">{contact}</Link>
             </li>
           </div>
+          <li>
+            <Link to="/profile">
+              <img src={profile} alt={profile} className="profile" />
+            </Link>
+          </li>
         </ul>
       </nav>
 
