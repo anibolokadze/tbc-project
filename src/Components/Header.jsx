@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
-import search from "../assets/svg/search.svg";
 import "../styles/Components/Header.css";
 
-const Header = ({ about, contact, logo, profile }) => {
+const Header = ({ about, contact, logo, profile, setSearch }) => {
+  const debounce = (callback, wait) => {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => callback.apply(this, args), wait);
+    };
+  };
+
+  const handleSearchInputChange = (event) => {
+    const value = event.target.value;
+    setSearch(value);
+  };
+
+  const debouncedSearch = debounce(handleSearchInputChange, 300);
+
   return (
     <header>
       <nav>
@@ -28,24 +42,15 @@ const Header = ({ about, contact, logo, profile }) => {
         </ul>
       </nav>
 
-      <form
-        className="search"
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <label htmlFor="search">ყველაფერი, რასაც ეძებ</label>
+      <form className="search">
         <input
           type="search"
           id="search"
           name="search"
           placeholder="ძებნა..."
           autoComplete="off"
+          onChange={debouncedSearch}
         />
-
-        <button type="submit">
-          <img src={search} alt={search} />
-        </button>
       </form>
     </header>
   );
