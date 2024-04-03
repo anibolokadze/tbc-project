@@ -1,0 +1,39 @@
+import Link from "next/link";
+
+const Footer = ({ terms, privacy }) => {
+  return (
+    <footer>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <label htmlFor="email">სიახლეებისთვის გამოგვიწერეთ</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="შეიყვანეთ მეილი..."
+          autoComplete="off"
+        />
+        <button type="submit">გამოგვიწერეთ</button>
+      </form>
+
+      <nav>
+        <ul className="flex justify-around">
+          <li className="footer-link">
+            <Link href="/terms">{terms}</Link>
+          </li>
+          <li className="footer-link">
+            <Link href="/privacy">{privacy}</Link>
+          </li>
+          <li className="footer-link">
+            <Link href="/blog">Blogs</Link>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  );
+};
+
+export default Footer;
