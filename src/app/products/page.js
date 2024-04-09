@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Product from "@/components/Product";
 import data from "@/data";
 import Layout from "@/components/layout";
-import Link from "next/link";
 
 const Page = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +13,6 @@ const Page = () => {
   const [isAscendingOrder, setIsAscendingOrder] = useState(true);
   const [sorted, setSorted] = useState(false);
   const [productError, setProductError] = useState("");
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,9 +20,7 @@ const Page = () => {
         const response = await axios.get("https://dummyjson.com/products");
         setProducts(response.data.products);
         setSortedProducts(response.data.products);
-        setLoading(false);
       } catch (error) {
-        setLoading(false);
         setProductError("Error occurred while fetching Products.");
       }
     };
@@ -85,35 +81,25 @@ const Page = () => {
         </button>
       )}
 
-      {loading ? (
-        <p>loading ... </p>
-      ) : (
-        <>
-          {products && !productError ? (
-            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {sortedProducts
-                .filter((product) =>
-                  product.title.toLowerCase().includes(searchTerm.toLowerCase())
-                )
-                .map((product) => (
-                  <Link href={`products/${product.id}`} key={product.id}>
-                    <Product
-                      key={product.id}
-                      id={product.id}
-                      title={product.title}
-                      description={product.description}
-                      image={product.images[0]}
-                      imageAlt={product.description}
-                      price={product.price}
-                    />
-                  </Link>
-                ))}
-            </section>
-          ) : (
-            <div>{productError}</div>
-          )}
-        </>
-      )}
+      {productError && <p>{productError}</p>}
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {sortedProducts
+          .filter((product) =>
+            product.title.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((product) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              description={product.description}
+              image={product.images[0]}
+              imageAlt={product.description}
+              price={product.price}
+            />
+          ))}
+      </section>
     </Layout>
   );
 };

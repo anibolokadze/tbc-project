@@ -4,6 +4,7 @@ import Layout from "@/components/layout";
 import data from "@/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -28,12 +29,14 @@ const Blog = () => {
 
       <section className="flex flex-col max-w-lg mx-auto gap-y-8">
         {blogs.map((blog) => (
-          <BlogPost
-            key={blog.id}
-            title={blog.title}
-            reactions={blog.reactions}
-            tags={blog.tags}
-          />
+          <Link href={`blog/${blog.id}`} key={blog.id}>
+            <BlogPost
+              key={blog.id}
+              title={blog.title}
+              reactions={blog.reactions}
+              tags={blog.tags}
+            />
+          </Link>
         ))}
       </section>
     </Layout>
