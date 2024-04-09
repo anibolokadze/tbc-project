@@ -1,23 +1,17 @@
-import Image from "next/image";
-
-const BlogPost = ({ title, description, date, image, imageAlt }) => {
+const BlogPost = ({ title, tags, reactions }) => {
   return (
     <article className="text-center">
       <header>
         <h2>{title}</h2>
-        <p>{date}</p>
+        <p>👍 {reactions}</p>
+        <p>
+          {tags.map((tag, index) => (
+            <span key={index}>#{tag} </span>
+          ))}
+        </p>
       </header>
-      <Image
-        className="mx-auto"
-        src={image}
-        width={100}
-        height={100}
-        alt={imageAlt}
-      />
-      <div className="content">
-        <p>{description}</p>
-        <button type="button">სრულიად ნახვა</button>
-      </div>
+
+      <button type="button">სრულიად ნახვა</button>
     </article>
   );
 };
