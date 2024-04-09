@@ -1,25 +1,17 @@
-import Image from "next/image";
+import Link from "next/link";
 
-const Product = ({ title, description, image, imageAlt, price }) => {
+const Product = ({ id, title, description, image, price }) => {
   return (
-    <article className="mx-auto max-w-80 text-center ">
-      <section>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <Image
-          src={image}
-          width={100}
-          height={100}
-          alt={imageAlt}
-          className="mx-auto"
-        />
-        <p>$ {price}</p>
-      </section>
-
-      <button type="button" className="add-to-cart">
-        დამატება
-      </button>
-    </article>
+    <Link href={`/product/${id}`}>
+      <article className="mx-auto max-w-80 text-center ">
+        <section>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <img src={image} alt={description} className="mx-auto" />
+          <p>$ {price}</p>
+        </section>
+      </article>
+    </Link>
   );
 };
 

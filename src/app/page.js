@@ -1,16 +1,32 @@
 "use client";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Product from "@/components/Product";
 import data from "@/data";
 import Layout from "@/components/layout";
 
 const Page = () => {
-  const [products] = useState([...data.products]);
+  const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState(searchTerm);
-  const [sortedProducts, setSortedProducts] = useState([...products]);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [isAscendingOrder, setIsAscendingOrder] = useState(true);
   const [sorted, setSorted] = useState(false);
+  const [productError, setProductError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("https://dummyjson.com/products");
+        setProducts(response.data.products);
+        setSortedProducts(response.data.products);
+      } catch (error) {
+        setProductError("Error occurred while fetching Products.");
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -35,7 +51,7 @@ const Page = () => {
   };
 
   const clearSorting = () => {
-    setSortedProducts([...products]);
+    setSortedProducts(products);
     setIsAscendingOrder(true);
     setSorted(false);
   };
@@ -65,6 +81,8 @@ const Page = () => {
         </button>
       )}
 
+      {productError && <p>{productError}</p>}
+
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {sortedProducts
           .filter((product) =>
@@ -73,10 +91,11 @@ const Page = () => {
           .map((product) => (
             <Product
               key={product.id}
+              id={product.id}
               title={product.title}
               description={product.description}
-              image={product.image}
-              imageAlt={product.imageAlt}
+              image={product.images[0]}
+              imageAlt={product.description}
               price={product.price}
             />
           ))}
