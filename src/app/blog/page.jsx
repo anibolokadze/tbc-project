@@ -1,10 +1,10 @@
 "use client";
-import BlogPost from "@/components/BlogPost";
-import Layout from "@/components/layout";
-import data from "@/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Layout from "../../components/layout";
+import data from "../../data";
+import BlogPost from "../../components/BlogPost";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);

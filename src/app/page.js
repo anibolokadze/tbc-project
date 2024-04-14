@@ -1,10 +1,10 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Product from "@/components/Product";
-import data from "@/data";
-import Layout from "@/components/layout";
+import Product from "../components/Product";
 import Link from "next/link";
+import data from "../data";
+import Layout from "../components/layout";
 
 const Page = () => {
   const [products, setProducts] = useState([]);

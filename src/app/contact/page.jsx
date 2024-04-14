@@ -1,7 +1,7 @@
 "use client";
 
-import Layout from "@/components/layout";
-import data from "@/data";
+import Layout from "../../components/layout";
+import data from "../../data";
 
 const Contact = () => {
   const handleSubmit = (e) => {
