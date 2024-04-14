@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Layout from "@/components/layout";
-import data from "@/data";
+import Layout from "../../../components/layout";
+import data from "../../../data";
 
 const ProductDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);

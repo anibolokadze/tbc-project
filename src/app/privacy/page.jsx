@@ -1,5 +1,5 @@
-import Layout from "@/components/layout";
-import data from "@/data";
+import Layout from "../../components/layout";
+import data from "../../data";
 
 const Privacy = () => {
   return (

@@ -1,8 +1,9 @@
 "use client";
-import Layout from "@/components/layout";
-import data from "@/data";
+
 import Image from "next/image";
 import { useState } from "react";
+import Layout from "../../components/layout";
+import data from "../../data";
 
 const Profile = () => {
   const [password, setPassword] = useState("");
