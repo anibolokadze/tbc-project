@@ -1,7 +1,6 @@
 "use client";
 
-import Layout from "../../components/layout";
-import data from "../../data";
+import Layout from "../../../components/layout";
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -9,7 +8,7 @@ const Contact = () => {
   };
 
   return (
-    <Layout header={data.header} footer={data.footer}>
+    <Layout>
       <section className="contact">
         <div>
           <h3>კონტაქტი</h3>
