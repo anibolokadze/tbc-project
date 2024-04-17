@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Layout from "../../components/layout";
-import data from "../../data";
+import Layout from "../../../components/layout";
 
 const Profile = () => {
   const [password, setPassword] = useState("");
@@ -31,7 +30,7 @@ const Profile = () => {
   };
 
   return (
-    <Layout header={data.header} footer={data.footer}>
+    <Layout>
       <section className="profile">
         <div className="bg">
           <Image

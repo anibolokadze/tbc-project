@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = ({ terms, privacy }) => {
+const Footer = () => {
   return (
     <footer>
       <form
@@ -22,13 +22,13 @@ const Footer = ({ terms, privacy }) => {
       <nav>
         <ul className="flex justify-around">
           <li className="footer-link">
-            <Link href="/terms">{terms}</Link>
+            <Link href="/terms">წესები და პირობები</Link>
           </li>
           <li className="footer-link">
-            <Link href="/privacy">{privacy}</Link>
+            <Link href="/privacy">კონფიდენციალურობის პოლიტიკა</Link>
           </li>
           <li className="footer-link">
-            <Link href="/blog">Blogs</Link>
+            <Link href="/blogs">Blogs</Link>
           </li>
         </ul>
       </nav>

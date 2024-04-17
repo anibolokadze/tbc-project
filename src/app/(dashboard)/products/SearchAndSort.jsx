@@ -1,32 +1,14 @@
 "use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Product from "../../components/Product";
-import data from "../../data";
-import Layout from "../../components/layout";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Product from "../../../components/Product";
 
-const Page = () => {
-  const [products, setProducts] = useState([]);
+const ProductList = ({ products }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [inputValue, setInputValue] = useState(searchTerm);
-  const [sortedProducts, setSortedProducts] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [sortedProducts, setSortedProducts] = useState(products);
   const [isAscendingOrder, setIsAscendingOrder] = useState(true);
   const [sorted, setSorted] = useState(false);
-  const [productError, setProductError] = useState("");
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("https://dummyjson.com/products");
-        setProducts(response.data.products);
-        setSortedProducts(response.data.products);
-      } catch (error) {
-        setProductError("Error occurred while fetching Products.");
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -36,9 +18,9 @@ const Page = () => {
     return () => clearTimeout(debounce);
   }, [inputValue]);
 
-  const handleSearchInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  const filteredProducts = sortedProducts.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const sortProducts = () => {
     const sorted = [...sortedProducts];
@@ -56,15 +38,19 @@ const Page = () => {
     setSorted(false);
   };
 
+  const handleSearchInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
-    <Layout {...data}>
+    <>
       <form className="flex justify-center">
         <input
           className="px-3 py-2"
           type="search"
           id="search"
           name="search"
-          placeholder="ძებნა..."
+          placeholder="Search..."
           autoComplete="off"
           value={inputValue}
           onChange={handleSearchInputChange}
@@ -77,18 +63,13 @@ const Page = () => {
 
       {sorted && (
         <button type="button" onClick={clearSorting}>
-          გასუფთავება
+          Clear Sorting
         </button>
       )}
 
-      {productError && <p>{productError}</p>}
-
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {sortedProducts
-          .filter((product) =>
-            product.title.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-          .map((product) => (
+        {filteredProducts.map((product) => (
+          <Link href={`/products/${product.id}`} key={product.id}>
             <Product
               key={product.id}
               id={product.id}
@@ -98,10 +79,11 @@ const Page = () => {
               imageAlt={product.description}
               price={product.price}
             />
-          ))}
+          </Link>
+        ))}
       </section>
-    </Layout>
+    </>
   );
 };
 
-export default Page;
+export default ProductList;
