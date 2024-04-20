@@ -15,7 +15,14 @@ const page = async () => {
 
   const handleLogin = async (username, password) => {
     "use server";
-    await login(username, password);
+    try {
+      const success = await login(username, password);
+      if (success) {
+        redirect("/");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   return <LoginForm handleLogin={handleLogin} />;
