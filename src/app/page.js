@@ -1,7 +1,7 @@
 import axios from "axios";
-import Layout from "../../components/layout";
+import Layout from "../components/layout";
+import SearchAndSort from "./(dashboard)/products/SearchAndSort";
 
-import SearchAndSort from "../(dashboard)/products/SearchAndSort";
 const fetchProducts = async () => {
   try {
     const data = await axios.get("https://dummyjson.com/products");
@@ -13,7 +13,6 @@ const fetchProducts = async () => {
 
 const page = async () => {
   const products = await fetchProducts();
-
   return (
     <Layout>
       <SearchAndSort products={products} />

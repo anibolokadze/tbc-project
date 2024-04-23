@@ -1,8 +1,11 @@
 "use client";
 
 import Layout from "../../../components/layout";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -11,7 +14,7 @@ const Contact = () => {
     <Layout>
       <section className="contact">
         <div>
-          <h3>კონტაქტი</h3>
+          <h3>{t("contact")}</h3>
           <ul>
             <li>example@example.com</li>
             <li>+1234567890</li>
@@ -21,44 +24,44 @@ const Contact = () => {
 
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend>დაგვიტოვეთ შეტყობინება</legend>
-            <label htmlFor="name">სახელი:</label>
+            <legend>{t("leaveMsg")}</legend>
+            <label htmlFor="name">{t("name")}:</label>
             <div>
               <input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="შეიყვანეთ სახელი"
+                placeholder={t("enterName")}
                 autoComplete="off"
                 required
               />
             </div>
 
-            <label htmlFor="email">მეილი:</label>
+            <label htmlFor="email">{t("email")}:</label>
             <div>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="შეიყვანეთ მეილი"
+                placeholder={t("enterEmail")}
                 autoComplete="off"
                 required
               />
             </div>
 
-            <label htmlFor="message">შეტყობინება</label>
+            <label htmlFor="message">{t("message")}</label>
             <div>
               <textarea
                 id="message"
                 name="message"
                 rows="4"
-                placeholder="შეიყვანეთ თქვენი შეტყობინება..."
+                placeholder={t("message")}
                 autoComplete="off"
                 required
               />
             </div>
 
-            <button type="submit">გაგზავნა</button>
+            <button type="submit">{t("send")}</button>
           </fieldset>
         </form>
       </section>

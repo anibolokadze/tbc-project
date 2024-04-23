@@ -1,4 +1,4 @@
-const BlogPost = ({ title, tags, reactions }) => {
+const Post = ({ title, tags, reactions }) => {
   return (
     <article className="text-center">
       <header>
@@ -16,4 +16,4 @@ const BlogPost = ({ title, tags, reactions }) => {
   );
 };
 
-export default BlogPost;
+export default Post;

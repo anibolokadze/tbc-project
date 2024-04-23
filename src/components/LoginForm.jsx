@@ -1,36 +1,36 @@
 "use client";
+
 import { useState } from "react";
+import { handleLogin } from "../../scripts/login";
+import { useTranslation } from "react-i18next";
 
-const LoginForm = ({ handleLogin }) => {
-  const [username, setUsername] = useState("");
+const LoginForm = () => {
+  const { t } = useTranslation();
+
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await handleLogin(username, password);
-    } catch (error) {
-      setErrorMessage("Invalid username or password");
-    }
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleLogin(name, password).then(() => window.location.reload());
+      }}
+    >
       <input
         type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder={t("name")}
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
+        placeholder={t("password")}
       />
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      <button type="submit">Submit</button>
+
+      <button type="submit">{t("login")}</button>
     </form>
   );
 };

@@ -1,0 +1,27 @@
+{
+  "about": "About",
+  "contact": "Contact",
+  "logout": "Log Out",
+  "ascending": "Sort Price By Ascending Order",
+  "descending": "Sort Price By Descending Order",
+  "clear": "Clear",
+  "search": "Search...",
+  "addToCart": "Add To Cart",
+  "subscribe": "Subscribe For News",
+  "save": "Save",
+  "enterEmail": "Enter Email...",
+  "terms": "Terms And Conditions",
+  "privacy": "Privacy Policy",
+  "posts": "Posts",
+
+  "leaveMsg": "Leave us a message",
+  "name": "name",
+  "password": "password",
+  "enterName": "Enter Name",
+  "email": "email",
+  "message": "Enter Message",
+  "send": "send",
+  "login": "Log In",
+
+  "loading": "Loading"
+}
