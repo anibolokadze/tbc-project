@@ -2,8 +2,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Product from "../../../components/Product";
+import { useTranslation } from "react-i18next";
 
 const ProductList = ({ products }) => {
+  const { t, i18n } = useTranslation();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [sortedProducts, setSortedProducts] = useState(products);
@@ -50,7 +53,7 @@ const ProductList = ({ products }) => {
           type="search"
           id="search"
           name="search"
-          placeholder="Search..."
+          placeholder={t("search")}
           autoComplete="off"
           value={inputValue}
           onChange={handleSearchInputChange}
@@ -58,12 +61,12 @@ const ProductList = ({ products }) => {
       </form>
 
       <button type="button" onClick={sortProducts} className="mx-10 my-10">
-        {isAscendingOrder ? "ზრდადობით დალაგება" : "კლებადობით დალაგება"}
+        {isAscendingOrder ? t("ascending") : t("descending")}
       </button>
 
       {sorted && (
         <button type="button" onClick={clearSorting}>
-          Clear Sorting
+          {t("clear")}
         </button>
       )}
 
@@ -78,6 +81,8 @@ const ProductList = ({ products }) => {
               image={product.images[0]}
               imageAlt={product.description}
               price={product.price}
+              rating={product.rating.toFixed(1)}
+              discountPercentage={product.discountPercentage}
             />
           </Link>
         ))}

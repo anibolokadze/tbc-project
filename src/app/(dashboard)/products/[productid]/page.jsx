@@ -1,6 +1,17 @@
 import axios from "axios";
 import Layout from "../../../../components/layout";
 
+export const generateStaticParams = async () => {
+  const response = await axios.get("https://dummyjson.com/products");
+  const paths = response.data.products.map((product) => ({
+    params: {
+      id: `/products/${product.id}`,
+    },
+  }));
+
+  return paths;
+};
+
 const fetchProductDetails = async (productId) => {
   try {
     const response = await axios.get(

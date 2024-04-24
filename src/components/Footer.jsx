@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer>
       <form
@@ -8,27 +10,27 @@ const Footer = () => {
           e.preventDefault();
         }}
       >
-        <label htmlFor="email">სიახლეებისთვის გამოგვიწერეთ</label>
+        <label htmlFor="email">{t("subscribe")}</label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="შეიყვანეთ მეილი..."
+          placeholder={t("enterEmail")}
           autoComplete="off"
         />
-        <button type="submit">გამოგვიწერეთ</button>
+        <button type="submit">{t("save")}</button>
       </form>
 
       <nav>
         <ul className="flex justify-around">
           <li className="footer-link">
-            <Link href="/terms">წესები და პირობები</Link>
+            <Link href="/terms">{t("terms")}</Link>
           </li>
           <li className="footer-link">
-            <Link href="/privacy">კონფიდენციალურობის პოლიტიკა</Link>
+            <Link href="/privacy">{t("privacy")}</Link>
           </li>
           <li className="footer-link">
-            <Link href="/blogs">Blogs</Link>
+            <Link href="/posts">{t("posts")}</Link>
           </li>
         </ul>
       </nav>
