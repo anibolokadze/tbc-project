@@ -1,16 +1,16 @@
 import Image from "next/image";
 import star from "../../public/star.png";
 import { useTranslation } from "react-i18next";
+import { Product as ProductType } from "../types";
 
 const Product = ({
-  id,
   title,
   description,
-  image,
+  images,
   price,
   rating,
   discountPercentage,
-}) => {
+}: ProductType) => {
   const discountedPrice = (price - (price * discountPercentage) / 100).toFixed(
     1
   );
@@ -21,7 +21,7 @@ const Product = ({
     <div className="w-full h-96 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <article className="h-max mx-auto max-w-80 text-center relative overflow-hidden">
         <div className="relative">
-          <img src={image} alt={description} className="mx-auto h-52" />
+          <img src={images} alt={description} className="mx-auto h-52" />
         </div>
         <section className="p-4">
           <h2 className="text-xl font-bold mb-2">{title}</h2>

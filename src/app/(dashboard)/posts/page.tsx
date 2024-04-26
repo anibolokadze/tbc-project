@@ -1,7 +1,8 @@
 import axios from "axios";
-import Layout from "../../../components/layout";
 import Link from "next/link";
 import Post from "../../../components/Post";
+import Layout from "../../../components/layout";
+import { Post as PostType } from "../../../types";
 
 const fetchPosts = async () => {
   try {
@@ -17,10 +18,11 @@ const Posts = async () => {
   return (
     <Layout>
       <section className="flex flex-col max-w-lg mx-auto gap-y-8">
-        {posts.map((post) => (
+        {posts.map((post: PostType) => (
           <Link href={`posts/${post.id}`} key={post.id}>
             <Post
               key={post.id}
+              id={post.id}
               title={post.title}
               reactions={post.reactions}
               tags={post.tags}

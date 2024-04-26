@@ -1,6 +1,6 @@
 import axios from "axios";
 import Layout from "../components/layout";
-import SearchAndSort from "./(dashboard)/products/SearchAndSort";
+import SearchAndSort from "../app/(dashboard)/products/SearchAndSort";
 
 const fetchProducts = async () => {
   try {

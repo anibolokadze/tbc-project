@@ -1,11 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Product from "../../../components/Product";
-import { useTranslation } from "react-i18next";
 
-const ProductList = ({ products }) => {
-  const { t, i18n } = useTranslation();
+import { useState, useEffect, ChangeEvent } from "react";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import { ProductProps } from "../../../types";
+import Product from "../../../components/Product";
+
+const ProductList: React.FC<ProductProps> = ({ products }) => {
+  const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [inputValue, setInputValue] = useState("");
@@ -41,8 +43,8 @@ const ProductList = ({ products }) => {
     setSorted(false);
   };
 
-  const handleSearchInputChange = (event) => {
-    setInputValue(event.target.value);
+  const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
 
   return (
@@ -78,10 +80,9 @@ const ProductList = ({ products }) => {
               id={product.id}
               title={product.title}
               description={product.description}
-              image={product.images[0]}
-              imageAlt={product.description}
+              images={product.images[0]}
               price={product.price}
-              rating={product.rating.toFixed(1)}
+              rating={product.rating}
               discountPercentage={product.discountPercentage}
             />
           </Link>

@@ -1,14 +1,16 @@
 "use client";
-import Layout from "../../../components/layout";
+
 import { useTranslation } from "react-i18next";
-const About = () => {
+import Layout from "../../../components/layout";
+
+const Terms = () => {
   const { t } = useTranslation();
 
   return (
     <Layout>
-      <div>{t("about")}</div>
+      <div>{t("terms")}</div>
     </Layout>
   );
 };
 
-export default About;
+export default Terms;

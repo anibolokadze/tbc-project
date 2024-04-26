@@ -1,6 +1,7 @@
 "use client";
-import Layout from "../../../components/layout";
+
 import { useTranslation } from "react-i18next";
+import Layout from "../../../components/layout";
 
 const Privacy = () => {
   const { t } = useTranslation();

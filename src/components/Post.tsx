@@ -1,4 +1,6 @@
-const Post = ({ title, tags, reactions }) => {
+import { Post as PostType } from "../types";
+
+const Post = ({ title, tags, reactions }: PostType) => {
   return (
     <article className="text-center">
       <header>
