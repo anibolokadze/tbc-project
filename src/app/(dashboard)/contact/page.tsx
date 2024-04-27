@@ -1,12 +1,13 @@
 "use client";
 
-import Layout from "../../../components/layout";
+import { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
+import Layout from "../../../components/layout";
 
 const Contact = () => {
   const { t } = useTranslation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
@@ -54,7 +55,6 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                rows="4"
                 placeholder={t("message")}
                 autoComplete="off"
                 required

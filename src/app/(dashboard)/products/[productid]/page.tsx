@@ -1,9 +1,11 @@
 import axios from "axios";
+import { Params } from "../../../../types";
 import Layout from "../../../../components/layout";
+import Image from "next/image";
 
 export const generateStaticParams = async () => {
   const response = await axios.get("https://dummyjson.com/products");
-  const paths = response.data.products.map((product) => ({
+  const paths = response.data.products.map((product: { id: number }) => ({
     params: {
       id: `/products/${product.id}`,
     },
@@ -12,10 +14,10 @@ export const generateStaticParams = async () => {
   return paths;
 };
 
-const fetchProductDetails = async (productId) => {
+const fetchProductDetails = async (productid: number) => {
   try {
     const response = await axios.get(
-      `https://dummyjson.com/products/${productId}`
+      `https://dummyjson.com/products/${productid}`
     );
     return response.data;
   } catch (error) {
@@ -23,7 +25,7 @@ const fetchProductDetails = async (productId) => {
   }
 };
 
-const ProductDetails = async ({ params }) => {
+const ProductDetails = async ({ params }: { params: Params }) => {
   const productDetails = await fetchProductDetails(params.productid);
 
   return (
@@ -34,7 +36,16 @@ const ProductDetails = async ({ params }) => {
         <p>Category: {productDetails.category}</p>
         <p>Description: {productDetails.description}</p>
         <p>Rating: {productDetails.rating}</p>
-        <img src={productDetails.images[0]} alt={productDetails.title} />
+        {productDetails.images.map((image: string, index: number) => (
+          <Image
+            height={500}
+            width={500}
+            style={{ width: "auto", height: "208px" }}
+            key={index}
+            src={image}
+            alt={productDetails.title}
+          />
+        ))}
         <button>Add to Cart</button>
       </article>
     </Layout>

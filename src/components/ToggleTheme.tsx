@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import lightModeImage from "../public/sun.png";
-import darkModeImage from "../public/moon.png";
+import lightModeImage from "../../public/sun.png";
+import darkModeImage from "../../public/moon.png";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();

@@ -1,9 +1,10 @@
 import axios from "axios";
+import { Params } from "../../../../types";
 import Layout from "../../../../components/layout";
 
 export const generateStaticParams = async () => {
   const response = await axios.get("https://dummyjson.com/posts");
-  const paths = response.data.posts.map((post) => ({
+  const paths = response.data.posts.map((post: { id: number }) => ({
     params: {
       id: `posts/${post.id}`,
     },
@@ -12,7 +13,7 @@ export const generateStaticParams = async () => {
   return paths;
 };
 
-const fetchPostDetails = async (postid) => {
+const fetchPostDetails = async (postid: number) => {
   try {
     const response = await axios.get(`https://dummyjson.com/posts/${postid}`);
     return response.data;
@@ -21,7 +22,7 @@ const fetchPostDetails = async (postid) => {
   }
 };
 
-const PostDetails = async ({ params }) => {
+const PostDetails = async ({ params }: { params: Params }) => {
   const postDetails = await fetchPostDetails(params.postid);
 
   return (
@@ -31,7 +32,7 @@ const PostDetails = async ({ params }) => {
           <h1>{postDetails.title}</h1> <p>{postDetails.body}</p>
           <p>👍 {postDetails.reactions}</p>
           <p>
-            {postDetails.tags.map((tag, index) => (
+            {postDetails.tags.map((tag: string, index: number) => (
               <span key={index}>#{tag} </span>
             ))}
           </p>
