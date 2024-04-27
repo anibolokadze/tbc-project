@@ -12,9 +12,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // return null;
+  return null;
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|images|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|images).*)"],
 };

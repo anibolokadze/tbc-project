@@ -80,7 +80,7 @@ const ProductList: React.FC<ProductProps> = ({ products }) => {
               id={product.id}
               title={product.title}
               description={product.description}
-              images={product.images[0]}
+              thumbnail={product.thumbnail}
               price={product.price}
               rating={product.rating}
               discountPercentage={product.discountPercentage}

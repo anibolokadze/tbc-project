@@ -5,18 +5,13 @@ import Image from "next/image";
 import logo from "../../public/logo.png";
 import profile from "../../public/profile.png";
 import LogOutButton from "./LogOutButton";
-import ThemeToggle from "../theme-toggle";
+import ThemeToggle from "./ToggleTheme";
 import { useTranslation } from "react-i18next";
 import "../i18n";
+import ToggleLanguage from "./ToggleLanguage";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
-
-  const toggleLanguage = () => {
-    const currentLanguage = i18n.language;
-    const nextLanguage = currentLanguage === "en" ? "ge" : "en";
-    i18n.changeLanguage(nextLanguage);
-  };
+  const { t } = useTranslation();
 
   return (
     <header>
@@ -45,9 +40,7 @@ const Header = () => {
           </div>
         </ul>
         <ThemeToggle />
-        <button onClick={toggleLanguage}>
-          {i18n.language === "en" ? "ქართული" : "Eng"}
-        </button>
+        <ToggleLanguage />
       </nav>
     </header>
   );

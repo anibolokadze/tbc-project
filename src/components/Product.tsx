@@ -6,7 +6,7 @@ import { Product as ProductType } from "../types";
 const Product = ({
   title,
   description,
-  images,
+  thumbnail,
   price,
   rating,
   discountPercentage,
@@ -20,8 +20,20 @@ const Product = ({
   return (
     <div className="w-full h-96 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <article className="h-max mx-auto max-w-80 text-center relative overflow-hidden">
-        <div className="relative">
-          <img src={images} alt={description} className="mx-auto h-52" />
+        <div className="">
+          <Image
+            src={thumbnail}
+            alt={description}
+            height={500}
+            width={500}
+            style={{
+              width: "100%",
+              height: "208px",
+              margin: "0 auto",
+              objectFit: "cover",
+              background: "white",
+            }}
+          />
         </div>
         <section className="p-4">
           <h2 className="text-xl font-bold mb-2">{title}</h2>

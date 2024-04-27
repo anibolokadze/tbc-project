@@ -1,10 +1,5 @@
 import { ReactNode } from "react";
 
-export interface Request {
-  cookies: any;
-  json(): Promise<{ username: string; password: string }>;
-}
-
 // Post
 export interface Post {
   id: number;
@@ -15,10 +10,12 @@ export interface Post {
 
 // Product
 export interface Product {
-  id: number;
+  id?: number;
+  index?: number;
   title: string;
   description: string;
-  images: any;
+  images?: string[];
+  thumbnail: string;
   price: number;
   rating: number;
   discountPercentage: number;
