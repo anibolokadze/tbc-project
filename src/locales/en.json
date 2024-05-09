@@ -1,6 +1,9 @@
 {
+  "home": "Home",
   "about": "About",
   "contact": "Contact",
+  "profile": "Profile",
+  "settings": "Settings",
   "logout": "Log Out",
   "ascending": "Sort Price By Ascending Order",
   "descending": "Sort Price By Descending Order",
@@ -23,5 +26,6 @@
   "send": "send",
   "login": "Log In",
 
-  "loading": "Loading"
+  "loading": "Loading",
+  "language": "Selected language"
 }
