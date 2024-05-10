@@ -1,13 +1,10 @@
+import { BASE_URL } from "../constants";
+
 export const handleLogin = async (
   username: string,
   password: string
 ): Promise<void> => {
-  let apiUrl;
-  if (process.env.NODE_ENV === "production") {
-    apiUrl = "https://tbc-project-two.vercel.app/api/login";
-  } else {
-    apiUrl = "http://localhost:3000/api/login";
-  }
+  const apiUrl = `${BASE_URL}/api/login`;
 
   await fetch(apiUrl, {
     method: "POST",
