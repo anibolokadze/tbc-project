@@ -27,7 +27,7 @@ export async function editUserAction(
   id: number,
   name: string,
   email: string,
-  age: number | string
+  age: number
 ) {
   try {
     const response = await fetch(`${BASE_URL}/api/edit-user/${id}`, {

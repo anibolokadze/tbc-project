@@ -68,14 +68,32 @@ export default function UsersPage() {
       ) : (
         <div>
           {deleting && <Loading />}
-          {users.map((user: User) => (
-            <UserItem
-              key={user.id}
-              user={user}
-              onDelete={() => handleUserDeleted(user.id)}
-              onEdit={handleUserEdited}
-            />
-          ))}
+
+          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Name
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Email
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Age
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user: User) => (
+                <UserItem
+                  key={user.id}
+                  user={user}
+                  onDelete={() => handleUserDeleted(user.id)}
+                  onEdit={handleUserEdited}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </>
