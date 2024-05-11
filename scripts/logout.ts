@@ -1,9 +1,5 @@
-import { BASE_URL } from "../constants";
-
-export const handleLogout = async (): Promise<void> => {
-  const apiUrl = `${BASE_URL}/api/logout`;
-
-  await fetch(apiUrl, {
+export const handleLogout = async () => {
+  await fetch("http://localhost:3000/api/logout", {
     method: "POST",
   });
 };

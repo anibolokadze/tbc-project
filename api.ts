@@ -1,5 +1,3 @@
-import { BASE_URL } from "./constants";
-
 export interface User {
   id: number;
   name: string;
@@ -7,10 +5,12 @@ export interface User {
   age: number;
 }
 
+export const BASE_URL = "http://localhost:3000";
+
 export async function getUsers() {
-  const response = await fetch(`${BASE_URL} + "/api/get-users", {
+  const response = await fetch(BASE_URL + "/api/get-users", {
     cache: "no-store",
-  }`);
+  });
   const { users } = await response.json();
 
   return users.rows;
