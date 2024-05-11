@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
-import { NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: any) {
   const { username, password } = await request.json();
 
   const response = await fetch("https://dummyjson.com/auth/login", {

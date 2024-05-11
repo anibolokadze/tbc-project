@@ -1,6 +1,7 @@
 "use server";
 
-import { BASE_URL, deleteUser } from "./api";
+import { deleteUser } from "./api";
+import { BASE_URL } from "./constants";
 
 // export async function createUserAction(formData: FormData) {
 //   const { name, email } = Object.fromEntries(formData);
