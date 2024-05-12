@@ -13,6 +13,7 @@ const Page = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>(products);
 
   const handleQuantityChange = (id: number, diff: number) => {
+    if (!cartItems) return;
     const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, count: item.count + diff } : item
     );
