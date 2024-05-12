@@ -1,8 +1,10 @@
+import { BASE_URL } from "../constants";
+
 export const handleLogin = async (
   username: string,
   password: string
 ): Promise<void> => {
-  await fetch("http://localhost:3000/api/login", {
+  await fetch(`${BASE_URL}/api/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

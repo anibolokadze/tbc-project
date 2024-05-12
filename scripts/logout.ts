@@ -1,5 +1,7 @@
+import { BASE_URL } from "../constants";
+
 export const handleLogout = async () => {
-  await fetch("http://localhost:3000/api/logout", {
+  await fetch(`${BASE_URL}/api/logout`, {
     method: "POST",
   });
 };
