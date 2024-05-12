@@ -3,17 +3,16 @@ import star from "../../public/star.png";
 import { useTranslation } from "react-i18next";
 import { Product as ProductType } from "../types";
 
-const Product = ({
-  title,
-  description,
-  thumbnail,
-  price,
-  rating,
-  discountPercentage,
-}: ProductType) => {
-  const discountedPrice = (price - (price * discountPercentage) / 100).toFixed(
-    1
-  );
+interface ProductProps {
+  product: ProductType;
+  handleClick: (product: ProductType) => void;
+}
+
+const Product: React.FC<ProductProps> = ({ product, handleClick }) => {
+  const discountedPrice = (
+    product.price -
+    (product.price * product.discountPercentage) / 100
+  ).toFixed(1);
 
   const { t } = useTranslation();
 
@@ -22,8 +21,8 @@ const Product = ({
       <article className="h-max mx-auto max-w-80 text-center relative overflow-hidden">
         <div className="">
           <Image
-            src={thumbnail}
-            alt={description}
+            src={product.thumbnail}
+            alt={product.description}
             height={500}
             width={500}
             style={{
@@ -36,22 +35,30 @@ const Product = ({
           />
         </div>
         <section className="p-4">
-          <h2 className="text-xl font-bold mb-2">{title}</h2>
+          <h2 className="text-xl font-bold mb-2">{product.title}</h2>
           <div className="flex justify-around">
             <div className="flex items-end gap-x-1">
               <p className="text-3xl font-bold">${discountedPrice}</p>
-              {discountPercentage && (
-                <p className="text-sm text-gray-500 line-through">${price}</p>
+              {product.discountPercentage && (
+                <p className="text-sm text-gray-500 line-through">
+                  ${product.price}
+                </p>
               )}
             </div>
             <div className="flex items-center">
               <Image src={star} width={20} height={20} alt="star" />
-              <p>{rating}</p>
+              <p>{product.rating}</p>
             </div>
           </div>
         </section>
         <section className="pt-0">
-          <button className="m-auto flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleClick(product);
+            }}
+            className="m-auto flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2 h-6 w-6"
