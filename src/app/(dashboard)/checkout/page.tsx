@@ -1,16 +1,14 @@
 "use client";
 import Layout from "../../../components/layout";
-import { useLocalStorage } from "../../../../hooks";
-import { useState } from "react";
 
-interface CartItem {
-  id: number;
-  count: number;
-}
+// interface CartItem {
+//   id: number;
+//   count: number;
+// }
 
 const Page = () => {
-  const [products, setProducts] = useLocalStorage("selectedProducts");
-  const [cartItems, setCartItems] = useState<CartItem[]>(products);
+  //   const [products, setProducts] = useLocalStorage("selectedProducts");
+  //   const [cartItems, setCartItems] = useState<CartItem[]>(products);
 
   //   const handleQuantityChange = (id: number, diff: number) => {
   //     if (!cartItems) return;
