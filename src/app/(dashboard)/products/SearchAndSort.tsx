@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Product as ProductType, ProductProps } from "../../../types";
 import Cart from "../../../components/Cart";
 import Product from "../../../components/Product";
-import { useLocalStorage } from "../../../../hooks";
+// import { useLocalStorage } from "../../../../hooks";
 
 interface SelectedProduct {
   id: number;
@@ -110,7 +110,8 @@ const ProductList: React.FC<ProductProps> = ({
     JSON.parse(localStorage.getItem("selectedProducts") || "[]")
   );
 
-  const [, setCachedValue] = useLocalStorage("selectedProducts");
+  // TODO
+  // const [, setCachedValue] = useLocalStorage("selectedProducts");
 
   // useEffect(() => {
   //   setCachedValue(selectedProducts);
