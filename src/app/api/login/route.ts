@@ -4,7 +4,8 @@ export async function POST(request: any) {
   const { username, password } = await request.json();
 
   const headers: HeadersInit = {
-    "Access-Control-Allow-Origin": "https://your-vercel-app.vercel.app",
+    "Access-Control-Allow-Origin":
+      "https://tbc-project-anibolokadzes-projects.vercel.app",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Credentials": "true",
