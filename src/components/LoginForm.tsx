@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { handleLogin } from "../../scripts/login";
+// import { handleLogin } from "../../scripts/login";
 import { useTranslation } from "react-i18next";
 
 const LoginForm = () => {
@@ -12,10 +12,12 @@ const LoginForm = () => {
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleLogin(name, password).then(() => window.location.reload());
-      }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   handleLogin(name, password).then(() => window.location.reload());
+      // }}
+      action="/api"
+      method="POST"
     >
       <input
         type="text"
