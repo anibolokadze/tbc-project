@@ -1,6 +1,11 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent, useReducer } from "react";
+import {
+  useState,
+  useEffect,
+  ChangeEvent,
+  //useReducer
+} from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Product as ProductType, ProductProps } from "../../../types";
@@ -8,52 +13,52 @@ import Cart from "../../../components/Cart";
 import Product from "../../../components/Product";
 // import { useLocalStorage } from "../../../../hooks";
 
-interface SelectedProduct {
-  id: number;
-  count: number;
-}
+// interface SelectedProduct {
+//   id: number;
+//   count: number;
+// }
 
-const initialState: SelectedProduct[] = [];
+// const initialState: SelectedProduct[] = [];
 
-type Action =
-  | { type: "INCREMENT"; payload: number }
-  | { type: "DECREMENT"; payload: number }
-  | { type: "RESET" };
+// type Action =
+//   | { type: "INCREMENT"; payload: number }
+//   | { type: "DECREMENT"; payload: number }
+//   | { type: "RESET" };
 
-function reducer(state: SelectedProduct[], action: Action) {
-  switch (action.type) {
-    case "INCREMENT":
-      const selectedProductIdx = state.findIndex(
-        (p) => p.id === action.payload
-      );
-      if (selectedProductIdx === -1) {
-        return [...state, { id: action.payload!, count: 1 }];
-      }
-      const updatedState = [...state];
-      updatedState[selectedProductIdx].count++;
-      localStorage.setItem("selectedProducts", JSON.stringify(updatedState));
-      return updatedState;
-    case "DECREMENT":
-      const selectedProductIndex = state.findIndex(
-        (p) => p.id === action.payload
-      );
-      if (
-        selectedProductIndex === -1 ||
-        state[selectedProductIndex].count === 1
-      ) {
-        return state.filter((p) => p.id !== action.payload);
-      }
-      const newState = [...state];
-      newState[selectedProductIndex].count--;
-      localStorage.setItem("selectedProducts", JSON.stringify(newState));
-      return newState;
-    case "RESET":
-      localStorage.removeItem("selectedProducts");
-      return initialState;
-    default:
-      return state;
-  }
-}
+// function reducer(state: SelectedProduct[], action: Action) {
+//   switch (action.type) {
+//     case "INCREMENT":
+//       const selectedProductIdx = state.findIndex(
+//         (p) => p.id === action.payload
+//       );
+//       if (selectedProductIdx === -1) {
+//         return [...state, { id: action.payload!, count: 1 }];
+//       }
+//       const updatedState = [...state];
+//       updatedState[selectedProductIdx].count++;
+//       localStorage.setItem("selectedProducts", JSON.stringify(updatedState));
+//       return updatedState;
+//     case "DECREMENT":
+//       const selectedProductIndex = state.findIndex(
+//         (p) => p.id === action.payload
+//       );
+//       if (
+//         selectedProductIndex === -1 ||
+//         state[selectedProductIndex].count === 1
+//       ) {
+//         return state.filter((p) => p.id !== action.payload);
+//       }
+//       const newState = [...state];
+//       newState[selectedProductIndex].count--;
+//       localStorage.setItem("selectedProducts", JSON.stringify(newState));
+//       return newState;
+//     case "RESET":
+//       localStorage.removeItem("selectedProducts");
+//       return initialState;
+//     default:
+//       return state;
+//   }
+// }
 
 const ProductList: React.FC<ProductProps> = ({
   products,
@@ -105,10 +110,10 @@ const ProductList: React.FC<ProductProps> = ({
   // );
 
   // const [selectedProducts, dispatch] = useReducer(reducer, initialState);
-  const [selectedProducts, dispatch] = useReducer(
-    reducer,
-    JSON.parse(localStorage.getItem("selectedProducts") || "[]")
-  );
+  // const [selectedProducts, dispatch] = useReducer(
+  //   reducer,
+  //   JSON.parse(localStorage.getItem("selectedProducts") || "[]")
+  // );
 
   // TODO
   // const [, setCachedValue] = useLocalStorage("selectedProducts");
@@ -122,18 +127,18 @@ const ProductList: React.FC<ProductProps> = ({
   //   setCachedValue(selectedProducts);
   // };
 
-  useEffect(() => {
-    localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
-  }, [selectedProducts]);
+  // useEffect(() => {
+  //   localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
+  // }, [selectedProducts]);
 
-  const handleClick = (product: ProductType) => {
-    dispatch({ type: "INCREMENT", payload: product.id ?? 0 });
-  };
+  // const handleClick = (product: ProductType) => {
+  //   dispatch({ type: "INCREMENT", payload: product.id ?? 0 });
+  // };
 
-  const selectedNumber = selectedProducts.reduce((acc, curr) => {
-    return acc + curr.count;
-  }, 0);
-  console.log("selected:", selectedProducts);
+  // const selectedNumber = selectedProducts.reduce((acc, curr) => {
+  //   return acc + curr.count;
+  // }, 0);
+  // console.log("selected:", selectedProducts);
 
   return (
     <>
@@ -191,12 +196,24 @@ const ProductList: React.FC<ProductProps> = ({
         </button>
       )}
 
-      <Cart className="w-8 h-8" selectedNumber={selectedNumber} />
+      <Cart
+        className="w-8 h-8"
+        selectedNumber={
+          // selectedNumber
+          1
+        }
+      />
 
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredProducts.map((product) => (
           <Link href={`/products/${product.id}`} key={product.id}>
-            <Product product={product} handleClick={handleClick} />
+            <Product
+              product={product}
+              // handleClick={handleClick}
+              handleClick={() => {
+                return;
+              }}
+            />
           </Link>
         ))}
       </section>
