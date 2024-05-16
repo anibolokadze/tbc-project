@@ -1,14 +1,16 @@
 import { sql } from "@vercel/postgres";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function PUT(request: NextRequest) {
-  const id = request.nextUrl.pathname.replace("/api/edit-user/", "");
-
-  const { name, email, age } = await request.json();
+export async function PUT(request: Request) {
+  const { id, name, email, age } = await request.json();
 
   try {
-    if (!id || !name || !email || !age)
-      throw new Error("ID, name, and email are required");
+    if (!name || !email || !age)
+      throw new Error("Name, Email, and Age are required");
+
+    if (!id) {
+      throw new Error("User not found");
+    }
 
     await sql`UPDATE newUsers SET name = ${name}, email = ${email}, age = ${age} WHERE id = ${Number(
       id
@@ -18,6 +20,5 @@ export async function PUT(request: NextRequest) {
   }
 
   const users = await sql`SELECT * FROM newUsers;`;
-
   return NextResponse.json({ users }, { status: 200 });
 }

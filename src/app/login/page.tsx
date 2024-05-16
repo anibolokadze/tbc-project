@@ -1,20 +1,29 @@
-"use client";
-
+import { cookies } from "next/headers";
+import { AUTH_COOKIE_KEY } from "../../../constants";
 import LoginForm from "../../components/LoginForm";
-import ToggleLanguage from "../../components/ToggleLanguage";
 
-import ThemeToggle from "../../components/ToggleTheme";
+const LoginPage = async () => {
+  const cookieStore = cookies();
+  const cookie = cookieStore.get(AUTH_COOKIE_KEY);
 
-const page = async () => {
+  let message: string | null = null;
+  if (cookie?.value) {
+    const cookieObject = JSON.parse(cookie.value);
+    if (cookieObject?.message) {
+      message = cookieObject?.message;
+    }
+  }
+
   return (
     <>
-      <div>
+      {/* <div>
         <ThemeToggle />
         <ToggleLanguage />
-      </div>
+      </div> */}
       <LoginForm />
+      {message && "error"}
     </>
   );
 };
 
-export default page;
+export default LoginPage;

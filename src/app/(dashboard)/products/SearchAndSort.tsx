@@ -1,64 +1,10 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  ChangeEvent,
-  //useReducer
-} from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Product as ProductType, ProductProps } from "../../../types";
-import Cart from "../../../components/Cart";
 import Product from "../../../components/Product";
-// import { useLocalStorage } from "../../../../hooks";
-
-// interface SelectedProduct {
-//   id: number;
-//   count: number;
-// }
-
-// const initialState: SelectedProduct[] = [];
-
-// type Action =
-//   | { type: "INCREMENT"; payload: number }
-//   | { type: "DECREMENT"; payload: number }
-//   | { type: "RESET" };
-
-// function reducer(state: SelectedProduct[], action: Action) {
-//   switch (action.type) {
-//     case "INCREMENT":
-//       const selectedProductIdx = state.findIndex(
-//         (p) => p.id === action.payload
-//       );
-//       if (selectedProductIdx === -1) {
-//         return [...state, { id: action.payload!, count: 1 }];
-//       }
-//       const updatedState = [...state];
-//       updatedState[selectedProductIdx].count++;
-//       localStorage.setItem("selectedProducts", JSON.stringify(updatedState));
-//       return updatedState;
-//     case "DECREMENT":
-//       const selectedProductIndex = state.findIndex(
-//         (p) => p.id === action.payload
-//       );
-//       if (
-//         selectedProductIndex === -1 ||
-//         state[selectedProductIndex].count === 1
-//       ) {
-//         return state.filter((p) => p.id !== action.payload);
-//       }
-//       const newState = [...state];
-//       newState[selectedProductIndex].count--;
-//       localStorage.setItem("selectedProducts", JSON.stringify(newState));
-//       return newState;
-//     case "RESET":
-//       localStorage.removeItem("selectedProducts");
-//       return initialState;
-//     default:
-//       return state;
-//   }
-// }
 
 const ProductList: React.FC<ProductProps> = ({
   products,
@@ -105,56 +51,8 @@ const ProductList: React.FC<ProductProps> = ({
     setInputValue(e.target.value);
   };
 
-  // const [selectedProducts, setSelectedProducts] = useState<SelectedProduct[]>(
-  //   []
-  // );
-
-  // const [selectedProducts, dispatch] = useReducer(reducer, initialState);
-  // const [selectedProducts, dispatch] = useReducer(
-  //   reducer,
-  //   JSON.parse(localStorage.getItem("selectedProducts") || "[]")
-  // );
-
-  // TODO
-  // const [, setCachedValue] = useLocalStorage("selectedProducts");
-
-  // useEffect(() => {
-  //   setCachedValue(selectedProducts);
-  // }, [selectedProducts, setCachedValue]);
-
-  // const handleClick = (product: ProductType) => {
-  //   dispatch({ type: "INCREMENT", payload: product.id ?? 0 });
-  //   setCachedValue(selectedProducts);
-  // };
-
-  // useEffect(() => {
-  //   localStorage.setItem("selectedProducts", JSON.stringify(selectedProducts));
-  // }, [selectedProducts]);
-
-  // const handleClick = (product: ProductType) => {
-  //   dispatch({ type: "INCREMENT", payload: product.id ?? 0 });
-  // };
-
-  // const selectedNumber = selectedProducts.reduce((acc, curr) => {
-  //   return acc + curr.count;
-  // }, 0);
-  // console.log("selected:", selectedProducts);
-
   return (
     <>
-      {/* <form className="flex justify-center">
-        <input
-          className="px-3 py-2"
-          type="search"
-          id="search"
-          name="search"
-          placeholder={t("search")}
-          autoComplete="off"
-          value={inputValue}
-          onChange={handleSearchInputChange}
-        />
-      </form> */}
-
       <form className="max-w-md mx-auto">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -196,24 +94,10 @@ const ProductList: React.FC<ProductProps> = ({
         </button>
       )}
 
-      <Cart
-        className="w-8 h-8"
-        selectedNumber={
-          // selectedNumber
-          1
-        }
-      />
-
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredProducts.map((product) => (
           <Link href={`/products/${product.id}`} key={product.id}>
-            <Product
-              product={product}
-              // handleClick={handleClick}
-              handleClick={() => {
-                return;
-              }}
-            />
+            <Product product={product} />
           </Link>
         ))}
       </section>

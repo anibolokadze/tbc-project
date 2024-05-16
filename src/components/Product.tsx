@@ -5,10 +5,9 @@ import { Product as ProductType } from "../types";
 
 interface ProductProps {
   product: ProductType;
-  handleClick: (product: ProductType) => void;
 }
 
-const Product: React.FC<ProductProps> = ({ product, handleClick }) => {
+const Product: React.FC<ProductProps> = ({ product }) => {
   const discountedPrice = (
     product.price -
     (product.price * product.discountPercentage) / 100
@@ -52,13 +51,7 @@ const Product: React.FC<ProductProps> = ({ product, handleClick }) => {
           </div>
         </section>
         <section className="pt-0">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(product);
-            }}
-            className="m-auto flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600"
-          >
+          <button className="m-auto flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2 h-6 w-6"

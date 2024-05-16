@@ -1,45 +1,20 @@
 "use server";
+import { revalidatePath } from "next/cache";
+import { createUser, deleteUser, updateUser } from "./api";
 
-import { BASE_URL, deleteUser } from "./api";
-
-// export async function createUserAction(formData: FormData) {
-//   const { name, email } = Object.fromEntries(formData);
-
-//   return createUser(name as string, email as string);
-
-// }
-
-export default async function createUser(formData: FormData) {
+export async function createUserAction(formData: FormData) {
   const { name, email, age } = Object.fromEntries(formData);
-
-  const response = await fetch(BASE_URL + "/api/create-user", {
-    method: "POST",
-    body: JSON.stringify({ name, email, age }),
-  });
-  console.log("response", response);
+  createUser(name as string, email as string, age as string);
+  revalidatePath("/admin");
 }
 
 export async function deleteUserAction(id: number) {
   await deleteUser(id);
+  revalidatePath("/admin");
 }
 
-export async function editUserAction(
-  id: number,
-  name: string,
-  email: string,
-  age: number
-) {
-  try {
-    const response = await fetch(`${BASE_URL}/api/edit-user/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, age }),
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw new Error("Error editing user");
-  }
+export async function updateUserAction(formData: FormData) {
+  const { id, name, email, age } = Object.fromEntries(formData);
+  updateUser(id as string, name as string, email as string, age as string);
+  revalidatePath("/admin");
 }
