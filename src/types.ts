@@ -35,3 +35,10 @@ export interface ProductProps {
 export interface ChildrenProps {
   children: ReactNode;
 }
+
+export interface User {
+  id: number;
+  name: string;
+  age: string;
+  email: string;
+}

@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo-colored.svg";
 import profile from "../../public/profile.png";
-import LogOutButton from "./LogOutButton";
 import ThemeToggle from "./ToggleTheme";
 import { useTranslation } from "react-i18next";
 import "../i18n";
 import ToggleLanguage from "./ToggleLanguage";
 import { useState } from "react";
+import LogOut from "./LogOut";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -82,13 +82,8 @@ const Header = () => {
                   </Link>
                 </li>
 
-                <li>
-                  <Link
-                    href="#"
-                    className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    <LogOutButton />
-                  </Link>
+                <li className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                  <LogOut />
                 </li>
               </ul>
             </div>

@@ -3,10 +3,14 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { ProductProps } from "../../../types";
+import { Product as ProductType, ProductProps } from "../../../types";
 import Product from "../../../components/Product";
 
-const ProductList: React.FC<ProductProps> = ({ products }) => {
+const ProductList: React.FC<ProductProps> = ({
+  products,
+}: {
+  products: ProductType[];
+}) => {
   const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,19 +53,6 @@ const ProductList: React.FC<ProductProps> = ({ products }) => {
 
   return (
     <>
-      {/* <form className="flex justify-center">
-        <input
-          className="px-3 py-2"
-          type="search"
-          id="search"
-          name="search"
-          placeholder={t("search")}
-          autoComplete="off"
-          value={inputValue}
-          onChange={handleSearchInputChange}
-        />
-      </form> */}
-
       <form className="max-w-md mx-auto">
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -106,16 +97,7 @@ const ProductList: React.FC<ProductProps> = ({ products }) => {
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredProducts.map((product) => (
           <Link href={`/products/${product.id}`} key={product.id}>
-            <Product
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              description={product.description}
-              thumbnail={product.thumbnail}
-              price={product.price}
-              rating={product.rating}
-              discountPercentage={product.discountPercentage}
-            />
+            <Product product={product} />
           </Link>
         ))}
       </section>
