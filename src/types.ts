@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 // Post
 export interface Post {
@@ -10,7 +10,7 @@ export interface Post {
 
 // Product
 export interface Product {
-  id?: number;
+  id: number;
   index?: number;
   title: string;
   description: string;
@@ -41,4 +41,22 @@ export interface User {
   name: string;
   age: string;
   email: string;
+}
+
+export interface SelectedProduct {
+  id: number;
+  count: number;
+  selectedCard: Product;
+}
+
+export interface searchProps {
+  isSorted: boolean;
+  setIsSorted: Dispatch<SetStateAction<boolean>>;
+  searchQuery: string;
+  setSearchQuery: Dispatch<SetStateAction<string>>;
+}
+
+export interface cardProps {
+  card: Product;
+  handleClick: (productId: number) => void;
 }
