@@ -6,7 +6,7 @@ import "../i18n";
 import Image from "next/image";
 
 const ToggleLanguage = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
     const currentLanguage = i18n.language;
@@ -15,21 +15,23 @@ const ToggleLanguage = () => {
   };
 
   return (
-    <>
-      <p>{t("language")}</p>
-      <button onClick={toggleLanguage}>
+    <div className="flex items-center">
+      <button
+        onClick={toggleLanguage}
+        className="flex items-center w-9 h-9 justify-center text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-dark-state-example hover:bg-gray-100 hover:text-blue-700   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+      >
         {i18n.language === "en" ? (
-          <Image src={englishIcon} width={30} height={30} alt="english flag" />
-        ) : (
           <Image
             src={georgianIcon}
-            width={30}
-            height={30}
+            width={25}
+            height={25}
             alt="georgian flag"
           />
+        ) : (
+          <Image src={englishIcon} width={25} height={25} alt="english flag" />
         )}
       </button>
-    </>
+    </div>
   );
 };
 

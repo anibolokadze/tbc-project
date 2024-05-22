@@ -1,4 +1,6 @@
 {
+  "loginText": "Log in or sign up to continue the adventure! 🌳",
+  "theme": "theme",
   "home": "Home",
   "about": "About",
   "contact": "Contact",
@@ -18,7 +20,7 @@
   "posts": "Posts",
 
   "leaveMsg": "Leave us a message",
-  "name": "name",
+  "name": "username",
   "password": "password",
   "enterName": "Enter Name",
   "email": "email",
