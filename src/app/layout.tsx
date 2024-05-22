@@ -1,8 +1,11 @@
-import { Inter } from "next/font/google";
+import { Noto_Sans_Georgian } from "next/font/google";
 import "./globals.css";
 import { ChildrenProps } from "../types";
 import Theme from "../theme-provider";
-const inter = Inter({ subsets: ["latin"] });
+const noto_Sans_Georgian = Noto_Sans_Georgian({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -12,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={noto_Sans_Georgian.className}>
         <Theme>{children}</Theme>
       </body>
     </html>

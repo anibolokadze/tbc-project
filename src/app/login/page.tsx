@@ -15,14 +15,10 @@ const LoginPage = async () => {
   }
 
   return (
-    <>
-      {/* <div>
-        <ThemeToggle />
-        <ToggleLanguage />
-      </div> */}
+    <div className="bg-slate-50 dark:bg-darkBlue h-screen ">
       <LoginForm />
       {message && "error"}
-    </>
+    </div>
   );
 };
 
