@@ -31,3 +31,26 @@ export async function updateUser(
     body: JSON.stringify({ id, name, email, age }),
   });
 }
+
+// AUTH_USER
+
+export async function createAuthUser(
+  name: string,
+  email: string,
+  picture: string,
+  user_id: string
+) {
+  return await fetch(BASE_URL + "/api/auth-user/create-auth-user", {
+    method: "POST",
+    body: JSON.stringify({ name, email, picture, user_id }),
+    cache: "no-store",
+  });
+}
+
+export async function updateAuthUser(picture: string, user_id: string) {
+  return await fetch(BASE_URL + "/api/auth-user/update-auth-user", {
+    method: "PUT",
+    body: JSON.stringify({ picture, user_id }),
+    cache: "no-store",
+  });
+}
