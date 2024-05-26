@@ -47,14 +47,10 @@ export async function createAuthUser(
   });
 }
 
-export async function updateAuthUser(
-  picture: string,
-  user_id: string,
-  email: string
-) {
+export async function updateAuthUser(picture: string, user_id: string) {
   return await fetch(BASE_URL + "/api/auth-user/update-auth-user", {
     method: "PUT",
-    body: JSON.stringify({ picture, user_id, email }),
+    body: JSON.stringify({ picture, user_id }),
     cache: "no-store",
   });
 }

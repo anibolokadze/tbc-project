@@ -12,6 +12,10 @@ const nextConfig = {
         hostname: "u1gtlfwtzxtqbodc.public.blob.vercel-storage.com",
       },
       { protocol: "https", hostname: "s.gravatar.com" },
+      {
+        protocol: "https",
+        hostname: "xjck1m5khuqeilku.public.blob.vercel-storage.com",
+      },
     ],
   },
 };

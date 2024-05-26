@@ -5,9 +5,9 @@ import { getSession } from "@auth0/nextjs-auth0";
 
 const ProfilePage = async () => {
   const session = await getSession();
-  const email = session?.user?.email;
+  const user_id = session?.user?.sub;
 
-  const auth_user = await getAuthUserAction(email);
+  const auth_user = await getAuthUserAction(user_id);
 
   return <Profile authUser={auth_user?.auth_user.rows[0]} />;
 };
