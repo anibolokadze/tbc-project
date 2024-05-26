@@ -11,12 +11,11 @@ export async function POST(request: Request) {
     if (!name || !email || !picture || !user_id)
       throw new Error("name and email are required");
 
-    const authUser =
-      await sql`SELECT * FROM auth_user where user_id = ${user_id}`;
+    const authUser = await sql`SELECT * FROM auth_user where email = ${email}`;
     if (!authUser.rows.length) {
       await sql`INSERT INTO auth_user (name, email, picture, user_id) VALUES (${name}, ${email}, ${picture}, ${user_id});`;
     } else {
-      updateAuthUser(picture, user_id)
+      updateAuthUser(picture, user_id, email);
     }
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
