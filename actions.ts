@@ -28,6 +28,8 @@ export async function createAuthUserAction(
   picture: string,
   user_id: string
 ) {
+  console.log(user_id);
+
   await createAuthUser(
     name as string,
     email as string,
@@ -37,11 +39,11 @@ export async function createAuthUserAction(
   revalidatePath("/profile");
 }
 
-export async function getAuthUserAction(email: string) {
+export async function getAuthUserAction(user_id: string) {
   const res = await fetch(BASE_URL + "/api/auth-user/get-auth-user", {
     method: "GET",
     headers: {
-      Cookie: `email=${email}`,
+      Cookie: `user_id=${user_id}`,
     },
   });
 

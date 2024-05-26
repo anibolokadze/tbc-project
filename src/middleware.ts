@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 // import { AUTH_COOKIE_KEY } from "../constants";
-import { getSession } from '@auth0/nextjs-auth0/edge';
+import { getSession } from "@auth0/nextjs-auth0/edge";
 const protectedRoutes = [
   "/",
   "/about",
@@ -17,11 +17,10 @@ const protectedRoutes = [
 const publicRoutes = ["/login"];
 
 export default async function middleware(request: NextRequest) {
-
   const res = NextResponse.next();
 
   const session = await getSession(request, res);
-  const userId = session?.user?.sid;
+  const userId = session?.user?.sub;
 
   // const cookie = request.cookies.get(AUTH_COOKIE_KEY)?.value;
   // let token = null;
