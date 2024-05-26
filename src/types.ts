@@ -43,6 +43,13 @@ export interface User {
   email: string;
 }
 
+export interface AuthUser {
+  sid: string;
+  name: string;
+  picture: string;
+  email: string;
+}
+
 export interface SelectedProduct {
   id: number;
   count: number;
