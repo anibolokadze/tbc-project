@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import type { PutBlobResult } from "@vercel/blob";
 import Image from "next/image";
@@ -39,7 +39,7 @@ export default function AvatarUploadPage() {
       </form>
       {blob && (
         <div>
-          Blob url: <Image src={blob.url} alt='img' width={80} height={80}/>
+          Blob url: <Image src={blob.url} alt="img" width={80} height={80} />
         </div>
       )}
     </>

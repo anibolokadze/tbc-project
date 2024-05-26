@@ -1,9 +1,10 @@
 "use client";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo-colored.svg";
-import profile from "../../public/profile.png";
+import profile from "../../public/user.svg";
 import ThemeToggle from "./ToggleTheme";
 import { useTranslation } from "react-i18next";
 import "../i18n";
@@ -13,6 +14,8 @@ import LogOut from "./LogOut";
 
 const Header = () => {
   const { t } = useTranslation();
+  const { user } = useUser();
+
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
@@ -41,7 +44,7 @@ const Header = () => {
           <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
             <button
               type="button"
-              className="w-10 h-10 flex rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 dark:bg-white"
+              className="w-10 h-10 flex rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 dark:bg-gray-100 p-1"
               id="user-menu-button"
               aria-expanded={isUserDropdownOpen ? "true" : "false"}
               onClick={toggleUserDropdown}
@@ -58,32 +61,38 @@ const Header = () => {
             >
               <ul className="px-4 py-3">
                 <li className="transition-colors duration-300 block sm:text-sm lg:text-lg text-gray-900 dark:text-white">
-                  Ani Bolokadze
+                  {user?.name}
                 </li>
                 <li className=" transition-colors duration-300block sm:text-sm lg:text-base  text-gray-500 truncate dark:text-gray-400">
-                  anibolokadze@gmail.com
+                  {user?.email}
                 </li>
               </ul>
               <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <Link
-                    href="/profile"
-                    className="transition-colors duration-300 block px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    {t("profile")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    {t("settings")}
-                  </Link>
-                </li>
+                <Link
+                  href="/profile"
+                  className="transition-colors duration-300 block px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
+                >
+                  <div className="mr-3">
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      ></path>
+                    </svg>
+                  </div>
+                  {t("profile")}
+                </Link>
 
-                <li className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                  <LogOut />
+                <li className="flex items-center transition-colors duration-300 px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                  <LogOut /> {t("logout")}
                 </li>
               </ul>
             </div>

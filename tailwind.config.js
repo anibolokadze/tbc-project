@@ -13,6 +13,12 @@ module.exports = {
         darkGray: "#1E1F22",
         hoverDarkBlue: "#4461F2",
       },
+      brightness: {
+        60: ".60",
+      },
+      scale: {
+        105: "1.05",
+      },
     },
   },
   plugins: [],
