@@ -53,7 +53,7 @@ const ProfileImage = ({
     if (blob !== null) {
       createAuthUserAction(name, email, blob.url, sid as string);
     }
-  }, [blob]);
+  }, [blob, name, email, sid]);
 
   return (
     <>
