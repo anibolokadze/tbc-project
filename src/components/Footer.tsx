@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {

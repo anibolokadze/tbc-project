@@ -3,16 +3,16 @@ import { Params } from "../../../../types";
 import Layout from "../../../../components/layout";
 import Image from "next/image";
 
-export const generateStaticParams = async () => {
-  const response = await axios.get("https://dummyjson.com/products");
-  const paths = response.data.products.map((product: { id: number }) => ({
-    params: {
-      id: `/products/${product.id}`,
-    },
-  }));
+// export const generateStaticParams = async () => {
+//   const response = await axios.get("https://dummyjson.com/products");
+//   const paths = response.data.products.map((product: { id: number }) => ({
+//     params: {
+//       id: `/products/${product.id}`,
+//     },
+//   }));
 
-  return paths;
-};
+//   return paths;
+// };
 
 const fetchProductDetails = async (productid: number) => {
   try {

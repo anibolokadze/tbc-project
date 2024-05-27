@@ -12,29 +12,24 @@ import ProfileSkeletonLoading from "./ProfileSkeletonLoading";
 const Profile = ({ authUser }: { authUser: AuthUser }) => {
   const { user, error, isLoading } = useUser();
 
-  // if (isLoading) return <ProfileSkeletonLoading />;
-  if (error) return <div>{error.message}</div>;
   const [formattedDate, setFormattedDate] = useState<string | null>(null);
 
   useEffect(() => {
     if (user && user.updated_at) {
-      const date = new Date(user.updated_at);
-      const options: Intl.DateTimeFormatOptions = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
-      const formattedDate = date.toLocaleString(undefined, options);
+      const formattedDate = user.updated_at.slice(0, 10);
       setFormattedDate(formattedDate);
     }
   }, [user]);
+
+  // if (isLoading) return <ProfileSkeletonLoading />;
+  if (error) return <div>{error.message}</div>;
 
   return (
     <Layout>
       {isLoading ? (
         <ProfileSkeletonLoading />
       ) : (
-        <div className="hover:scale-105 transition duration-300 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative mt-32 mx-auto">
+        <div className="hover:scale-105 transition duration-300 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative mt-36 mx-auto">
           {user && (
             <>
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
