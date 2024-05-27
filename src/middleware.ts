@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-import { AUTH_COOKIE_KEY } from "../constants";
+// import { AUTH_COOKIE_KEY } from "../constants";
+import { getSession } from "@auth0/nextjs-auth0/edge";
 const protectedRoutes = [
   "/",
   "/about",
@@ -16,15 +17,20 @@ const protectedRoutes = [
 const publicRoutes = ["/login"];
 
 export default async function middleware(request: NextRequest) {
-  const cookie = request.cookies.get(AUTH_COOKIE_KEY)?.value;
-  let token = null;
+  const res = NextResponse.next();
 
-  if (cookie) {
-    const cookieObject = JSON.parse(cookie);
-    if (cookieObject) {
-      token = cookieObject?.token;
-    }
-  }
+  const session = await getSession(request, res);
+  const userId = session?.user?.sub;
+
+  // const cookie = request.cookies.get(AUTH_COOKIE_KEY)?.value;
+  // let token = null;
+
+  // if (cookie) {
+  //   const cookieObject = JSON.parse(cookie);
+  //   if (cookieObject) {
+  //     token = cookieObject?.token;
+  //   }
+  // }
 
   const path = request.nextUrl.pathname;
   const isProtectedRoute =
@@ -34,10 +40,10 @@ export default async function middleware(request: NextRequest) {
 
   const isPublicRoute = publicRoutes.includes(path);
 
-  if (isProtectedRoute && !token) {
-    return NextResponse.redirect(new URL("/login", request.nextUrl));
+  if (isProtectedRoute && !userId) {
+    return NextResponse.redirect(new URL("/api/auth/login", request.nextUrl));
   }
-  if (isPublicRoute && token) {
+  if (isPublicRoute && (userId === undefined || userId)) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }
   return null;

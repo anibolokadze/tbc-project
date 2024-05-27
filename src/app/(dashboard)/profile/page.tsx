@@ -1,35 +1,15 @@
-"use client";
+import React from "react";
+import Profile from "../../../components/Profile";
+import { getAuthUserAction } from "../../../../actions";
+import { getSession } from "@auth0/nextjs-auth0";
 
-import Image from "next/image";
-import Layout from "../../../components/layout";
-import { useUser } from "@auth0/nextjs-auth0/client";
+const ProfilePage = async () => {
+  const session = await getSession();
+  const user_id = session?.user?.sub;
 
-const Profile = () => {
-  const { user, error, isLoading } = useUser();
+  const auth_user = await getAuthUserAction(user_id);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
-
-  return (
-    <Layout>
-      <div>
-        {user && (
-          <div>
-            {user.picture && user.name && (
-              <Image
-                src={user.picture}
-                alt={user.name}
-                width={30}
-                height={30}
-              />
-            )}
-            <h2>{user.name}</h2>
-            <h2>{user.email}</h2>
-          </div>
-        )}
-      </div>
-    </Layout>
-  );
+  return <Profile authUser={auth_user?.auth_user.rows[0]} />;
 };
 
-export default Profile;
+export default ProfilePage;

@@ -15,9 +15,7 @@ export async function POST(request: NextRequest) {
       password: formData.get("password"),
     }),
   });
-  console.log(formData);
   const user = await response.json();
-  console.log(user);
   const cookieStore = cookies();
   if (user.message) {
     cookieStore.set(AUTH_COOKIE_KEY, JSON.stringify(user));

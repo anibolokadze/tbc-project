@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
@@ -22,7 +21,7 @@ const Footer = () => {
       </form>
 
       <nav>
-        <ul className="flex justify-around">
+        {/* <ul className="flex justify-around">
           <li className="footer-link">
             <Link href="/terms">{t("terms")}</Link>
           </li>
@@ -32,7 +31,7 @@ const Footer = () => {
           <li className="footer-link">
             <Link href="/posts">{t("posts")}</Link>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </footer>
   );

@@ -7,6 +7,15 @@ const nextConfig = {
         hostname: "cdn.dummyjson.com",
       },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
+      {
+        protocol: "https",
+        hostname: "u1gtlfwtzxtqbodc.public.blob.vercel-storage.com",
+      },
+      { protocol: "https", hostname: "s.gravatar.com" },
+      {
+        protocol: "https",
+        hostname: "xjck1m5khuqeilku.public.blob.vercel-storage.com",
+      },
     ],
   },
 };

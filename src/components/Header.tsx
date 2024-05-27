@@ -1,9 +1,10 @@
 "use client";
 
+import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/logo-colored.svg";
-import profile from "../../public/profile.png";
+import profile from "../../public/user.svg";
 import ThemeToggle from "./ToggleTheme";
 import { useTranslation } from "react-i18next";
 import "../i18n";
@@ -13,6 +14,8 @@ import LogOut from "./LogOut";
 
 const Header = () => {
   const { t } = useTranslation();
+  const { user } = useUser();
+
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
@@ -26,7 +29,7 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="bg-white dark:bg-slate-950 border-b border-gray-200  dark:border-gray-500">
+      <nav className="bg-white dark:bg-slate-800 border-b border-gray-200  dark:border-gray-500">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4">
           <Link href="/" className="flex">
             <Image
@@ -39,9 +42,13 @@ const Header = () => {
           </Link>
 
           <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
+            <div className="flex gap-3 items-center justify-center mr-4">
+              <ThemeToggle />
+              <ToggleLanguage />
+            </div>
             <button
               type="button"
-              className="w-10 h-10 flex rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 dark:bg-white"
+              className="w-10 h-10 flex rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 dark:bg-gray-100 p-1"
               id="user-menu-button"
               aria-expanded={isUserDropdownOpen ? "true" : "false"}
               onClick={toggleUserDropdown}
@@ -56,34 +63,42 @@ const Header = () => {
               shadow-lg dark:shadow-[0px_3px_7px_3px_#c4c4c421] absolute top-7 right-2 sm:-right-2 mt-5 list-none bg-white divide-y divide-gray-200 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}
               id="user-dropdown"
             >
+              
               <ul className="px-4 py-3">
                 <li className="transition-colors duration-300 block sm:text-sm lg:text-lg text-gray-900 dark:text-white">
-                  Ani Bolokadze
+                  {user?.name}
                 </li>
                 <li className=" transition-colors duration-300block sm:text-sm lg:text-base  text-gray-500 truncate dark:text-gray-400">
-                  anibolokadze@gmail.com
+                  {user?.email}
                 </li>
               </ul>
+              
               <ul className="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <Link
-                    href="/profile"
-                    className="transition-colors duration-300 block px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    {t("profile")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    {t("settings")}
-                  </Link>
-                </li>
+                <Link
+                  href="/profile"
+                  className="transition-colors duration-300 block px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
+                >
+                  <div className="mr-3">
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      ></path>
+                    </svg>
+                  </div>
+                  {t("profile")}
+                </Link>
 
-                <li className="transition-colors duration-300 block px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                  <LogOut />
+                <li className="flex items-center transition-colors duration-300 px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                  <LogOut /> {t("logout")}
                 </li>
               </ul>
             </div>
@@ -111,14 +126,14 @@ const Header = () => {
               </svg>
             </button>
           </div>
-
+          
           <div
             className={`${
               isBurgerMenuOpen ? "" : "hidden"
             } items-center justify-between w-full md:flex md:w-auto md:order-1`}
             id="navbar-user"
-          >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-200 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-900 md:dark:bg-slate-950 dark:border-gray-700">
+            >
+            <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-200 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-800 dark:border-gray-700">
               <li>
                 <Link
                   href="/"
@@ -148,10 +163,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-end mx-auto py-2 px-4">
-        <ThemeToggle />
-        <ToggleLanguage />
-      </div>
     </header>
   );
 };
