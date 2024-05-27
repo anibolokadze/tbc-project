@@ -40,6 +40,7 @@ export default async function middleware(request: NextRequest) {
 
   const isPublicRoute = publicRoutes.includes(path);
 
+  //login redirect
   if (isProtectedRoute && !userId) {
     return NextResponse.redirect(new URL("/api/auth/login", request.nextUrl));
   }
