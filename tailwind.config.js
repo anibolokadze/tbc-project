@@ -12,6 +12,7 @@ module.exports = {
         darkBlue: "#121316",
         darkGray: "#1E1F22",
         hoverDarkBlue: "#4461F2",
+        darkMode: "#121212",
       },
       brightness: {
         60: ".60",
