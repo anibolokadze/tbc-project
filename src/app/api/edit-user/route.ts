@@ -12,13 +12,13 @@ export async function PUT(request: Request) {
       throw new Error("User not found");
     }
 
-    await sql`UPDATE newUsers SET name = ${name}, email = ${email}, age = ${age} WHERE id = ${Number(
+    await sql`UPDATE users SET name = ${name}, email = ${email}, age = ${age} WHERE id = ${Number(
       id
     )};`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  const users = await sql`SELECT * FROM newUsers;`;
+  const users = await sql`SELECT * FROM users;`;
   return NextResponse.json({ users }, { status: 200 });
 }
