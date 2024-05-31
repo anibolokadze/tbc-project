@@ -30,6 +30,13 @@ export default async function middleware(request: NextRequest) {
 
   const isPublicRoute = publicRoutes.includes(path);
 
+  const error = request.nextUrl.searchParams.get("error");
+
+  // Handle `access_denied` error
+  if (error === "access_denied") {
+    return NextResponse.redirect(new URL("/login", request.nextUrl));
+  }
+
   if (isProtectedRoute && !userId) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
   }
@@ -38,11 +45,12 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }
 
-  return null;
+  return res;
 }
 
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|images|favicon.ico|logo.svg|assets).*)",
+    "/api/auth/callback",
   ],
 };
