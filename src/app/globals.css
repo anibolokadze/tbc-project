@@ -2,14 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-.height {
-  max-width: 600px !important;
-  height: 306px;
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #606060 #c6c1c1;
 }
 
-@media (max-width: 400px) {
-  .height {
-    max-width: 600px !important;
-    height: 200px;
-  }
+/* Chrome, Safari, Opera, Edge  */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #c6c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #606060;
 }
