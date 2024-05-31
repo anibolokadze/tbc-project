@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import ToggleLanguage from "./ToggleLanguage";
-import ThemeToggle from "./ToggleTheme";
+import ToggleLanguage from "../ToggleLanguage";
+import ThemeToggle from "../ToggleTheme";
 import LoginAnimation from "./LoginAnimation";
 import { useState, useEffect } from "react";
 
