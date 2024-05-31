@@ -21,6 +21,7 @@ const ProfileImage = ({
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
   const [isEdited, setIsEdited] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const onPictureEditClickHandler = () => {
     setIsEdited(true);
@@ -33,20 +34,30 @@ const ProfileImage = ({
     event.preventDefault();
 
     if (!inputFileRef.current?.files) {
-      throw new Error("No file selected");
+      setError("No file selected");
+      return;
     }
 
     const file = inputFileRef.current.files[0];
 
-    const response = await fetch(`/api/avatar/upload?filename=${file.name}`, {
-      method: "POST",
-      body: file,
-    });
+    try {
+      const response = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+        method: "POST",
+        body: file,
+      });
 
-    const newBlob = (await response.json()) as PutBlobResult;
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
 
-    setBlob(newBlob);
-    setIsEdited(false);
+      const newBlob = (await response.json()) as PutBlobResult;
+
+      setBlob(newBlob);
+      setIsEdited(false);
+      setError(null);
+    } catch (err: any) {
+      setError(err.message);
+    }
   };
 
   useEffect(() => {
@@ -80,6 +91,11 @@ const ProfileImage = ({
               SVG, PNG, or JPG (MAX. 4.5 MB)
             </p>
           </div>
+          {error && (
+            <p className="mt-2 text-red-500 dark:text-red-400 text-sm">
+              {error}
+            </p>
+          )}
           <button
             type="button"
             onClick={onCloseEditClickHandler}
