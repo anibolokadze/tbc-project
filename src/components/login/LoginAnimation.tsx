@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import lottie from "lottie-web";
+import lottie, { AnimationItem } from "lottie-web";
 import animationData from "../../../public/Animation - 1717015639839.json";
 
 export default function Animation() {
@@ -8,7 +8,7 @@ export default function Animation() {
 
   // Load animation when component mounts
   useEffect(() => {
-    let animationInstance: any;
+    let animationInstance: AnimationItem;
     if (animationContainer.current) {
       animationInstance = lottie.loadAnimation({
         container: animationContainer.current,

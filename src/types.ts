@@ -14,8 +14,8 @@ export interface Product {
   index?: number;
   title: string;
   description: string;
-  images?: string[];
-  thumbnail: string;
+  images_link: string[];
+  thumbnail_link: string;
   price: number;
   rating: number;
   discountPercentage: number;
