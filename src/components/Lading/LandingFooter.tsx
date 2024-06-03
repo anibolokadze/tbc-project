@@ -21,17 +21,17 @@ const LandingFooter = () => {
           <h4 className="font-bold md:text-[64px] text-[44px] dark:text-white">
             Tech Madness
           </h4>
-          <button
-            type="button"
-            className="flex items-center h-fit py-4 px-6 bg-[#25618B] rounded-[32px] gap-[12px]"
-          >
-            <Image src={headset} alt="headset" width={24} height={24} />
-            <span className="font-normal text-[16px] text-white">
-              <a href="/api/auth/login">{t("enter")}</a>
-            </span>
-          </button>
         </div>
+        <div className="flex items-center h-fit py-4 px-6 bg-[#25618B] rounded-[32px] gap-[12px] max-w-[400px]">
+          <Image src={headset} alt="headset" width={24} height={24} />
 
+          <a
+            href="/api/auth/login"
+            className="font-normal text-[16px] text-white"
+          >
+            {t("enter")}
+          </a>
+        </div>
         <div className="flex flex-col">
           <div className="mb-[50px] h-[2px] bg-gray-900 dark:bg-white  opacity-10" />
         </div>

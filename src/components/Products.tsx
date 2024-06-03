@@ -12,8 +12,8 @@ const Products = ({ searchQuery = "" }) => {
   const [cachedValue, setCachedValue] = useLocalStorage("selectedProducts", []);
   const [selectedProducts, dispatch] = useReducer(reducer, cachedValue);
 
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [products, setProducts] = useState([]);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     // const fetchData = async () => {
