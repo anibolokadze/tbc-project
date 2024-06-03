@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cardProps } from "../types";
 
 const ProductItem: React.FC<cardProps> = ({
-  card: { id, title, description, thumbnail, price },
+  card: { id, title, description, thumbnail_link, price },
   handleClick,
 }) => {
   return (
@@ -13,10 +13,11 @@ const ProductItem: React.FC<cardProps> = ({
           <div className="w-full min-h-[200px] max-h-[200px] lg:min-h-[250px] lg:max-h-[250px]">
             <Image
               className="w-full h-full object-cover object-center"
-              src={thumbnail}
+              src={thumbnail_link}
               alt={title}
               width={1000}
               height={1000}
+              priority
             />
           </div>
           <p className="text-[12px] leading-[18px] text-center text-gray-500">
@@ -28,7 +29,7 @@ const ProductItem: React.FC<cardProps> = ({
             </h5>
             <div className="flex flex-col gap-3 justify-between items-center">
               <div className="w-full h-[70px] lg:h-[90px] text-[11px] lg:text-[13px] text-wrap">
-                {description.slice(0,50)}...
+                {description.slice(0, 50)}...
               </div>
             </div>
           </div>

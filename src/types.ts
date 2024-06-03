@@ -14,8 +14,8 @@ export interface Product {
   index?: number;
   title: string;
   description: string;
-  images?: string[];
-  thumbnail: string;
+  images_link: string[];
+  thumbnail_link: string;
   price: number;
   rating: number;
   discountPercentage: number;
@@ -66,4 +66,13 @@ export interface searchProps {
 export interface cardProps {
   card: Product;
   handleClick: (productId: number) => void;
+}
+
+// explore card props
+export interface ExploreCardProps {
+  id: string;
+  imgUrl: string;
+  index: number;
+  active: string;
+  handleClick: (id: string) => void;
 }

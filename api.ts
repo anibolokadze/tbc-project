@@ -6,6 +6,18 @@ export async function getUsers() {
   return users.rows;
 }
 
+export async function getProducts() {
+  const response = await fetch("/api/get-products");
+  const { products } = await response.json();
+  return products;
+}
+
+export async function getProduct(productId: number) {
+  const response = await fetch(`${BASE_URL}/api/get-product/${productId}`);
+  const { product } = await response.json();
+  return product;
+}
+
 export async function createUser(name: string, email: string, age: string) {
   return await fetch(BASE_URL + "/api/create-user", {
     method: "POST",
@@ -13,12 +25,12 @@ export async function createUser(name: string, email: string, age: string) {
   });
 }
 
-export async function deleteUser(id: number) {
-  "use server";
-  await fetch(`${BASE_URL}/api/delete-user/${id}`, {
-    method: "DELETE",
-  });
-}
+// export async function deleteUser(id: number) {
+//   "use server";
+//   await fetch(`${BASE_URL}/api/delete-user/${id}`, {
+//     method: "DELETE",
+//   });
+// }
 
 export async function updateUser(
   id: string,

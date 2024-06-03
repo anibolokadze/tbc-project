@@ -55,8 +55,8 @@ const ProfileImage = ({
       setBlob(newBlob);
       setIsEdited(false);
       setError(null);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError("error occured, try again");
     }
   };
 

@@ -20,7 +20,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
       <article className="h-max mx-auto max-w-80 text-center relative overflow-hidden">
         <div className="">
           <Image
-            src={product.thumbnail}
+            src={product.thumbnail_link}
             alt={product.description}
             height={500}
             width={500}

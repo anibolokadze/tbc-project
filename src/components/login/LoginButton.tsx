@@ -4,6 +4,10 @@ import { useTranslation } from "react-i18next";
 import lock from "../../../public/icons8-lock.svg";
 import Image from "next/image";
 
+type Props = {
+  t: (key: string) => string;
+};
+
 const LoginButton = () => {
   const { t } = useTranslation();
 
@@ -18,8 +22,8 @@ const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
-const EncryptButton = ({ t }: any) => {
-  const intervalRef = useRef<any>(null);
+const EncryptButton = ({ t }: Props) => {
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [text, setText] = useState(t("loginText"));
 
   // Update text when language changes

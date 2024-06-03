@@ -52,9 +52,9 @@ const CheckoutPage = () => {
                 <tr key={product.id}>
                   <td>
                     <div className="w-full max-h-[100px] lg:max-h-[150px] overflow-hidden">
-                      {product.selectedCard.images && (
+                      {product.selectedCard.thumbnail_link && (
                         <Image
-                          src={product.selectedCard.images[0]}
+                          src={product.selectedCard.thumbnail_link}
                           alt={product.selectedCard.title}
                           width={100}
                           height={100}

@@ -14,7 +14,7 @@ const protectedRoutes = [
   "/terms",
 ];
 
-const publicRoutes = ["/login"];
+const publicRoutes = ["/landing"];
 
 export default async function middleware(request: NextRequest) {
   const res = NextResponse.next();
@@ -34,11 +34,11 @@ export default async function middleware(request: NextRequest) {
 
   // Handle `access_denied` error
   if (error === "access_denied") {
-    return NextResponse.redirect(new URL("/login", request.nextUrl));
+    return NextResponse.redirect(new URL("/landing", request.nextUrl));
   }
 
   if (isProtectedRoute && !userId) {
-    return NextResponse.redirect(new URL("/login", request.nextUrl));
+    return NextResponse.redirect(new URL("/landing", request.nextUrl));
   }
 
   if (isPublicRoute && userId) {
