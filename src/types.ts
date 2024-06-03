@@ -67,3 +67,12 @@ export interface cardProps {
   card: Product;
   handleClick: (productId: number) => void;
 }
+
+// explore card props
+export interface ExploreCardProps {
+  id: string;
+  imgUrl: string;
+  index: number;
+  active: string;
+  handleClick: (id: string) => void;
+}

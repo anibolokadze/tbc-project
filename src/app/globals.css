@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #606060 #c6c1c1;
-}
-
 /* Chrome, Safari, Opera, Edge  */
 ::-webkit-scrollbar {
   width: 10px;
@@ -21,4 +15,39 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #606060;
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    97.86deg,
+    #a509ff 0%,
+    #34acc7 53.65%,
+    #a134c7 100%
+  );
+}
+
+.gradient-01 {
+  position: absolute;
+  width: 500px;
+  height: 438px;
+  top: 0px;
+  right: 0px;
+  z-index: 0 !important;
+  opacity: 0.8;
+
+  background: #7aebfb;
+  filter: blur(190px);
+}
+
+.gradient-02 {
+  position: absolute;
+  width: 500px;
+  height: 438px;
+  top: -51%;
+  right: 0px;
+  z-index: 0 !important;
+  opacity: 0.8;
+
+  background: rgba(149, 66, 232, 0.35);
+  filter: blur(190px);
 }

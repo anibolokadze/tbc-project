@@ -1,7 +1,27 @@
 {
   "loginText": "LOGIN NOW!",
-  "header1": "Prepare for takeoff!",
-  "header2": "Log in to explore stellar deals on phones, gadgets, and more.",
+  "welcome": "Welcome to Tech Madness",
+  "welcome_2": "where shopping goes interstellar! As your trusty spaceman guide, I am here to take you on a cosmic journey through the universe of cutting-edge technology and unparalleled shopping convenience.",
+  "welcome_3": "Buckle up and get ready for a stellar adventure!",
+  "explore": "Choose the products you want",
+
+  "worlds": {
+    "world-1": "Phones",
+    "world-2": "Computers",
+    "world-3": "Smart Gadgets"
+  },
+
+  "get_started": "Get started with just a few clicks",
+  "feature-1": "🚀 Enter your space credentials to begin",
+  "feature-2": "🚀 Browse categories ",
+  "feature-3": "🚀 Pick your favorite product for the journey ahead",
+
+  "whats_new": "What more? Post articles",
+  "post-1": "Read what other people are posting",
+  "post-2": "Share your impressions and thoughts with others",
+
+  "enter": "login to continue",
+
   "theme": "theme",
   "home": "Home",
   "about": "About",

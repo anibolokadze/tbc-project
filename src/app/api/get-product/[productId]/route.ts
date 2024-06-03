@@ -3,10 +3,7 @@ import { NextResponse } from "next/server";
 
 export const revalidate = 0;
 
-export async function GET(
-  req: Request,
-  { params }: { params: { productId: string } }
-) {
+export async function GET(params: { productId: number }) {
   const { productId } = params;
 
   try {

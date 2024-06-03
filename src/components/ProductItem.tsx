@@ -17,6 +17,7 @@ const ProductItem: React.FC<cardProps> = ({
               alt={title}
               width={1000}
               height={1000}
+              priority
             />
           </div>
           <p className="text-[12px] leading-[18px] text-center text-gray-500">

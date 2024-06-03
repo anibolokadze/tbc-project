@@ -1,7 +1,8 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { createAuthUser, createUser, deleteUser, updateUser } from "./api";
+import { createAuthUser, createUser, updateUser } from "./api";
 import { BASE_URL } from "./constants";
+import { deleteUser } from "./server-api";
 
 export async function createUserAction(formData: FormData) {
   const { name, email, age } = Object.fromEntries(formData);
