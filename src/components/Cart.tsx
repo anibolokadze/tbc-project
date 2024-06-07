@@ -18,7 +18,7 @@ const Cart = ({
           ""
         )}
         <svg
-          className="w-10 h-auto"
+          className="w-10 h-auto absolute bottom-0"
           xmlns="http://www.w3.org/2000/svg"
           width="18.524"
           height="17.75"
