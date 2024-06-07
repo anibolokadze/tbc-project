@@ -7,8 +7,7 @@
 
   "worlds": {
     "world-1": "Phones",
-    "world-2": "Computers",
-    "world-3": "Smart Gadgets"
+    "world-2": "Computers"
   },
 
   "get_started": "Get started with just a few clicks",

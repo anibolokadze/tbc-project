@@ -1,51 +1,75 @@
 "use client";
 
-import { useUser } from "@auth0/nextjs-auth0/client";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "../../public/logo-colored.svg";
+import logo from "../../public/logo.png";
 import profile from "../../public/user.svg";
-import ThemeToggle from "./ToggleTheme";
-import { useTranslation } from "react-i18next";
-import "../i18n";
-import ToggleLanguage from "./ToggleLanguage";
+import MenuSvg from "../../public/svg/MenuSvg";
 import { useState } from "react";
+import { HamburgerMenu } from "./design/Header";
+import Button from "./Button";
+import Image from "next/image";
+import ThemeToggle from "./ToggleTheme";
+import Link from "next/link";
+import ToggleLanguage from "./ToggleLanguage";
+import { useTranslation } from "react-i18next";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import LogOut from "./LogOut";
 
 const Header = () => {
+  const [openNavigation, setOpenNavigation] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const { t } = useTranslation();
   const { user } = useUser();
 
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const toggleNavigation = () => {
+    if (openNavigation) {
+      setOpenNavigation(false);
+    } else {
+      setOpenNavigation(true);
+    }
+  };
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
-  const toggleBurgerMenu = () => {
-    setIsBurgerMenuOpen(!isBurgerMenuOpen);
-  };
-
   return (
-    <header>
-      <nav className="bg-white dark:bg-slate-800 border-b border-gray-200  dark:border-gray-500">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4">
-          <Link href="/" className="flex">
-            <Image
-              src={logo}
-              width={150}
-              height={150}
-              alt="logo"
-              style={{ width: "auto", height: "auto" }}
-            />
-          </Link>
+    <div
+      className={`fixed top-0 left-0 w-full z-50 ${
+        openNavigation
+          ? "bg-white dark:bg-[#121212]"
+          : "bg-white dark:bg-[#121212] "
+      }`}
+    >
+      <div className="flex items-center px-10 lg:px-7.5 xl:px-20 max-lg:py-2 lg:px-20">
+        <Link href="/" className="block xl:mr-8">
+          <Image src={logo} width={60} height={60} alt="logo" />
+        </Link>
 
-          <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
-            <div className="flex gap-3 items-center justify-center mr-4">
-              <ThemeToggle />
-              <ToggleLanguage />
-            </div>
+        <nav
+          className={`${
+            openNavigation
+              ? "flex flex-col items-center dark:bg-[#121212] bg-white"
+              : "hidden"
+          }  fixed w-full top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto`}
+        >
+          <div className="relative z-2 flex flex-col items-center justify-center lg:m-auto  lg:flex-row ">
+            <ul
+              className={`gap-10 font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 px-6 py-6 lg:-mr-0.25 lg:text-xs lg:font-semibold  lg:leading-5 lg:hover:text-n-1 xl:px-12`}
+            >
+              <div className="flex flex-col gap-y-[30px] items-center pt-[100px] lg:pt-0 lg:flex-row">
+                <li className=" hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out p-2 rounded">
+                  <Link href="/contact"> {t("smartphones")}</Link>
+                </li>
+                <li className=" hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out p-2 rounded">
+                  <Link href="/contact"> {t("computers")}</Link>
+                </li>
+                <li className=" hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out p-2 rounded">
+                  <Link href="/contact"> {t("brands")}</Link>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div className="flex items-center space-x-3 md:space-x-0 rtl:space-x-reverse relative">
             <button
               type="button"
               className="w-10 h-10 flex rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 dark:bg-gray-100 p-1"
@@ -59,24 +83,23 @@ const Header = () => {
             <div
               className={`z-50 ${
                 isUserDropdownOpen ? "" : "hidden"
-              } border-t border-gray-300 dark:border-gray-600 
-              shadow-lg dark:shadow-[0px_3px_7px_3px_#c4c4c421] absolute top-7 right-2 sm:-right-2 mt-5 list-none bg-white divide-y divide-gray-200 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}
+              } border-t border-gray-300 dark:border-gray-600
+             dark:shadow-[0px_3px_7px_3px_#c4c4c421] absolute top-7 w-[200px] -left-20 lg:top-10 lg:-left-[150px] mt-5 list-none bg-white divide-y divide-gray-200 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}
               id="user-dropdown"
             >
-              
               <ul className="px-4 py-3">
-                <li className="transition-colors duration-300 block sm:text-sm lg:text-lg text-gray-900 dark:text-white">
-                  {user?.name}
+                <li className="font-medium transition-colors duration-300 block sm:text-sm lg:text-lg text-gray-900 dark:text-white">
+                  {user?.nickname}
                 </li>
-                <li className=" transition-colors duration-300block sm:text-sm lg:text-base  text-gray-500 truncate dark:text-gray-400">
+                <li className="transition-colors duration-300 block sm:text-sm lg:text-base  text-gray-500 truncate dark:text-gray-400">
                   {user?.email}
                 </li>
               </ul>
-              
+
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <Link
                   href="/profile"
-                  className="transition-colors duration-300 block px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
+                  className="px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700"
                 >
                   <div className="mr-3">
                     <svg
@@ -97,73 +120,28 @@ const Header = () => {
                   {t("profile")}
                 </Link>
 
-                <li className="flex items-center transition-colors duration-300 px-4 py-2 lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                <li className="px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-500">
                   <LogOut /> {t("logout")}
+                </li>
+                <li className="gap-x-1 px-4 py-2  lg:text-base text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-400">
+                  <ThemeToggle />
+                  <ToggleLanguage />
                 </li>
               </ul>
             </div>
-            <button
-              data-collapse-toggle="navbar-user"
-              type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-expanded={isBurgerMenuOpen ? "true" : "false"}
-              onClick={toggleBurgerMenu}
-            >
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
           </div>
-          
-          <div
-            className={`${
-              isBurgerMenuOpen ? "" : "hidden"
-            } items-center justify-between w-full md:flex md:w-auto md:order-1`}
-            id="navbar-user"
-            >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-200 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-slate-800 dark:border-gray-700">
-              <li>
-                <Link
-                  href="/"
-                  className="transition-colors duration-300 block py-2 px-3 lg:text-lg text-gray-900 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  aria-current="page"
-                >
-                  {t("home")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className=" transition-colors duration-300 block py-2 px-3 lg:text-lg text-gray-900 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  {t("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="transition-colors duration-300 block py-2 px-3 lg:text-lg text-gray-900 rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  {t("contact")}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+          <HamburgerMenu />
+        </nav>
+
+        <Button
+          className="ml-auto lg:hidden bg-black"
+          px="px-3"
+          onClick={toggleNavigation}
+        >
+          <MenuSvg openNavigation={openNavigation} />
+        </Button>
+      </div>
+    </div>
   );
 };
 

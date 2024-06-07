@@ -7,6 +7,8 @@ import ProductItem from "./ProductItem";
 import Cart from "./Cart";
 import { getProducts } from "../../api";
 
+export const revalidate = 0;
+
 const Products = ({ searchQuery = "" }) => {
   const [cards, setCards] = useState<Product[]>([]);
   const [cachedValue, setCachedValue] = useLocalStorage("selectedProducts", []);

@@ -12,7 +12,6 @@ export async function GET() {
         price DECIMAL(10, 2) NOT NULL,
         discountPercentage DECIMAL(5, 2),
         rating DECIMAL(3, 2),
-        tags TEXT,
         brand TEXT,
         reviews TEXT,
         thumbnail_link TEXT,

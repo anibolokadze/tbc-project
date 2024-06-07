@@ -2,7 +2,7 @@
 const LogOut = () => {
   return (
     <form action="/api/auth/logout" method="GET">
-      <button className="group mt-[5px]">
+      <button className="group mt-[5px] mr-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

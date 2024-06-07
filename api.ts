@@ -6,14 +6,37 @@ export async function getUsers() {
   return users.rows;
 }
 
+// export async function getProducts() {
+//   const response = await fetch("/api/get-products");
+//   const { products } = await response.json();
+//   return products;
+// }
+
+// export async function getProduct(productId: number) {
+//   const response = await fetch(`${BASE_URL}/api/get-products/${productId}`);
+//   if (!response.ok) {
+//     console.error("Error fetching product:", response.statusText);
+//     throw new Error("Product not found");
+//   }
+//   const { product } = await response.json();
+//   console.log("Fetched product:", product);
+//   return product;
+// }
+
 export async function getProducts() {
-  const response = await fetch("/api/get-products");
+  const response = await fetch(`/api/get-products`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch products");
+  }
   const { products } = await response.json();
   return products;
 }
 
 export async function getProduct(productId: number) {
-  const response = await fetch(`${BASE_URL}/api/get-product/${productId}`);
+  const response = await fetch(`${BASE_URL}/api/get-products/${productId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch product");
+  }
   const { product } = await response.json();
   return product;
 }

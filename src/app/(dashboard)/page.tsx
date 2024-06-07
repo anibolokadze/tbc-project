@@ -4,12 +4,14 @@ import { useState } from "react";
 import Products from "../../components/Products";
 import Search from "../../components/Search";
 import Layout from "../../components/layout";
+import Spline from "../../components/Spline";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Layout>
+      <Spline />
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
