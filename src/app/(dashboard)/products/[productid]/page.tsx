@@ -11,7 +11,7 @@ const ProductDetails = async ({ params }: { params: Params }) => {
   if (!productDetails) {
     return (
       <Layout>
-        <p>Product not found</p>
+        <p>Product not found !</p>
       </Layout>
     );
   }
