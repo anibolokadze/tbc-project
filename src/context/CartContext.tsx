@@ -24,6 +24,8 @@ interface CartContextType {
   cartItems: StorageItem[];
   addItem: (item: Item) => void;
   deleteItem: (itemId: number) => void;
+  increaseItem: (itemId: number) => void;
+  decreaseItem: (itemId: number) => void;
   itemCount: number;
   totalCartPrice: number;
 }
@@ -32,6 +34,8 @@ const defaultCartContext: CartContextType = {
   cartItems: [],
   addItem: () => {},
   deleteItem: () => {},
+  increaseItem: () => {},
+  decreaseItem: () => {},
   itemCount: 0,
   totalCartPrice: 0,
 };
@@ -103,6 +107,34 @@ const CartContextProvider = ({ children }: CartProviderProps) => {
     setCartItems(updatedCartItems);
   };
 
+  const increaseItem = (itemId: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+          totalPrice: item.totalPrice + item.price,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
+  const decreaseItem = (itemId: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === itemId && item.quantity > 1) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+          totalPrice: item.totalPrice - item.price,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCartItems);
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     const totalPrice = cartItems.reduce(
@@ -120,6 +152,8 @@ const CartContextProvider = ({ children }: CartProviderProps) => {
     deleteItem,
     itemCount,
     totalCartPrice,
+    increaseItem,
+    decreaseItem,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

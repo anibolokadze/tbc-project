@@ -22,7 +22,7 @@ const Search: React.FC<searchProps> = ({ searchQuery, setSearchQuery }) => {
             onChange={handleChange}
             className="w-full h-[calc(100%-10px)] rounded-l-[30px] rounded-r-[100px] outline-none bg-slate-300 text-xl dark:bg-slate-500"
           /> */}
-      <h2 className={style.searchLabel}>Enter search term</h2>
+      <h2 className={style.searchLabel}>Everything you are looking for</h2>
       <Input
         placeholder="Type to search..."
         type="search"
