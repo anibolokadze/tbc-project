@@ -2,7 +2,7 @@ import { useState, useEffect, useReducer } from "react";
 import { reducer } from "../helpers";
 import { Product } from "../types";
 import { useDebounce, useLocalStorage } from "../hooks";
-import ProductItem from "./ProductItem";
+import ProductItem from "./ProductItemOld";
 // import Cart from "./Cart";
 import { getProducts } from "../../api";
 import { useCartContext } from "../context/CartContext";
@@ -14,27 +14,11 @@ const Products = ({ searchQuery = "" }) => {
   const [cachedValue, setCachedValue] = useLocalStorage("selectedProducts", []);
   const [selectedProducts, dispatch] = useReducer(reducer, cachedValue);
 
-  // const [products, setProducts] = useState([]);
   const [, setLoading] = useState(true);
 
   const { addItem } = useCartContext();
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await fetch("https://dummyjson.com/products");
-    //     if (!response.ok) {
-    //       throw new Error("Failed to fetch data");
-    //     }
-    //     const data = await response.json();
-    //     setCards(data.products);
-    //   } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //   }
-    // };
-
-    // fetchData();
-
     const fetchProducts = async () => {
       try {
         const products = await getProducts();
@@ -82,12 +66,7 @@ const Products = ({ searchQuery = "" }) => {
         </p>
       ) : (
         <div className="w-full py-5 px-5 max-w-[1400px] mx-auto lg:px-0 ">
-          <div className="relative mb-[60px]">
-            {/* <Cart
-              className="group absolute top-0 right-[25px] lg:right-[40px] transform -translate-y-1/2 cursor-pointer "
-              selectedNumber={selectedNumber}
-            /> */}
-          </div>
+          <div className="relative mb-[60px]"></div>
           <div className="flex flex-wrap justify-center mt-[25px] lg:mt-[65px] gap-[25px] lg:gap-10">
             {newCards.map((card) => (
               <ProductItem

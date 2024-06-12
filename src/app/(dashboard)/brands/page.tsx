@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getProducts } from "../../../../api";
-import ProductItem from "../../../components/ProductItem";
+import ProductItem from "../../../components/ProductItemOld";
 import { Product } from "../../../types";
 import Layout from "../../../components/layout";
 

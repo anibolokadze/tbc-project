@@ -1,7 +1,7 @@
 "use client";
 import { useState, useReducer, useEffect } from "react";
 import { getProducts } from "../../../../api";
-import ProductItem from "../../../components/ProductItem";
+import ProductItem from "../../../components/ProductItemOld";
 import { reducer } from "../../../helpers";
 import { useLocalStorage } from "../../../hooks";
 import { Product } from "../../../types";

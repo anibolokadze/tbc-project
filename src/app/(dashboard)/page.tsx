@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Products from "../../components/Products";
-import Search from "../../components/Search";
 import Layout from "../../components/layout";
+import Search from "../../components/Search";
 // import Spline from "../../components/Spline";
 // import Parallax from "../../components/Parallax";
 // import Slider from "../../components/Slider";

@@ -124,15 +124,15 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin-right: 0.4em;
+  margin-right: -0.1em;
   cursor: pointer;
 }
 
 .cartBadge {
   position: absolute;
   bottom: -0.1em;
-  right: -0.1em;
-  background-color: red;
+  left: -0.1em;
+  background-color: var(--theme);
   color: white;
   font-size: 0.75em;
   border-radius: 50%;
