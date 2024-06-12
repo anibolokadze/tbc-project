@@ -1,10 +1,10 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import ToggleLanguage from "../ToggleLanguage";
-import ThemeToggle from "../ToggleTheme";
+import ThemeToggle from "../ToggleThemeOld";
 import LoginAnimation from "./LoginAnimation";
 import { useState, useEffect } from "react";
+import ToggleLanguage from "../ToggleLanguageOld";
 
 const LoginForm = () => {
   const { t } = useTranslation();

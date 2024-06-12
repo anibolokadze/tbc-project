@@ -4,14 +4,23 @@ import { useState } from "react";
 import Products from "../../components/Products";
 import Search from "../../components/Search";
 import Layout from "../../components/layout";
-import Spline from "../../components/Spline";
+// import Spline from "../../components/Spline";
+// import Parallax from "../../components/Parallax";
+// import Slider from "../../components/Slider";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Layout>
-      <Spline />
+      {/* <Spline /> */}
+      {/* 
+      <section className="mt-14">
+        <Parallax />
+      </section>
+
+      <Slider /> */}
+
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

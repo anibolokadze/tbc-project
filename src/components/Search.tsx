@@ -7,7 +7,7 @@ const Search: React.FC<searchProps> = ({ searchQuery, setSearchQuery }) => {
   }
 
   return (
-    <section className="w-full pt-20">
+    <section className="w-full pt-7">
       <div className="flex flex-col lg:flex-row max-w-[1400px] mx-auto h-[100px] lg:h-[65px] justify-center items-center gap-3 lg:gap-5 ">
         <form className="w-[70%] lg:w-[50%] h-[50px] lg:h-[65px] flex items-center rounded-[100px] px-2 lg:px-5 sm:pl-3 bg-slate-300 dark:bg-slate-500 md:px-5">
           <svg
@@ -51,7 +51,7 @@ const Search: React.FC<searchProps> = ({ searchQuery, setSearchQuery }) => {
             spellCheck="false"
             value={searchQuery}
             onChange={handleChange}
-            className= "w-full h-[calc(100%-10px)] rounded-l-[30px] rounded-r-[100px] outline-none bg-slate-300 text-xl dark:bg-slate-500"
+            className="w-full h-[calc(100%-10px)] rounded-l-[30px] rounded-r-[100px] outline-none bg-slate-300 text-xl dark:bg-slate-500"
           />
         </form>
       </div>

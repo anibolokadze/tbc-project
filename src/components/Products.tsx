@@ -1,11 +1,11 @@
-"use client";
 import { useState, useEffect, useReducer } from "react";
 import { reducer } from "../helpers";
 import { Product } from "../types";
 import { useDebounce, useLocalStorage } from "../hooks";
 import ProductItem from "./ProductItem";
-import Cart from "./Cart";
+// import Cart from "./Cart";
 import { getProducts } from "../../api";
+import { useCartContext } from "../context/CartContext";
 
 export const revalidate = 0;
 
@@ -16,6 +16,8 @@ const Products = ({ searchQuery = "" }) => {
 
   // const [products, setProducts] = useState([]);
   const [, setLoading] = useState(true);
+
+  const { addItem } = useCartContext();
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -58,13 +60,19 @@ const Products = ({ searchQuery = "" }) => {
     product.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
   );
 
-  const handleClick = (card: Product) => {
-    dispatch({ type: "INCREMENT", payload: card });
+  const handleAddToCart = (card: Product) => {
+    // dispatch({ type: "INCREMENT", payload: card });
+    addItem({
+      id: card.id,
+      price: parseInt(card.price),
+      title: card.title,
+      image: card.thumbnail_link,
+    });
   };
 
-  const selectedNumber = selectedProducts.reduce((acc, curr) => {
-    return acc + curr.count;
-  }, 0);
+  // const selectedNumber = selectedProducts.reduce((acc, curr) => {
+  //   return acc + curr.count;
+  // }, 0);
 
   return (
     <section>
@@ -73,19 +81,19 @@ const Products = ({ searchQuery = "" }) => {
           Loading...
         </p>
       ) : (
-        <div className="w-full py-5 px-5 max-w-[1400px] mx-auto my-10 lg:py-10 lg:px-0 ">
+        <div className="w-full py-5 px-5 max-w-[1400px] mx-auto lg:px-0 ">
           <div className="relative mb-[60px]">
-            <Cart
+            {/* <Cart
               className="group absolute top-0 right-[25px] lg:right-[40px] transform -translate-y-1/2 cursor-pointer "
               selectedNumber={selectedNumber}
-            />
+            /> */}
           </div>
           <div className="flex flex-wrap justify-center mt-[25px] lg:mt-[65px] gap-[25px] lg:gap-10">
             {newCards.map((card) => (
               <ProductItem
                 key={card.id}
                 card={card}
-                handleClick={() => handleClick(card)}
+                handleClick={() => handleAddToCart(card)}
               />
             ))}
           </div>

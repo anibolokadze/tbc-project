@@ -1,15 +1,9 @@
 import Link from "next/link";
 
-const Cart = ({
-  className,
-  selectedNumber,
-}: {
-  className: string;
-  selectedNumber: number;
-}) => {
+const Cart = ({ selectedNumber }: { selectedNumber: number }) => {
   return (
     <Link href="/checkout">
-      <div className={className}>
+      <div>
         {selectedNumber > 0 ? (
           <span className="group-hover:text-orange transition-all duration-300 ease-in-out">
             {selectedNumber}

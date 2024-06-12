@@ -22,9 +22,6 @@ const About = () => {
         >
           <span className="font-extrabold dark:text-white">{t("welcome")}</span>{" "}
           <span className="dark:text-white"> {t("welcome_2")} </span>
-          <span className="font-extrabold dark:text-white">
-            {t("welcome_3")}
-          </span>
         </motion.p>
         <motion.img
           variants={fadeIn("up", "tween", 0.3, 1)}
