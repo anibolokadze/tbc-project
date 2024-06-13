@@ -1,0 +1,22 @@
+/* Example Category.module.scss */
+
+.categoryContainer {
+  margin-bottom: 20px;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px; /* Adjust as needed */
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.productContainer {
+  flex: 0 0 auto;
+  width: calc(50% - 10px); /* 50% width with gap in between */
+}
+
+.scrollButtons {
+  margin-top: 10px;
+}

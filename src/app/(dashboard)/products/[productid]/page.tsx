@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import ProductDetails from "../../../../components/ProductDetails";
+import Layout from "../../../../components/layout";
+import Loading from "../../../../components/Loading";
 
 export const revalidate = 0;
 const ProductDetailsPage = ({ params }: any) => {
@@ -27,7 +29,11 @@ const ProductDetailsPage = ({ params }: any) => {
   }, [params.productid]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    );
   }
 
   if (!product) {
