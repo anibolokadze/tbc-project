@@ -7,7 +7,7 @@ import { getProducts } from "../../../../api";
 import { Product } from "../../../types";
 import Products from "../../../components/Products";
 import Search from "../../../components/Search";
-import SortProducts from "../../../components/SortProducts"; // Adjust the path as needed
+import SortProducts from "../../../components/SortProducts";
 
 const Computers = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,7 +20,7 @@ const Computers = () => {
 
   useEffect(() => {
     setLoading(true);
-    getProducts("computers")
+    getProducts("smartphone")
       .then((fetchedProducts) => {
         setProducts(fetchedProducts);
         setLoading(false);
