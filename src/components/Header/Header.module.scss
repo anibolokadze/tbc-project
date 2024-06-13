@@ -1,0 +1,144 @@
+.containerWhite,
+.containerDark {
+  position: relative;
+  z-index: 110;
+
+  height: var(--header-height);
+
+  overflow: hidden;
+}
+
+.containerLight {
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.368);
+  padding: 0.5em 1em !important;
+}
+
+.containerDark {
+  background-color: black;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.368);
+  padding: 0.5em 1em !important;
+}
+
+.desktopMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.desktopButtons,
+.navRightContainer {
+  width: 100%;
+  max-width: 31em;
+
+  z-index: 1000;
+}
+
+.desktopButtons {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.logo {
+  height: fit-content;
+
+  z-index: 1000;
+}
+
+.navRightContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: 901px) {
+    display: none;
+  }
+}
+
+.sidebarOpenWrapper {
+  z-index: 2000;
+  background-color: transparent;
+  font-size: 1.75em;
+  border: none;
+  height: fit-content;
+  &:focus {
+    outline: none;
+  }
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.sidebarIcon,
+.sidebarIconLight {
+  color: var(--theme-color-1);
+}
+
+// .sidebarIconLight {
+//   color: white;
+// }
+
+.iconContainer {
+  background-color: transparent;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 0.4em;
+}
+
+.icon,
+.iconSecondary {
+  color: black;
+  height: 1.6em;
+}
+
+.navButton {
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+.siteLogo {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #e15e5e;
+  color: white;
+  padding: 0.5em 1.4em;
+  border-radius: 40px;
+}
+
+.iconContainer {
+  position: relative;
+  background-color: transparent;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: -0.1em;
+  cursor: pointer;
+}
+
+.cartBadge {
+  position: absolute;
+  bottom: -0.1em;
+  left: -0.1em;
+  background-color: var(--theme);
+  color: white;
+  font-size: 0.75em;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

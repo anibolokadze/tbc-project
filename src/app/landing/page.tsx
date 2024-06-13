@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import ToggleLanguage from "../../components/ToggleLanguage";
-import ToggleTheme from "../../components/ToggleTheme";
+import ToggleLanguage from "../../components/Header/ToggleLanguage";
+import ToggleTheme from "../../components/ToggleThemeOld";
 import Image from "next/image";
 import login from "../../../public/login.png";
 import Explore from "../../components/Lading/Explore";
@@ -14,7 +14,7 @@ import LandingFooter from "../../components/Lading/LandingFooter";
 const landing = () => {
   return (
     <>
-      <div className="pl-10 pt-5 flex gap-2">
+      <div className="pr-20 pt-5 flex gap-2 justify-end">
         <ToggleLanguage />
         <ToggleTheme />
         <a

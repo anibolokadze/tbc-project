@@ -16,7 +16,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "mxuupcfkpnw6vpyj.public.blob.vercel-storage.com",
       },
-      { protocol: "https", hostname: "placehold.co" },
+      { protocol: "https", hostname: "prod.spline.design" },
       { protocol: "https", hostname: "cdn.britannica.com" },
     ],
   },

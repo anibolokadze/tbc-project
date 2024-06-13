@@ -10,13 +10,16 @@ export interface Post {
 
 // Product
 export interface Product {
+  reviews: any;
+  brand: string;
+  category: any;
   id: number;
   index?: number;
   title: string;
   description: string;
-  images_link: string[];
+  images_link: string;
   thumbnail_link: string;
-  price: number;
+  price: string;
   rating: number;
   discountPercentage: number;
 }

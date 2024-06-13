@@ -1,8 +1,7 @@
 {
   "loginText": "LOGIN NOW!",
   "welcome": "Welcome to Tech Madness",
-  "welcome_2": "where shopping goes interstellar! As your trusty spaceman guide, I am here to take you on a cosmic journey through the universe of cutting-edge technology and unparalleled shopping convenience.",
-  "welcome_3": "Buckle up and get ready for a stellar adventure!",
+  "welcome_2": "We are a passionate team of tech enthusiasts dedicated to providing you with the best technology products on the market",
   "explore": "Choose the products you want",
 
   "worlds": {
@@ -11,9 +10,9 @@
   },
 
   "get_started": "Get started with just a few clicks",
-  "feature-1": "🚀 Enter your space credentials to begin",
+  "feature-1": "🚀 Enter your credentials to begin",
   "feature-2": "🚀 Browse categories ",
-  "feature-3": "🚀 Pick your favorite product for the journey ahead",
+  "feature-3": "🚀 Pick your favorite product",
 
   "whats_new": "What more? Post articles",
   "post-1": "Read what other people are posting",
