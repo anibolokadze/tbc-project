@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import Layout from "../../../../components/layout";
 import Image from "next/image";
 import { useCartContext } from "../../../../context/CartContext";
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share";
+import Head from "next/head";
 
+export const revalidate = 0;
 const ProductDetails = ({ params }: any) => {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const { addItem } = useCartContext(); // Access the addItem method from the CartContext
+  const { addItem } = useCartContext();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -29,14 +37,15 @@ const ProductDetails = ({ params }: any) => {
   }, [params.productid]);
 
   const handleAddToCart = () => {
-    // Add the current product to the cart
     addItem({
-      id: product.id, // Assuming product has an id
+      id: product.id,
       title: product.title,
-      price: parseFloat(product.price), // Assuming product has a price
-      image: product.thumbnail_link, // Assuming product has image_links
+      price: parseFloat(product.price),
+      image: product.thumbnail_link,
     });
   };
+
+  const shareUrl = window.location.href;
 
   if (loading) {
     return <p>Loading...</p>;
@@ -48,13 +57,23 @@ const ProductDetails = ({ params }: any) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{product.title}</title>
+        <meta property="og:title" content={product.title} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={product.thumbnail_link} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:type" content="product" />
+      </Head>
       <article>
         <h1>{product.title}</h1>
         <p>Brand: {product.brand}</p>
         <p>Category: {product.category}</p>
         <p>Description: {product.description}</p>
         <p>Rating: {product.rating}</p>
-        <p>reviews</p>
+        <p>Reviews:</p>
         {product.reviews.split(",").map((review: string, index: number) => (
           <p key={index}>USER: {review}</p>
         ))}
@@ -68,7 +87,21 @@ const ProductDetails = ({ params }: any) => {
             alt={product.title}
           />
         ))}
-        <button onClick={handleAddToCart}>Add to Cart</button>{" "}
+        <FacebookShareButton
+          url={shareUrl}
+          title={product.title}
+          hashtag={"#tech"}
+        >
+          <FacebookIcon size={36} round />
+        </FacebookShareButton>
+        <TwitterShareButton
+          url={shareUrl}
+          title={product.title}
+          hashtags={["tech"]}
+        >
+          <TwitterIcon size={36} round />
+        </TwitterShareButton>
+        <button onClick={handleAddToCart}>Add to Cart</button>
       </article>
     </Layout>
   );

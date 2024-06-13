@@ -13,7 +13,7 @@ import ToggleLanguage from "./ToggleThemeOld";
 import { useTranslation } from "react-i18next";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import LogOut from "./LogOut";
-import Cart from "./Cart";
+// import Cart from "./Cart";
 
 const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
@@ -90,10 +90,10 @@ const Header = () => {
             </ul>
           </div>
 
-          <Cart
+          {/* <Cart
             // className=" hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 ease-in-out p-2 rounded"
-            selectedNumber={4}
-          />
+            // selectedNumber={}
+          /> */}
 
           <div className="flex items-center space-x-3 md:space-x-0 rtl:space-x-reverse relative">
             <button

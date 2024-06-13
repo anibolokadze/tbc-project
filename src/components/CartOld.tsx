@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-const Cart = ({ selectedNumber }: { selectedNumber: number }) => {
+interface CartProps {
+  selectedNumber: number;
+}
+
+const Cart: React.FC<CartProps> = ({ selectedNumber }) => {
   return (
     <Link href="/checkout">
       <div>

@@ -3,7 +3,7 @@ import { searchProps } from "../../types";
 import style from "./Search.module.scss";
 import Input from "../InputField";
 
-const Search: React.FC<searchProps> = ({ searchQuery, setSearchQuery }) => {
+const Search: React.FC<searchProps> = ({ setSearchQuery }) => {
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(event.target.value.replace(/[^a-z0-9]/gi, ""));
   }

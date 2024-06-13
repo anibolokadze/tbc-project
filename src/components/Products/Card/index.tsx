@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { faPlus, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { cardProps } from "../../../types";
-import Button from "../../Buttons";
+
 import style from "./Card.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card: React.FC<cardProps> = ({
-  card: { id, title, description, thumbnail_link, price },
+  card: { id, title, thumbnail_link, price },
   handleClick,
 }) => {
   return (

@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useReducer } from "react";
 import { Product } from "../../types";
 import { useDebounce, useLocalStorage } from "../../hooks";
@@ -12,7 +13,7 @@ export const revalidate = 0;
 const Products = ({ searchQuery = "" }) => {
   const [cards, setCards] = useState<Product[]>([]);
   const [cachedValue, setCachedValue] = useLocalStorage("selectedProducts", []);
-  const [selectedProducts, dispatch] = useReducer(reducer, cachedValue);
+  const [selectedProducts] = useReducer(reducer, cachedValue);
 
   const [, setLoading] = useState(true);
 
