@@ -1,0 +1,64 @@
+"use client";
+import React, { useState } from "react";
+import BlogCreateButton from "../BlogCreateButton";
+import { Blog } from "../../types";
+import Search from "../Search";
+import { useDebounce } from "../../hooks";
+
+const Blogs = ({ blogs }: any) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 1000);
+
+  const filteredBlogs = blogs.filter(
+    (blog: Blog) =>
+      blog.title.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+      blog.author_name
+        .toLowerCase()
+        .includes(debouncedSearchQuery.toLowerCase()) ||
+      blog.author_email
+        .toLowerCase()
+        .includes(debouncedSearchQuery.toLowerCase())
+  );
+
+  return (
+    <>
+      <Search
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        isSorted={false}
+        setIsSorted={() => {}}
+      />
+
+      <div className="h-full flex flex-col gap-10 max-w-full lg:max-w-[70%] mx-10 lg:mx-auto">
+        <BlogCreateButton />
+
+        <div className="flex flex-col">
+          {filteredBlogs.length ? (
+            <div className="grid grid-cols-5 border-b border-t gap-5 py-2 px-2 bg-blue-300 dark:bg-blue-500">
+              <p>email</p>
+              <p>name</p>
+              <p>description</p>
+              <p>title</p>
+            </div>
+          ) : (
+            <p>No blogs found</p>
+          )}
+
+          {filteredBlogs.map((blog: Blog) => (
+            <div
+              key={blog.id}
+              className="grid grid-cols-5 border-b gap-5 py-2 px-2 hover:bg-[#acc5f2] dark:hover:bg-blue-300/50 "
+            >
+              <p>{blog.author_email}</p>
+              <p>{blog.author_name}</p>
+              <p>{blog.description}</p>
+              <p>{blog.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Blogs;
