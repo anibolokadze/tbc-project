@@ -1,7 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { BASE_URL } from "./constants";
-import { createAuthUser, createBlog, updateBlog } from "./api";
+import { createAuthUser, createBlog } from "./api";
 
 export async function createBlogAction(formData: FormData) {
   const { title, description, author_name, author_email } =
@@ -21,18 +21,6 @@ export async function createBlogAction(formData: FormData) {
 //   revalidatePath("/admin");
 // }
 
-export async function updateBlogAction(formData: FormData) {
-  const { id, title, description, author_name, author_email } =
-    Object.fromEntries(formData);
-  await updateBlog(
-    id as string | number,
-    title as string,
-    description as string,
-    author_name as string,
-    author_email as string
-  );
-  revalidatePath("/blogs"); // Assuming you want to revalidate the "/blogs" path after updating
-}
 // AUTH_USER
 
 export async function createAuthUserAction(
@@ -41,8 +29,6 @@ export async function createAuthUserAction(
   picture: string,
   user_id: string
 ) {
-  console.log(user_id);
-
   await createAuthUser(
     name as string,
     email as string,

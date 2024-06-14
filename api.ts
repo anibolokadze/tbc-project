@@ -1,7 +1,7 @@
 import { BASE_URL } from "./constants";
 
 export async function getBlogs() {
-  const response = await fetch(BASE_URL + "/api/get-users");
+  const response = await fetch(BASE_URL + "/api/get-blogs");
   const { blogs } = await response.json();
   console.log(blogs.rows);
   return blogs.rows;
@@ -84,7 +84,7 @@ export async function createBlog(
   author_name: string,
   author_email: string
 ) {
-  return await fetch(BASE_URL + "/api/create-user", {
+  return await fetch(BASE_URL + "/api/create-blog", {
     method: "POST",
     body: JSON.stringify({ title, description, author_name, author_email }),
   });
@@ -96,19 +96,6 @@ export async function createBlog(
 //     method: "DELETE",
 //   });
 // }
-
-export async function updateBlog(
-  id: string | number,
-  title: string,
-  description: string,
-  author_name: string,
-  author_email: string
-) {
-  return await fetch(BASE_URL + "/api/edit-user", {
-    method: "PUT",
-    body: JSON.stringify({ id, title, description, author_name, author_email }),
-  });
-}
 
 // AUTH_USER
 
