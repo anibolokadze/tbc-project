@@ -39,11 +39,12 @@ export interface ChildrenProps {
   children: ReactNode;
 }
 
-export interface User {
-  id: number;
-  name: string;
-  age: string;
-  email: string;
+export interface Blog {
+  id: number | string;
+  title: string;
+  description: string;
+  author_name: string;
+  author_email: string;
 }
 
 export interface AuthUser {

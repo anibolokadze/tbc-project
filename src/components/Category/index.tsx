@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Products from "../../components/Products";
-import Layout from "../../components/layout";
 import { getProducts } from "../../../api";
 import Link from "next/link";
 
@@ -40,19 +39,11 @@ const Category = () => {
   }, []);
 
   if (loading) {
-    return (
-      <Layout>
-        <p>Loading...</p>
-      </Layout>
-    );
+    return <p>Loading...</p>;
   }
 
   if (error) {
-    return (
-      <Layout>
-        <p>{error}</p>
-      </Layout>
-    );
+    return <p>{error}</p>;
   }
 
   return (

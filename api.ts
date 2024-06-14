@@ -1,9 +1,10 @@
 import { BASE_URL } from "./constants";
 
-export async function getUsers() {
+export async function getBlogs() {
   const response = await fetch(BASE_URL + "/api/get-users");
-  const { users } = await response.json();
-  return users.rows;
+  const { blogs } = await response.json();
+  console.log(blogs.rows);
+  return blogs.rows;
 }
 
 // export async function getProducts() {
@@ -70,10 +71,22 @@ export async function getProduct(productId: number) {
   return product;
 }
 
-export async function createUser(name: string, email: string, age: string) {
+// export async function createUser(name: string, email: string, age: string) {
+//   return await fetch(BASE_URL + "/api/create-user", {
+//     method: "POST",
+//     body: JSON.stringify({ name, email, age }),
+//   });
+// }
+
+export async function createBlog(
+  title: string,
+  description: string,
+  author_name: string,
+  author_email: string
+) {
   return await fetch(BASE_URL + "/api/create-user", {
     method: "POST",
-    body: JSON.stringify({ name, email, age }),
+    body: JSON.stringify({ title, description, author_name, author_email }),
   });
 }
 
@@ -84,15 +97,16 @@ export async function createUser(name: string, email: string, age: string) {
 //   });
 // }
 
-export async function updateUser(
-  id: string,
-  name: string,
-  email: string,
-  age: string
+export async function updateBlog(
+  id: string | number,
+  title: string,
+  description: string,
+  author_name: string,
+  author_email: string
 ) {
   return await fetch(BASE_URL + "/api/edit-user", {
     method: "PUT",
-    body: JSON.stringify({ id, name, email, age }),
+    body: JSON.stringify({ id, title, description, author_name, author_email }),
   });
 }
 
