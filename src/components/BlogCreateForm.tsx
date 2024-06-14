@@ -1,17 +1,20 @@
 import { useRouter } from "next/navigation";
-import { createUserAction } from "../../actions";
+import { createBlogAction } from "../../actions";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
-const UserCreateForm = ({
+export const revalidate = 0;
+const BlogCreateForm = ({
   setOpenModal,
 }: {
   setOpenModal: (openModal: boolean) => void;
 }) => {
+  const { user } = useUser();
   const router = useRouter();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     try {
-      await createUserAction(formData);
+      await createBlogAction(formData);
       setOpenModal(false);
     } catch (error) {
       console.error("Error occurred while handling form submission:", error);
@@ -23,28 +26,42 @@ const UserCreateForm = ({
     <div className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center bg-secondary/80 z-[999]">
       <form
         onSubmit={handleSubmit}
-        className="w-1/5 border-2 border-blue-600 bg-[#ffffff] dark:bg-secondary dark:border-light_blue shadow-xl shadow-blue-300 dark:shadow-light_blue p-8 rounded-xl flex flex-col gap-5 justify-center items-center "
+        className="w-1/5 border-2 border-blue-600 bg-[#ffffff] dark:bg-secondary dark:border-light_blue shadow-xl shadow-blue-300 dark:shadow-light_blue p-8 rounded-xl flex flex-col gap-5 justify-center items-center"
       >
         <input
           className="w-full h-full border-2 border-light_blue py-3 pl-1 text-secondary lg:text-[16px] rounded-[5px] focus:border-blue-300 focus:outline-blue-300"
           type="text"
-          name="name"
-          placeholder="Name"
+          name="title"
+          placeholder="Title"
           required
         />
-        <input
+        <textarea
           className="w-full h-full border-2 border-light_blue py-3 pl-1 text-secondary lg:text-[16px] rounded-[5px] focus:border-blue-300 focus:outline-blue-300"
-          type="email"
-          name="email"
-          placeholder="Email"
+          name="description"
+          placeholder="Description"
           required
         />
         <input
           className="w-full h-full border-2 border-light_blue py-3 pl-1 text-secondary lg:text-[16px] rounded-[5px] focus:border-blue-300 focus:outline-blue-300"
           type="text"
-          name="age"
-          placeholder="Age"
-          required
+          name="author_name"
+          placeholder="Author Name"
+          value={user?.nickname || ""}
+        />
+
+        <input
+          className="w-full h-full border-2 border-light_blue py-3 pl-1 text-secondary lg:text-[16px] rounded-[5px] focus:border-blue-300 focus:outline-blue-300"
+          type="email"
+          name="author_email"
+          placeholder="Author Email"
+          value={user?.email || ""}
+        />
+        {/* You may include a field for time_added if necessary */}
+        <input
+          className="hidden"
+          type="text"
+          name="time_added"
+          value={new Date().toISOString()} // Assuming you want to set the current time as the time_added
         />
         <div className="w-full flex gap-3">
           <button
@@ -65,4 +82,4 @@ const UserCreateForm = ({
   );
 };
 
-export default UserCreateForm;
+export default BlogCreateForm;

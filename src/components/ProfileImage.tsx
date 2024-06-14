@@ -7,6 +7,8 @@ import { createAuthUserAction } from "../../actions";
 import edit from "../../public/edit.svg";
 import close from "../../public/close.svg";
 
+export const revalidate = 0;
+
 const ProfileImage = ({
   picture,
   name,

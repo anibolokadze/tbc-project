@@ -10,14 +10,14 @@ export interface Post {
 
 // Product
 export interface Product {
-  reviews: any;
+  reviews: string;
   brand: string;
-  category: any;
+  category: string;
   id: number;
   index?: number;
   title: string;
   description: string;
-  images_link: string;
+  image_links: string;
   thumbnail_link: string;
   price: string;
   rating: number;
@@ -25,8 +25,7 @@ export interface Product {
 }
 
 // Post & Product Params
-export interface Params {
-  postid: number;
+export interface ProductParams {
   productid: number;
 }
 
@@ -39,11 +38,16 @@ export interface ChildrenProps {
   children: ReactNode;
 }
 
-export interface User {
-  id: number;
-  name: string;
-  age: string;
-  email: string;
+export interface Blog {
+  id: number | string;
+  title: string;
+  description: string;
+  author_name: string;
+  author_email: string;
+}
+
+export interface BlogParams {
+  blogid: string;
 }
 
 export interface AuthUser {

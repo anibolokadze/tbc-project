@@ -9,6 +9,8 @@ import Image from "next/image";
 import clock from "../../public/clock.png";
 import ProfileSkeletonLoading from "./ProfileSkeletonLoading";
 
+export const revalidate = 0;
+
 const Profile = ({ authUser }: { authUser: AuthUser }) => {
   const { user, error, isLoading } = useUser();
 
@@ -87,6 +89,13 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
                 <Image src={clock} width={20} height={20} alt="clock" />
                 <p className="text-xs ">{formattedDate}</p>
               </div>
+
+              <a
+                href="/api/auth/logout"
+                className="font-normal text-[16px] text-white"
+              >
+                logout
+              </a>
             </>
           )}
         </div>

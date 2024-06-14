@@ -1,9 +1,9 @@
 import Products from "../../../components/Products";
 
-const ProductsPage = () => {
+const ProductsPage = ({ products }: any) => {
   return (
     <>
-      <Products />
+      <Products products={products} />
     </>
   );
 };

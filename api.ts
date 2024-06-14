@@ -1,9 +1,10 @@
 import { BASE_URL } from "./constants";
 
-export async function getUsers() {
-  const response = await fetch(BASE_URL + "/api/get-users");
-  const { users } = await response.json();
-  return users.rows;
+export async function getBlogs() {
+  const response = await fetch(BASE_URL + "/api/get-blogs");
+  const { blogs } = await response.json();
+  console.log(blogs.rows);
+  return blogs.rows;
 }
 
 // export async function getProducts() {
@@ -70,30 +71,32 @@ export async function getProduct(productId: number) {
   return product;
 }
 
-export async function createUser(name: string, email: string, age: string) {
-  return await fetch(BASE_URL + "/api/create-user", {
-    method: "POST",
-    body: JSON.stringify({ name, email, age }),
-  });
-}
-
-// export async function deleteUser(id: number) {
-//   "use server";
-//   await fetch(`${BASE_URL}/api/delete-user/${id}`, {
-//     method: "DELETE",
+// export async function createUser(name: string, email: string, age: string) {
+//   return await fetch(BASE_URL + "/api/create-user", {
+//     method: "POST",
+//     body: JSON.stringify({ name, email, age }),
 //   });
 // }
 
-export async function updateUser(
-  id: string,
-  name: string,
-  email: string,
-  age: string
+export async function createBlog(
+  title: string,
+  description: string,
+  author_name: string,
+  author_email: string
 ) {
-  return await fetch(BASE_URL + "/api/edit-user", {
-    method: "PUT",
-    body: JSON.stringify({ id, name, email, age }),
+  return await fetch(BASE_URL + "/api/create-blog", {
+    method: "POST",
+    body: JSON.stringify({ title, description, author_name, author_email }),
   });
+}
+
+export async function getBlog(blogtId: number) {
+  const response = await fetch(`${BASE_URL}/api/get-blogs/${blogtId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch blog");
+  }
+  const { blog } = await response.json();
+  return blog;
 }
 
 // AUTH_USER

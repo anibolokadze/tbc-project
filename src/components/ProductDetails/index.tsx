@@ -16,9 +16,10 @@ import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { Product } from "../../types";
 
 interface Props {
-  product: any;
+  product: Product;
 }
 
 export default function ProductDetails({ product }: Props) {

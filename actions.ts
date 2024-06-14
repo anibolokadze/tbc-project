@@ -1,25 +1,25 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { createAuthUser, createUser, updateUser } from "./api";
 import { BASE_URL } from "./constants";
-import { deleteUser } from "./server-api";
+import { createAuthUser, createBlog } from "./api";
 
-export async function createUserAction(formData: FormData) {
-  const { name, email, age } = Object.fromEntries(formData);
-  createUser(name as string, email as string, age as string);
+export async function createBlogAction(formData: FormData) {
+  const { title, description, author_name, author_email } =
+    Object.fromEntries(formData);
+  createBlog(
+    title as string,
+    description as string,
+    author_name as string,
+    author_email as string
+  );
   revalidatePath("/admin");
 }
 
-export async function deleteUserAction(id: number) {
-  await deleteUser(id);
-  revalidatePath("/admin");
-}
-
-export async function updateUserAction(formData: FormData) {
-  const { id, name, email, age } = Object.fromEntries(formData);
-  updateUser(id as string, name as string, email as string, age as string);
-  revalidatePath("/admin");
-}
+// export async function updateUserAction(formData: FormData) {
+//   const { id, name, email, age } = Object.fromEntries(formData);
+//   updateUser(id as string, name as string, email as string, age as string);
+//   revalidatePath("/admin");
+// }
 
 // AUTH_USER
 
@@ -29,8 +29,6 @@ export async function createAuthUserAction(
   picture: string,
   user_id: string
 ) {
-  console.log(user_id);
-
   await createAuthUser(
     name as string,
     email as string,

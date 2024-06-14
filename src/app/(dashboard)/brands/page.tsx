@@ -79,11 +79,10 @@ const Brands = () => {
 
   const handleClick = (productId: number) => {
     console.log(`Product with id ${productId} clicked.`);
-    setAddedProductId(productId); // Set the added product id
+    setAddedProductId(productId);
     setTimeout(() => {
-      setAddedProductId(null); // Reset added product id after 3 seconds
+      setAddedProductId(null);
     }, 3000);
-    // Implement any other functionality for handling the click event
   };
   return (
     <Layout>
