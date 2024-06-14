@@ -1,11 +1,14 @@
 import { useRouter } from "next/navigation";
 import { createBlogAction } from "../../actions";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
+export const revalidate = 0;
 const BlogCreateForm = ({
   setOpenModal,
 }: {
   setOpenModal: (openModal: boolean) => void;
 }) => {
+  const { user } = useUser();
   const router = useRouter();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,14 +46,15 @@ const BlogCreateForm = ({
           type="text"
           name="author_name"
           placeholder="Author Name"
-          required
+          value={user?.nickname || ""}
         />
+
         <input
           className="w-full h-full border-2 border-light_blue py-3 pl-1 text-secondary lg:text-[16px] rounded-[5px] focus:border-blue-300 focus:outline-blue-300"
           type="email"
           name="author_email"
           placeholder="Author Email"
-          required
+          value={user?.email || ""}
         />
         {/* You may include a field for time_added if necessary */}
         <input

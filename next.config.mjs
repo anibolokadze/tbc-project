@@ -4,7 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.dummyjson.com",
+        hostname: "xjck1m5khuqeilku.public.blob.vercel-storage.com",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
       { protocol: "https", hostname: "s3.zoommer.ge" },
       {
