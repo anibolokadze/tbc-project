@@ -4,18 +4,23 @@ import { useState, useEffect } from "react";
 import Products from "../../components/Products";
 import { getProducts } from "../../../api";
 import Link from "next/link";
+import { Product } from "../../types";
+
+interface CategoryMap {
+  [key: string]: Product[];
+}
 
 const Category = () => {
-  const [categories, setCategories] = useState<{ [key: string]: any[] }>({});
+  const [categories, setCategories] = useState<CategoryMap>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const products = await getProducts();
-        const groupedProducts: { [key: string]: any[] } = products.reduce(
-          (acc: any, product: any) => {
+        const products: Product[] = await getProducts();
+        const groupedProducts: CategoryMap = products.reduce(
+          (acc: CategoryMap, product: Product) => {
             if (!acc[product.category]) {
               acc[product.category] = [];
             }
@@ -51,7 +56,6 @@ const Category = () => {
       {Object.keys(categories).map((category) => (
         <div key={category}>
           <h2>{category}</h2>
-          {/* <Products searchQuery={searchQuery} products={categories[category]} /> */}
           <Products products={categories[category]} />
           <Link href={`/${encodeURIComponent(category)}`} passHref>
             See More

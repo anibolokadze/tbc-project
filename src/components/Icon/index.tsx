@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./Icon.module.scss";
+import { ReactNode } from "react";
 
 interface Props {
   icon?: any;
   onClick?: () => void;
-  customIcon?: any;
+  customIcon?: ReactNode;
   theme: string | undefined;
 }
 

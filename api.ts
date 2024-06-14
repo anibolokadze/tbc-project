@@ -90,12 +90,14 @@ export async function createBlog(
   });
 }
 
-// export async function deleteUser(id: number) {
-//   "use server";
-//   await fetch(`${BASE_URL}/api/delete-user/${id}`, {
-//     method: "DELETE",
-//   });
-// }
+export async function getBlog(blogtId: number) {
+  const response = await fetch(`${BASE_URL}/api/get-blogs/${blogtId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch blog");
+  }
+  const { blog } = await response.json();
+  return blog;
+}
 
 // AUTH_USER
 
