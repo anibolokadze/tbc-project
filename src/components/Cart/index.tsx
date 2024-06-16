@@ -1,10 +1,37 @@
 "use client";
 import React from "react";
 import { useCart } from "../../context/CartContext";
+import { BASE_URL } from "../../../constants";
 
 const Cart = () => {
   const { cartItems, totalCartPrice, deleteItem, increaseItem, decreaseItem } =
     useCart();
+
+  const checkout = async () => {
+    try {
+      // const response = await fetch(`${BASE_URL}/api/checkout`, {
+      const response = await fetch("http://localhost:3000//api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ products: cartItems }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `HTTP error! status: ${response.status} - ${errorData.error}`
+        );
+      }
+      const data = await response.json();
+      console.log(data);
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
+  };
 
   return (
     <div>
@@ -27,6 +54,7 @@ const Cart = () => {
           <h2>Total Cart Price: ${totalCartPrice}</h2>
         </div>
       )}
+      <button onClick={checkout}>Buy Now</button>
     </div>
   );
 };
