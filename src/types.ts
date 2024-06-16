@@ -10,6 +10,7 @@ export interface Post {
 
 // Product
 export interface Product {
+  active: boolean;
   reviews: string;
   brand: string;
   category: string;
@@ -48,6 +49,14 @@ export interface Blog {
 
 export interface BlogParams {
   blogid: string;
+}
+
+export interface Order {
+  id: string;
+  amount: number;
+  currency: string;
+  status: string;
+  created: number;
 }
 
 export interface AuthUser {
