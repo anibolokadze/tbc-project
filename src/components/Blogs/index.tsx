@@ -5,6 +5,7 @@ import { Blog } from "../../types";
 import Search from "../Search";
 import { useDebounce } from "../../hooks";
 import Link from "next/link";
+import Layout from "../layout";
 
 interface Props {
   blogs: Blog[];
@@ -26,7 +27,7 @@ const Blogs = ({ blogs }: Props) => {
   );
 
   return (
-    <>
+    <Layout>
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -57,13 +58,12 @@ const Blogs = ({ blogs }: Props) => {
                 <p>{blog.author_name}</p>
 
                 <p>{blog.title}</p>
-                <p>See More</p>
               </div>
             </Link>
           ))}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

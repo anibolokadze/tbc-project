@@ -15,12 +15,6 @@ export async function createBlogAction(formData: FormData) {
   revalidatePath("/admin");
 }
 
-// export async function updateUserAction(formData: FormData) {
-//   const { id, name, email, age } = Object.fromEntries(formData);
-//   updateUser(id as string, name as string, email as string, age as string);
-//   revalidatePath("/admin");
-// }
-
 // AUTH_USER
 
 export async function createAuthUserAction(

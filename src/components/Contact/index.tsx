@@ -1,5 +1,13 @@
 "use client";
 import { useState, ChangeEvent, FormEvent } from "react";
+import Layout from "../layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhone,
+  faEnvelope,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import style from "./Index.module.scss";
 
 interface FormData {
   name: string;
@@ -61,7 +69,6 @@ export default function Contact() {
     }
 
     try {
-      // Send form data to the API route
       const res = await fetch("/api/submit-contact", {
         method: "POST",
         headers: {
@@ -72,9 +79,11 @@ export default function Contact() {
       const data: ApiResponse = await res.json();
       setResponse(data);
       if (data.success) {
-        // Clear the form fields
         setFormData({ name: "", email: "", message: "" });
         setErrors({});
+        setTimeout(() => {
+          setResponse(null);
+        }, 2000);
       }
     } catch (error) {
       setResponse({ error: "An error occurred while submitting the form." });
@@ -91,11 +100,30 @@ export default function Contact() {
   };
 
   return (
-    <div>
-      <h1>Contact Us</h1>
-      <p>Any question or remarks? Just write us a message!</p>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <Layout>
+      {response && (
+        <div className={style.alert}>
+          {response.error ? response.error : "Message sent successfully!"}
+        </div>
+      )}
+
+      <div className={style.wrapper}>
+        <div className={style.contact}>
+          <h2>Reach Us</h2>
+          <p>
+            <FontAwesomeIcon icon={faPhone} /> 555 54 50 03
+          </p>
+          <button onClick={() => (window.location.href = getMailtoLink())}>
+            <FontAwesomeIcon icon={faEnvelope} />
+            anibolokadze@gmail.com
+          </button>
+          <p>
+            <FontAwesomeIcon icon={faLocationDot} />
+            Tbilisi Georgia
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className={style.form}>
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -103,10 +131,10 @@ export default function Contact() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="name"
           />
           {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
-        </div>
-        <div>
+
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -114,31 +142,30 @@ export default function Contact() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder="email"
           />
           {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
-        </div>
-        <div>
+
           <label htmlFor="message">Message:</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
+            placeholder="type message"
           ></textarea>
           {errors.message && (
             <span style={{ color: "red" }}>{errors.message}</span>
           )}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      {response && (
-        <div>
-          {response.error ? response.error : "Message sent successfully!"}
-        </div>
-      )}
-      <button onClick={() => (window.location.href = getMailtoLink())}>
-        Send Email
-      </button>
-    </div>
+
+          <div className={style.buttons}>
+            <button type="submit">Submit</button>
+            <button onClick={() => (window.location.href = getMailtoLink())}>
+              Send with Email Client
+            </button>
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 }

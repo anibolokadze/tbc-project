@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import Orders from "../../../components/Orders";
 import { Order } from "../../../types";
+import Layout from "../../../components/layout";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -17,7 +19,7 @@ const OrdersPage = () => {
         const data = await response.json();
         setOrders(data.orders);
       } catch (error: any) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -27,40 +29,14 @@ const OrdersPage = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Layout>Loading...</Layout>;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <div>
-      <h1>Successful Orders</h1>
-      {orders.length === 0 ? (
-        <p>No orders found.</p>
-      ) : (
-        <ul>
-          {orders.map((order) => (
-            <li key={order.id}>
-              <p>Order ID: {order.id}</p>
-              <p>Amount: ${order.amount / 100}</p>
-              <p>Currency: {order.currency.toUpperCase()}</p>
-              <p>Status: {order.status}</p>
-              <p>
-                Time:{" "}
-                {new Date(order.created * 1000).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  return <Orders orders={orders} />;
 };
 
 export default OrdersPage;

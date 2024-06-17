@@ -121,14 +121,13 @@ $background-color-row-even: #f4f4f4;
   align-items: center;
   justify-content: center;
   color: white;
-  padding: 0.5em 0.6em;
+  padding: 1em 1.5em;
   border-radius: 15px;
   width: auto;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     opacity: 0.7;
-    padding: 0.5em 1.5em;
   }
 }
 
@@ -136,13 +135,7 @@ $background-color-row-even: #f4f4f4;
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  color: rgb(129, 129, 129);
-  transition: color 0.3s;
-
-  &:hover {
-    color: gold;
-  }
+  color: gold;
 }
 
 .thumbnailContainer {

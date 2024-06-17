@@ -20,3 +20,30 @@
 .scrollButtons {
   margin-top: 10px;
 }
+.category {
+  .seemore {
+    font-style: italic;
+    color: var(--theme);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    .categoryIcon {
+      color: white;
+      padding: 15px 20px;
+      background-color: var(--theme);
+      border-radius: 15px;
+    }
+  }
+}

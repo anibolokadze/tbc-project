@@ -13,6 +13,7 @@ interface BlogDetailsPageProps {
 const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
   const [loading, setLoading] = useState(true);
   const [blog, setBlog] = useState<Blog | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -25,7 +26,7 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
         setBlog(data.blog);
         console.log("blog", data);
       } catch (error) {
-        console.error("Error fetching blog:", error);
+        setError((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -37,7 +38,15 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
   if (loading) {
     return (
       <Layout>
-        <p>loading</p>
+        <p>Loading...</p>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <p>Error: {error}</p>
       </Layout>
     );
   }

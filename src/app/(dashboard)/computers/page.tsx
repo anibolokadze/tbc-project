@@ -1,5 +1,3 @@
-// Computers.tsx
-
 "use client";
 import { useState, useEffect } from "react";
 import Layout from "../../../components/layout";
@@ -48,8 +46,8 @@ const Computers = () => {
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        isSorted={false} // Adjust if necessary
-        setIsSorted={() => {}} // Adjust if necessary
+        isSorted={false}
+        setIsSorted={() => {}}
       />
       <SortProducts sortProducts={sortProducts} currentSortOrder={sortOrder} />
       <section>

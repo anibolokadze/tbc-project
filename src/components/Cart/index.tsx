@@ -4,8 +4,14 @@ import { useCart } from "../../context/CartContext";
 import { BASE_URL } from "../../../constants";
 
 const Cart = () => {
-  const { cartItems, totalCartPrice, deleteItem, increaseItem, decreaseItem } =
-    useCart();
+  const {
+    cartItems,
+    totalCartPrice,
+    deleteItem,
+    increaseItem,
+    decreaseItem,
+    clearCart,
+  } = useCart();
 
   const checkout = async () => {
     try {
@@ -27,6 +33,7 @@ const Cart = () => {
       console.log(data);
       if (data.url) {
         window.location.href = data.url;
+        clearCart();
       }
     } catch (error) {
       console.error("Error during checkout:", error);

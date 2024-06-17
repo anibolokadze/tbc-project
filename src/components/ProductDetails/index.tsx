@@ -10,7 +10,7 @@ import {
 } from "react-share";
 import { useCartContext } from "../../context/CartContext";
 import style from "./ProductDetails.module.scss";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleLeft,

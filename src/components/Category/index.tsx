@@ -5,6 +5,9 @@ import Products from "../../components/Products";
 import { getProducts } from "../../../api";
 import Link from "next/link";
 import { Product } from "../../types";
+import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import style from "./Category.module.scss";
 
 interface CategoryMap {
   [key: string]: Product[];
@@ -55,11 +58,23 @@ const Category = () => {
     <>
       {Object.keys(categories).map((category) => (
         <div key={category}>
-          <h2>{category}</h2>
+          <div className={style.category}>
+            <div className={style.title}>
+              <FontAwesomeIcon
+                icon={faShoppingBag}
+                className={style.categoryIcon}
+              />
+              <h2>{category}</h2>
+            </div>
+            <Link
+              href={`/${encodeURIComponent(category)}`}
+              passHref
+              className={style.seemore}
+            >
+              see more
+            </Link>
+          </div>
           <Products products={categories[category]} />
-          <Link href={`/${encodeURIComponent(category)}`} passHref>
-            See More
-          </Link>
         </div>
       ))}
     </>
