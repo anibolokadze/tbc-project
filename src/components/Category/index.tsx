@@ -56,16 +56,17 @@ const Category = () => {
 
   return (
     <>
-      {Object.keys(categories).map((category) => (
-        <div key={category}>
-          {/* <div className={style.category}>
-            <div className={style.title}>
-              <FontAwesomeIcon
-                icon={faShoppingBag}
-                className={style.categoryIcon}
-              />
-              <h2>{category}</h2>
-            </div>
+      {Object.keys(categories).map((category, index) => (
+        <div key={index}>
+          <div className={style.category}>
+            <Link
+              href={`/${encodeURIComponent(category)}`}
+              passHref
+              className={style.title}
+            >
+              <h2>{category !== "smartphone" ? category : "smartphones"}</h2>
+            </Link>
+
             <Link
               href={`/${encodeURIComponent(category)}`}
               passHref
@@ -73,7 +74,7 @@ const Category = () => {
             >
               see more
             </Link>
-          </div> */}
+          </div>
           <Products products={categories[category]} />
         </div>
       ))}

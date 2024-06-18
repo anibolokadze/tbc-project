@@ -1,12 +1,12 @@
 .coverWrapper {
   background-color: black;
-  height: 20em;
-  height: 35em;
+  height: 37em;
+  padding-top: 0em 1em;
 
   position: relative;
 
   @media (max-width: 1000px) {
-    height: 60vw;
+    height: 64vw;
   }
 
   .cover {

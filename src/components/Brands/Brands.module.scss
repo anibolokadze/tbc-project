@@ -22,6 +22,11 @@
 
 .brand {
   width: 10em;
+
+  @media (max-width: 650px) {
+    width: 20vw;
+  }
+
   background-color: var(--theme);
   margin: 1em;
   padding: 1em;
