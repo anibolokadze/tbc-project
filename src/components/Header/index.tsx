@@ -57,10 +57,6 @@ export default function Header() {
         </div>
 
         <div className={style.navRightContainer}>
-          {/* <Link href="/cart">
-            <Icon icon={faShoppingCart} theme={theme} />
-          </Link> */}
-
           <Link href="/cart">
             <div className={style.iconContainer}>
               <Icon icon={faShoppingCart} theme={theme} />

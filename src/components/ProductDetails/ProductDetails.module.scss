@@ -281,3 +281,7 @@ $background-color-row-even: #f4f4f4;
   font-size: 1rem;
   color: #333;
 }
+
+.toaster {
+  z-index: 50000;
+}

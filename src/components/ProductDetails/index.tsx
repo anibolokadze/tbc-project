@@ -36,6 +36,8 @@ export default function ProductDetails({ product }: Props) {
       price: parseFloat(product.price),
       image: product.thumbnail_link,
     });
+
+    console.log("toast");
   };
 
   const openModal = (index: number) => {
@@ -86,6 +88,7 @@ export default function ProductDetails({ product }: Props) {
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="product" />
       </Head>
+
       <article className={style.container}>
         <div className={style.basicInfo}>
           <div className={style.mainImageContainer}>
@@ -141,6 +144,7 @@ export default function ProductDetails({ product }: Props) {
                   </TwitterShareButton>
                 </div>
               </div>
+
               <button onClick={handleAddToCart} className={style.button}>
                 Add to Cart
               </button>

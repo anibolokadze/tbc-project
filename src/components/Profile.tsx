@@ -92,7 +92,7 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
 
               <a
                 href="/api/auth/logout"
-                className="font-normal text-[16px] text-white"
+                className="font-normal text-[16px] text-black"
               >
                 logout
               </a>

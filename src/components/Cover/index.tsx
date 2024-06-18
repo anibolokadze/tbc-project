@@ -4,7 +4,7 @@ const cover = () => {
     <>
       <div className={style.coverWrapper}>
         <div className={style.cover}></div>
-        <h1>welcome</h1>
+        <h1 className={style.intro}>welcome</h1>
       </div>
     </>
   );

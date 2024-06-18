@@ -1,10 +1,7 @@
 .containerWhite,
 .containerDark {
-  position: relative;
   z-index: 110;
-
   height: var(--header-height);
-
   overflow: hidden;
 }
 
@@ -39,9 +36,9 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 900px) {
-    display: none;
-  }
+  // @media (max-width: 900px) {
+  //   display: none;
+  // }
 }
 
 .logo {

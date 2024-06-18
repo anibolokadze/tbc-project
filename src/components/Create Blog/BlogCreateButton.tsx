@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import style from "./CreateBlog.module.scss";
 import BlogCreateForm from "./BlogCreateForm";
 
 const BlogCreateButton = () => {
@@ -7,10 +8,7 @@ const BlogCreateButton = () => {
 
   return (
     <>
-      <button
-        onClick={() => setOpenModal(!openModal)}
-        className="w-fit bg-blue-600 dark:bg-blue-500 rounded-[100px] py-2 lg:py-auto px-7 font-small lg:font-medium cursor-pointer transition-all transform duration-300 ease-linear"
-      >
+      <button onClick={() => setOpenModal(!openModal)} className={style.button}>
         Add Post
       </button>
       {openModal ? <BlogCreateForm setOpenModal={setOpenModal} /> : ""}

@@ -1,19 +1,36 @@
 .coverWrapper {
   background-color: black;
+  height: 20em;
+  height: 35em;
+
+  position: relative;
+
+  @media (max-width: 1000px) {
+    height: 60vw;
+  }
 
   .cover {
     background-image: url("../../../public/cover\ background.png");
-    height: 100vh;
-    width: 100%;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+
+    background-position: center;
+    width: 100vw;
+    height: 100%;
   }
 
-  h1 {
+  .intro {
+    color: white;
+
+    @media (max-width: 1000px) {
+      font-size: 8vw;
+    }
+
+    text-shadow: 2px 2px 2px black;
+    font-size: 4em;
     position: absolute;
-    top: 50%;
-    color: red;
-    left: 15%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
   }
 }

@@ -1,0 +1,35 @@
+.container {
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding-bottom: 1em;
+}
+
+.brandsTitle {
+  font-size: 2em;
+  margin-bottom: 0.4em;
+}
+
+.brandsContainer {
+  display: flex;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  width: 10em;
+  background-color: var(--theme);
+  margin: 1em;
+  padding: 1em;
+  border-radius: 5px;
+
+  transition: opacity 300ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

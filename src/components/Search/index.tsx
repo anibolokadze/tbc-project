@@ -10,7 +10,6 @@ const Search: React.FC<searchProps> = ({ setSearchQuery }) => {
 
   return (
     <div className={style.search}>
-      <h2 className={style.searchLabel}>Everything you are looking for</h2>
       <Input
         placeholder="Type to search..."
         type="search"

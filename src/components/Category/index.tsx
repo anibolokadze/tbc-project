@@ -58,7 +58,7 @@ const Category = () => {
     <>
       {Object.keys(categories).map((category) => (
         <div key={category}>
-          <div className={style.category}>
+          {/* <div className={style.category}>
             <div className={style.title}>
               <FontAwesomeIcon
                 icon={faShoppingBag}
@@ -73,7 +73,7 @@ const Category = () => {
             >
               see more
             </Link>
-          </div>
+          </div> */}
           <Products products={categories[category]} />
         </div>
       ))}
