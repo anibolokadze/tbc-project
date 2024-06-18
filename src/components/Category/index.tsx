@@ -5,9 +5,8 @@ import Products from "../../components/Products";
 import { getProducts } from "../../../api";
 import Link from "next/link";
 import { Product } from "../../types";
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./Category.module.scss";
+import SkeletonLoading from "../SkeletonLoading";
 
 interface CategoryMap {
   [key: string]: Product[];
@@ -47,7 +46,18 @@ const Category = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <>
+        <div>
+          <h2 className={style.category_loading}>categories</h2>
+          <SkeletonLoading />
+        </div>
+        <div>
+          <h2 className={style.category_loading}>categories</h2>
+          <SkeletonLoading />
+        </div>
+      </>
+    );
   }
 
   if (error) {

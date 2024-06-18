@@ -9,14 +9,6 @@
 
   transition: transform 300ms;
 
-  // @media (max-width: 1250px) {
-  //   flex: 1 1 calc(25%);
-  // }
-
-  // @media (max-width: 400px) {
-  //   flex: 1 1 calc(100% - 2em);
-  // }
-
   &:hover {
     transform: scale3d(1.03, 1.03, 1);
   }

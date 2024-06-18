@@ -8,6 +8,8 @@ import { Product } from "../../../types";
 import Products from "../../../components/Products";
 import Search from "../../../components/Search";
 import SortProducts from "../../../components/SortProducts";
+import SkeletonLoading from "../../../components/SkeletonLoading";
+import style from "../../../components/SkeletonLoading/SkeletonLoading.module.scss";
 
 const Computers = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -53,7 +55,12 @@ const Computers = () => {
       />
       <SortProducts sortProducts={sortProducts} currentSortOrder={sortOrder} />
       <section>
-        {loading && <p>Loading...</p>}
+        {loading && (
+          <div className={style.height}>
+            <SkeletonLoading />
+            <SkeletonLoading />
+          </div>
+        )}
         {!loading && error && <p>{error}</p>}
         {!loading && !error && products.length === 0 && (
           <p className="text-blue-600 dark:text-light_blue text-[32px] text-center mt-[100px]">

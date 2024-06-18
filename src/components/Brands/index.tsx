@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-
 import style from "./Brands.module.scss";
 
 const brands = [
@@ -16,7 +14,7 @@ export default function Brands() {
       <h2 className={style.brandsTitle}>our brands</h2>
       <div className={style.brandsContainer}>
         {brands.map((brand, index) => (
-          <Link key={index} href={`/brands/${brand.name.toLowerCase()}`}>
+          <div key={index}>
             <Image
               className={style.brand}
               src={brand.src}
@@ -24,7 +22,7 @@ export default function Brands() {
               height={50}
               width={50}
             />
-          </Link>
+          </div>
         ))}
       </div>
     </div>

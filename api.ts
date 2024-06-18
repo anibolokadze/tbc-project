@@ -7,13 +7,12 @@ export async function getBlogs() {
   return blogs.rows;
 }
 
-export async function getProducts(category?: string, brands?: string[]) {
+export async function getProducts(category?: string) {
   let url = "/api/get-products";
-  if (category || brands?.length) {
+  if (category) {
     const params = new URLSearchParams();
     if (category) params.append("category", category);
-    if (brands?.length)
-      brands.forEach((brand) => params.append("brand", brand));
+
     url += `?${params.toString()}`;
   }
 

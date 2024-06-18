@@ -10,11 +10,11 @@
   }
 
   .cover {
-    background-image: url("../../../public/cover\ background.png");
+    background-image: url("../../../public/backgorund.png");
     background-repeat: no-repeat;
     background-size: contain;
 
-    background-position: center;
+    background-position: right;
     width: 100vw;
     height: 100%;
   }
@@ -23,14 +23,30 @@
     color: white;
 
     @media (max-width: 1000px) {
-      font-size: 8vw;
+      font-size: 5vw;
     }
 
     text-shadow: 2px 2px 2px black;
     font-size: 4em;
     position: absolute;
-    left: 50%;
+    left: 5%;
     top: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sub_intro {
+    color: white;
+    font-weight: 300;
+
+    @media (max-width: 1000px) {
+      font-size: 2vw;
+    }
+
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.3em;
+    position: absolute;
+    left: 5%;
+    top: 60%;
     transform: translate(-50%, -50%);
   }
 }
