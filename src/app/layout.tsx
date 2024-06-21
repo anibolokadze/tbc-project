@@ -12,8 +12,11 @@ const noto_Sans_Georgian = Noto_Sans_Georgian({
 });
 
 export const metadata = {
-  title: "Ecomm App",
+  title: "Tech Madness",
   description: "Explore a wide range of tech products at Ecomm App",
+  icons: {
+    icon: "/icons8-new-moon-48.png",
+  },
 };
 
 export default function RootLayout({ children }: ChildrenProps) {

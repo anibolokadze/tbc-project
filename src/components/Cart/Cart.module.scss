@@ -1,0 +1,132 @@
+.cart {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1000px) {
+    max-width: 75vw;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
+  img {
+    border-radius: 25px;
+  }
+  h3 {
+    font-size: 1.2em;
+    @media (min-width: 1000px) {
+      font-size: 1.5em;
+    }
+  }
+  h4 {
+    font-size: 1em;
+    @media (min-width: 1000px) {
+      font-size: 1.2em;
+    }
+  }
+  .cart_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5em;
+    column-gap: 1em;
+    transition: 0.2s ease;
+
+    &:hover {
+      scale: 1.02;
+    }
+
+    @media (min-width: 450px) {
+      flex-direction: row;
+    }
+
+    img {
+      @media (min-width: 1000px) {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+
+  .quantity {
+    .btn {
+      display: flex;
+      column-gap: 1em;
+      margin: 0.8em 0;
+      transition: 1 ease;
+
+      .btn_quantity {
+        display: flex;
+        justify-content: space-between;
+        width: 100px;
+        color: white;
+        background-color: black;
+        padding: 0.5em 0.8em;
+        border-radius: 30px;
+        transition: 0.8s ease;
+
+        button {
+          &:hover {
+            scale: 1.5;
+          }
+        }
+      }
+
+      .delete {
+        color: var(--theme);
+        margin-left: 30px;
+      }
+    }
+
+    .add,
+    .minus {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.order {
+  border-top: 1px solid lightgray;
+  width: 100%;
+  margin: 50px 0px 150px 0px;
+  padding: 2em 3.5em 0em 3.5em;
+
+  @media (min-width: 1000px) {
+    max-width: 30vw;
+  }
+
+  h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8em;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  button {
+    padding: 10px 50px;
+    border-radius: 20px;
+    background-color: var(--theme);
+    color: white;
+    width: 100%;
+    margin-top: 2em;
+    transition: 0.3s ease-out;
+
+    &:hover {
+      opacity: 0.8;
+      scale: 1.1;
+    }
+  }
+}

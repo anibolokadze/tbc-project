@@ -5,7 +5,7 @@ import Layout from "../../../components/layout";
 const page = () => {
   return (
     <Layout>
-      <Cart />;
+      <Cart />
     </Layout>
   );
 };
