@@ -11,32 +11,34 @@ const Card: React.FC<cardProps> = ({
   handleClick,
 }) => {
   return (
-    <div className={style.card}>
-      <Link href={`/products/${id}`}>
-        <Image
-          src={thumbnail_link}
-          alt={title}
-          width={1000}
-          height={1000}
-          priority
-          className={style.image}
-        />
-      </Link>
+    <>
+      <div className={style.card}>
+        <Link href={`/products/${id}`}>
+          <Image
+            src={thumbnail_link}
+            alt={title}
+            width={1000}
+            height={1000}
+            priority
+            className={style.image}
+          />
+        </Link>
 
-      <h5 className={style.title}>{title}</h5>
+        <h5 className={style.title}>{title}</h5>
 
-      <div className={style.priceAndCart}>
-        <p className={style.price}>${price}</p>
-        <div
-          className={style.iconContainer}
-          onClick={() => {
-            handleClick(id);
-          }}
-        >
-          <FontAwesomeIcon className={style.plusButton} icon={faPlus} />
+        <div className={style.priceAndCart}>
+          <p className={style.price}>${price}</p>
+          <div
+            className={style.iconContainer}
+            onClick={() => {
+              handleClick(id);
+            }}
+          >
+            <FontAwesomeIcon className={style.plusButton} icon={faPlus} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

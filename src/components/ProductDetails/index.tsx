@@ -170,19 +170,6 @@ export default function ProductDetails({ product }: Props) {
             </tbody>
           </table>
         </div>
-
-        <div className={style.reviewsContainer}>
-          <h2 className={style.reviewsTitle}>Reviews</h2>
-          <div className={style.reviews}>
-            {product.reviews.split(",").map((review: string, index: number) => (
-              <div className={style.comment} key={index}>
-                <div className={style.commentContent}>
-                  <div className={style.content}>{review}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </article>
 
       {isModalOpen && (

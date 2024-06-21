@@ -38,11 +38,26 @@
   max-width: 80vw;
   margin: 0 auto;
   border-radius: 20px;
+  position: relative;
+
   p,
   button {
     display: flex;
     column-gap: 20px;
     align-items: center;
+  }
+
+  .elipse_1 {
+    position: absolute;
+    bottom: 40px;
+    right: 55px;
+    z-index: 2;
+  }
+
+  .elipse_2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }
 
@@ -65,10 +80,16 @@
 
   input {
     padding: 10px 20px 10px 0px;
+    &:focus {
+      outline: none;
+    }
   }
 
   textarea {
     padding: 20px 20px 20px 0px;
+    &:focus {
+      outline: none;
+    }
   }
 
   .buttons {

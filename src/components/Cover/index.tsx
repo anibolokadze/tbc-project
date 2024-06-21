@@ -5,7 +5,9 @@ import style from "./Cover.module.scss";
 import Spline from "@splinetool/react-spline";
 
 const Cover = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" && window.innerWidth < 1000
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +27,7 @@ const Cover = () => {
           <div className={style.cover}></div>
         ) : (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 2 }}
           >

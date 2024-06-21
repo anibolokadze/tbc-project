@@ -8,6 +8,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import style from "./Index.module.scss";
+import Image from "next/image";
 
 interface FormData {
   name: string;
@@ -121,6 +122,22 @@ export default function Contact() {
             <FontAwesomeIcon icon={faLocationDot} />
             Tbilisi Georgia
           </p>
+
+          <Image
+            src={"/Ellipse 794.png"}
+            width={200}
+            height={200}
+            alt="elipse"
+            className={style.elipse_1}
+          />
+
+          <Image
+            src={"/Ellipse 793.png"}
+            width={210}
+            height={210}
+            alt="elipse"
+            className={style.elipse_2}
+          />
         </div>
 
         <form onSubmit={handleSubmit} className={style.form}>
