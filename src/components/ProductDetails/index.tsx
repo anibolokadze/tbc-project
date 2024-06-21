@@ -17,6 +17,7 @@ import {
   faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Product } from "../../types";
+import { toast } from "react-toastify";
 
 interface Props {
   product: Product;
@@ -26,6 +27,8 @@ export default function ProductDetails({ product }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const shareUrl = window.location.href;
+  const notify = (productName: string) =>
+    toast.success(`${productName} added to cart`);
 
   const { addItem } = useCartContext();
 
@@ -36,8 +39,7 @@ export default function ProductDetails({ product }: Props) {
       price: parseFloat(product.price),
       image: product.thumbnail_link,
     });
-
-    console.log("toast");
+    notify(product.title);
   };
 
   const openModal = (index: number) => {

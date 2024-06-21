@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Products from "../../components/Products";
 import { getProducts } from "../../../api";
@@ -94,7 +93,7 @@ const Category = () => {
               see more
             </Link>
           </div>
-          <Products products={categories[category]} />
+          <Products products={categories[category]} searchQuery="" />
         </div>
       ))}
     </>

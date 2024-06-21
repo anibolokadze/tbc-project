@@ -4,6 +4,7 @@ import { ChildrenProps } from "../types";
 import Theme from "../theme-provider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import CartContextProvider from "../context/CartContext";
+import { ToastContainer } from "react-toastify";
 
 const noto_Sans_Georgian = Noto_Sans_Georgian({
   subsets: ["latin"],
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: ChildrenProps) {
       <UserProvider>
         <CartContextProvider>
           <body className={noto_Sans_Georgian.className}>
-            <Theme>{children}</Theme>
+            <Theme>
+              <ToastContainer position="top-center" />
+              {children}
+            </Theme>
           </body>
         </CartContextProvider>
       </UserProvider>
