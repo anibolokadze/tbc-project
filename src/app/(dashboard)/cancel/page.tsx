@@ -1,7 +1,8 @@
 import React from "react";
+import Cancel from "../../../components/Cancel";
 
 const page = () => {
-  return <div>cancel</div>;
+  return <Cancel />;
 };
 
 export default page;

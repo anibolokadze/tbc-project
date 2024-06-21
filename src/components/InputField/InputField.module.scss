@@ -1,14 +1,20 @@
 .input {
   border: 1px solid #ccc;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 8px 40px;
+  font-size: 14px;
   width: 100%;
   box-sizing: border-box;
   max-width: 80vw;
-  border: 2px solid var(--theme);
-  border-radius: 6px;
+  border: 2px solid lightcoral;
+  border-radius: 30px;
 
   line-height: 1.9em;
+
+  background-image: url("../../../public/icons8-search\ \(1\).svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-position-x: 10px;
+  background-size: 25px;
 }
 
 .input:focus {

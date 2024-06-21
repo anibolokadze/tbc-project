@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import ToggleLanguage from "../../components/Header/ToggleLanguage";
-import ToggleTheme from "../../components/ToggleThemeOld";
 import Image from "next/image";
 import login from "../../../public/login.png";
 import Explore from "../../components/Lading/Explore";
@@ -10,6 +9,7 @@ import WhatsNew from "../../components/Lading/WhatsNew";
 import About from "../../components/Lading/About";
 import Hero from "../../components/Lading/Hero";
 import LandingFooter from "../../components/Lading/LandingFooter";
+import ToggleTheme from "../../components/Header/ToggleTheme";
 
 const landing = () => {
   return (

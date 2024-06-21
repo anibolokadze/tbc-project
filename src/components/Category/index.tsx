@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Product } from "../../types";
 import style from "./Category.module.scss";
 import SkeletonLoading from "../SkeletonLoading";
+import Image from "next/image";
 
 interface CategoryMap {
   [key: string]: Product[];
@@ -74,6 +75,14 @@ const Category = () => {
               passHref
               className={style.title}
             >
+              <div className={style.thunder}>
+                <Image
+                  src={"/icons8-thunder-48.png"}
+                  width={30}
+                  height={30}
+                  alt="thunder"
+                />
+              </div>
               <h2>{category !== "smartphone" ? category : "smartphones"}</h2>
             </Link>
 

@@ -2,7 +2,12 @@ import style from "./Header.module.scss";
 
 import Sidebar from "./SideBar";
 import { motion } from "framer-motion";
-import { faBars, faShoppingCart, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faReceipt,
+  faShoppingCart,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -53,7 +58,7 @@ export default function Header() {
       <div className={style.desktopMenu}>
         <div className={style.desktopButtons}>
           <Link href="/">
-            <h1 className={style.siteLogo}> ECom App</h1>
+            <h1 className={style.siteLogo}> Tech Madness</h1>
           </Link>
         </div>
 
@@ -64,6 +69,12 @@ export default function Header() {
               {itemCount > 0 && (
                 <div className={style.cartBadge}>{itemCount}</div>
               )}
+            </div>
+          </Link>
+
+          <Link href="/orders">
+            <div className={style.iconContainer}>
+              <Icon icon={faReceipt} theme={theme} />
             </div>
           </Link>
 

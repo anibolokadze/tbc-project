@@ -39,10 +39,10 @@ body {
   top: 0px;
   right: 0px;
   z-index: 0 !important;
-  opacity: 0.8;
+  opacity: 0.7;
 
-  background: #7aebfb;
-  filter: blur(190px);
+  background: rgba(227, 89, 89, 0.35);
+  filter: blur(200px);
 }
 
 .gradient-02 {
@@ -54,7 +54,7 @@ body {
   z-index: 0 !important;
   opacity: 0.8;
 
-  background: rgba(149, 66, 232, 0.35);
+  background: rgba(227, 89, 89, 0.35);
   filter: blur(190px);
 }
 

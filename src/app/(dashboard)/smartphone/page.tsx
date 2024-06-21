@@ -1,5 +1,3 @@
-// Computers.tsx
-
 "use client";
 import { useState, useEffect } from "react";
 import Layout from "../../../components/layout";
@@ -7,18 +5,15 @@ import { getProducts } from "../../../../api";
 import { Product } from "../../../types";
 import Products from "../../../components/Products";
 import Search from "../../../components/Search";
-import SortProducts from "../../../components/SortProducts";
 import SkeletonLoading from "../../../components/SkeletonLoading";
 import style from "../../../components/SkeletonLoading/SkeletonLoading.module.scss";
 
-const Computers = () => {
+const Smartphone = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState<"ascending" | "descending">(
-    "ascending"
-  );
+  const [, setSortOrder] = useState("price-ascending");
 
   useEffect(() => {
     setLoading(true);
@@ -34,12 +29,22 @@ const Computers = () => {
       });
   }, []);
 
-  const sortProducts = (order: "ascending" | "descending") => {
+  const sortProducts = (
+    order:
+      | "price-ascending"
+      | "price-descending"
+      | "alphabet-ascending"
+      | "alphabet-descending"
+  ) => {
     const sortedProducts = [...products];
-    if (order === "ascending") {
+    if (order === "price-ascending") {
       sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    } else {
+    } else if (order === "price-descending") {
       sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    } else if (order === "alphabet-ascending") {
+      sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (order === "alphabet-descending") {
+      sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
     }
     setProducts(sortedProducts);
     setSortOrder(order);
@@ -48,12 +53,11 @@ const Computers = () => {
   return (
     <Layout>
       <Search
-        searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        isSorted={false} // Adjust if necessary
-        setIsSorted={() => {}} // Adjust if necessary
+        sortProducts={sortProducts}
+        currentSortOrder={"price-ascending"}
       />
-      <SortProducts sortProducts={sortProducts} currentSortOrder={sortOrder} />
+
       <section>
         {loading && (
           <div className={style.height}>
@@ -63,9 +67,7 @@ const Computers = () => {
         )}
         {!loading && error && <p>{error}</p>}
         {!loading && !error && products.length === 0 && (
-          <p className="text-blue-600 dark:text-light_blue text-[32px] text-center mt-[100px]">
-            No products found in this category.
-          </p>
+          <p>No products found in this category.</p>
         )}
         {!loading && !error && products.length > 0 && (
           <Products products={products} searchQuery={searchQuery} />
@@ -75,4 +77,4 @@ const Computers = () => {
   );
 };
 
-export default Computers;
+export default Smartphone;
