@@ -51,10 +51,10 @@ const Blogs = ({ blogs }: Props) => {
     <Layout>
       <div>
         <Search
-          searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          isSorted={false}
-          setIsSorted={() => {}}
+          sortProducts={() => {}}
+          currentSortOrder="price-ascending"
+          showSortButton={false}
         />
 
         <BlogCreateButton />

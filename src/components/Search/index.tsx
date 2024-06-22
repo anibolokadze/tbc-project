@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import style from "./Search.module.scss";
 import Input from "../InputField";
@@ -20,11 +21,13 @@ interface SearchAndSortProps {
   setSearchQuery: (query: string) => void;
   sortProducts: (order: SortOrder) => void;
   currentSortOrder: SortOrder;
+  showSortButton: boolean; // Add a new prop
 }
 
 const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
   setSearchQuery,
   sortProducts,
+  showSortButton, // Destructure the new prop
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -45,32 +48,34 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
           onChange={handleSearchChange}
         />
       </div>
-      <div className={style.sortProducts}>
-        <button onClick={toggleDropdown} className={style.dropdownButton}>
-          <FontAwesomeIcon icon={faFilter} />
-          Sort Products
-        </button>
-        {isDropdownOpen && (
-          <div className={style.dropdownMenu}>
-            <button onClick={() => sortProducts("price-ascending")}>
-              <FontAwesomeIcon icon={faArrowUpWideShort} />
-              Price Increase
-            </button>
-            <button onClick={() => sortProducts("price-descending")}>
-              <FontAwesomeIcon icon={faArrowDownShortWide} />
-              Price Decrease
-            </button>
-            <button onClick={() => sortProducts("alphabet-ascending")}>
-              <FontAwesomeIcon icon={faArrowUpAZ} />
-              Alphabet A-Z
-            </button>
-            <button onClick={() => sortProducts("alphabet-descending")}>
-              <FontAwesomeIcon icon={faArrowUpZA} />
-              Alphabet Z-A
-            </button>
-          </div>
-        )}
-      </div>
+      {showSortButton && ( // Conditionally render the sort button
+        <div className={style.sortProducts}>
+          <button onClick={toggleDropdown} className={style.dropdownButton}>
+            <FontAwesomeIcon icon={faFilter} />
+            Sort Products
+          </button>
+          {isDropdownOpen && (
+            <div className={style.dropdownMenu}>
+              <button onClick={() => sortProducts("price-ascending")}>
+                <FontAwesomeIcon icon={faArrowUpWideShort} />
+                Price Increase
+              </button>
+              <button onClick={() => sortProducts("price-descending")}>
+                <FontAwesomeIcon icon={faArrowDownShortWide} />
+                Price Decrease
+              </button>
+              <button onClick={() => sortProducts("alphabet-ascending")}>
+                <FontAwesomeIcon icon={faArrowUpAZ} />
+                Alphabet A-Z
+              </button>
+              <button onClick={() => sortProducts("alphabet-descending")}>
+                <FontAwesomeIcon icon={faArrowUpZA} />
+                Alphabet Z-A
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

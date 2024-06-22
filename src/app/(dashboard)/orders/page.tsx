@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Orders from "../../../components/Orders";
 import { Order } from "../../../types";
 import Layout from "../../../components/layout";
+import Loading from "../../../components/Loading/Spin/index";
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -29,7 +30,11 @@ const OrdersPage = () => {
   }, []);
 
   if (loading) {
-    return <Layout>Loading...</Layout>;
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    );
   }
 
   if (error) {

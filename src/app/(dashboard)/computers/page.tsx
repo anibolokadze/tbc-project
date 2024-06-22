@@ -57,6 +57,7 @@ const Computers = () => {
         setSearchQuery={setSearchQuery}
         sortProducts={sortProducts}
         currentSortOrder={"price-ascending"}
+        showSortButton={true}
       />
 
       <section>

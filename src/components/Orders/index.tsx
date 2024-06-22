@@ -1,32 +1,158 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Order } from "../../types";
+import style from "./Orders.module.scss";
+import Layout from "../layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faClose,
+  faEye,
+  faEyeSlash,
+  faSort,
+} from "@fortawesome/free-solid-svg-icons";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface OrdersProps {
   orders: Order[];
 }
 
 const Orders: React.FC<OrdersProps> = ({ orders }) => {
+  const [revealedIds, setRevealedIds] = useState<string[]>([]);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [filterVisible, setFilterVisible] = useState<boolean>(false);
+
+  const toggleIdVisibility = (id: string) => {
+    if (revealedIds.includes(id)) {
+      setRevealedIds(revealedIds.filter((revealedId) => revealedId !== id));
+    } else {
+      setRevealedIds([...revealedIds, id]);
+    }
+  };
+
+  const formatOrderId = (id: string) => {
+    return revealedIds.includes(id) ? id : `${id.slice(0, 10)}*****`;
+  };
+
+  const handleDateChange = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const toggleFilterVisibility = () => {
+    setFilterVisible(!filterVisible);
+    if (filterVisible) {
+      handleDateChange([null, null]);
+    }
+  };
+
+  const filteredOrders = orders.filter((order) => {
+    const orderDate = new Date(order.created * 1000);
+    if (startDate && endDate) {
+      const adjustedEndDate = new Date(endDate);
+      adjustedEndDate.setHours(23, 59, 59, 999);
+      return orderDate >= startDate && orderDate <= adjustedEndDate;
+    } else if (startDate) {
+      return orderDate >= startDate;
+    } else if (endDate) {
+      const adjustedEndDate = new Date(endDate);
+      adjustedEndDate.setHours(23, 59, 59, 999);
+      return orderDate <= adjustedEndDate;
+    }
+    return true;
+  });
+
   return (
-    <div>
-      <ul>
-        {orders.map((order) => (
-          <li key={order.id}>
-            <p>Order ID: {order.id}</p>
-            <p>Amount: ${order.amount / 100}</p>
-            <p>Currency: {order.currency.toUpperCase()}</p>
-            <p>Status: {order.status}</p>
-            <p>
-              Time:{" "}
-              {new Date(order.created * 1000).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Layout>
+      <div className={style.main}>
+        <div className={style.ordersContainer}>
+          <div className={style.tableHeader}>
+            <div>Order ID</div>
+            <div>Amount</div>
+            <div>Status</div>
+            <div className={style.filterContainer}>
+              Date:
+              <FontAwesomeIcon
+                icon={faSort}
+                onClick={toggleFilterVisibility}
+                className={style.filterIcon}
+              />
+              {filterVisible && (
+                <>
+                  <DatePicker
+                    selected={startDate ?? undefined}
+                    onChange={handleDateChange}
+                    startDate={startDate ?? undefined}
+                    endDate={endDate ?? undefined}
+                    selectsRange
+                    className={style.datePicker}
+                    placeholderText="Select a date range"
+                  />
+                  {(startDate || endDate) && (
+                    <button
+                      onClick={() => handleDateChange([null, null])}
+                      className={style.clearFilter}
+                    >
+                      <FontAwesomeIcon icon={faClose} />
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+          {filteredOrders.length > 0 ? (
+            <ul className={style.tableBody}>
+              {filteredOrders.map((order) => (
+                <li key={order.id} className={style.tableRow}>
+                  <div className={style.orderDetail}>
+                    <p
+                      className={style.orderId}
+                      onClick={() => toggleIdVisibility(order.id)}
+                    >
+                      <FontAwesomeIcon
+                        icon={
+                          revealedIds.includes(order.id) ? faEyeSlash : faEye
+                        }
+                      />
+                      {formatOrderId(order.id)}
+                    </p>
+                  </div>
+
+                  <div className={style.orderDetail}>
+                    <p>${(order.amount / 100).toFixed(2)}</p>
+                  </div>
+
+                  <div className={style.orderDetail}>
+                    <p className={style.status}>
+                      <FontAwesomeIcon icon={faCheck} />
+                      {order.status}
+                    </p>
+                  </div>
+
+                  <div className={style.orderDetail}>
+                    <p>
+                      {new Date(order.created * 1000).toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className={style.emptyMessage}>No orders found.</div>
+          )}
+        </div>
+      </div>
+    </Layout>
   );
 };
 

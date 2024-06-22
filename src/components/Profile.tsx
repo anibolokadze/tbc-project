@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import clock from "../../public/clock.png";
 import ProfileSkeletonLoading from "./ProfileSkeletonLoading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 export const revalidate = 0;
 
@@ -31,7 +33,7 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
       {isLoading ? (
         <ProfileSkeletonLoading />
       ) : (
-        <div className="hover:scale-105 transition duration-300 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative mt-36 mx-auto">
+        <div className="mb-[250px]  transition duration-300 max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative mt-36 mx-auto ">
           {user && (
             <>
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -82,18 +84,19 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-xs ">
+              <div className="flex items-center gap-3 text-xs">
                 <p className="italic">last modified at:</p>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 mb-[50px] !mt-2">
                 <Image src={clock} width={20} height={20} alt="clock" />
                 <p className="text-xs ">{formattedDate}</p>
               </div>
 
               <a
                 href="/api/auth/logout"
-                className="font-normal text-[16px] text-black"
+                className="flex justify-center items-center gap-2 !mx-auto w-[20vw]  text-white bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-500  focus:outline-none "
               >
+                <FontAwesomeIcon icon={faRightFromBracket} />
                 logout
               </a>
             </>
