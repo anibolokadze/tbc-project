@@ -9,7 +9,7 @@ const index = () => {
       <div className={style.container}>
         <div className={style.card}>
           <div className={style.textCenter}>
-            <FontAwesomeIcon icon={faBoxOpen} />
+            <FontAwesomeIcon icon={faBoxOpen} className={style.icon} />
             <h3 className={style.heading}>Your cart is empty!</h3>
 
             <div className={style.buttonContainer}>
