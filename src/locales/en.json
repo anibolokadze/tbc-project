@@ -1,4 +1,5 @@
 {
+  "chat": "chat",
   "loginText": "LOGIN NOW!",
   "welcome": "Welcome to Tech Madness",
   "welcome_2": "We are a passionate team of tech enthusiasts dedicated to providing you with the best technology products on the market",
@@ -49,5 +50,27 @@
   "login": "Log In",
 
   "loading": "Loading",
-  "language": "Selected language"
+  "language": "Selected language",
+
+  "chatbot": {
+    "title": "Chatbot"
+  },
+  "questionsAndAnswers": [
+    {
+      "question": "What are your store hours?",
+      "answer": "We are open from 9am to 9pm every day."
+    },
+    {
+      "question": "Where is your store located?",
+      "answer": "We are located at 123 Main St, Anytown, USA."
+    },
+    {
+      "question": "Do you offer online shopping?",
+      "answer": "Yes, you can shop online at our website."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "You can return any item within 30 days of purchase."
+    }
+  ]
 }

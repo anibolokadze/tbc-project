@@ -2,11 +2,12 @@
 import { useState } from "react";
 import style from "./Chat.module.scss";
 import questionsAndAnswers from "../../../questionsAndAnswers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 
 const Chatbot = () => {
-  const [chatHistory, setChatHistory] = useState<
-    { question: string; answer: string }[]
-  >([]);
+  const [currentQuestion, setCurrentQuestion] = useState<string>("");
+  const [currentAnswer, setCurrentAnswer] = useState<string>("");
   const [isTyping, setIsTyping] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,7 +17,8 @@ const Chatbot = () => {
     setTimeout(() => {
       const qa = questionsAndAnswers.find((qa) => qa.question === question);
       const answer = qa ? qa.answer : "Sorry, I don't have an answer for that.";
-      setChatHistory((prevHistory) => [...prevHistory, { question, answer }]);
+      setCurrentQuestion(question);
+      setCurrentAnswer(answer);
       setIsTyping(false);
     }, 1000);
   };
@@ -27,9 +29,6 @@ const Chatbot = () => {
 
   return (
     <div className={style.chatbot_container}>
-      <div className={style.chatbot_header} onClick={toggleChat}>
-        Chatbot
-      </div>
       {isOpen && (
         <div className={style.chatbot_body}>
           <ul className={style.questions_list}>
@@ -43,21 +42,25 @@ const Chatbot = () => {
               </li>
             ))}
           </ul>
-          <div className={style.chat_history}>
-            {chatHistory.map((chat, index) => (
-              <div key={index}>
+          {currentQuestion && (
+            <div className={style.chat_history}>
+              <div>
                 <div className={style.chat_bubble}>
-                  <p>{chat.question}</p>
+                  <p>{currentQuestion}</p>
                 </div>
                 <div className={style.answer_bubble}>
-                  <p>{chat.answer}</p>
+                  <p>{currentAnswer}</p>
                 </div>
               </div>
-            ))}
-            {isTyping && <p className={style.typing}>Typing...</p>}
-          </div>
+              {isTyping && <p className={style.typing}>Typing...</p>}
+            </div>
+          )}
         </div>
       )}
+
+      <div className={style.chatbot_header} onClick={toggleChat}>
+        <FontAwesomeIcon icon={faMessage} />
+      </div>
     </div>
   );
 };

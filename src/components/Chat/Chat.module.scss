@@ -1,18 +1,16 @@
-// Chat.module.scss
 .chatbot_container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
   max-width: 90%;
-  font-family: Arial, sans-serif;
+  z-index: 20000;
 }
 
 .chatbot_header {
   background-color: #0070f3;
   color: #ffffff;
-  padding: 10px;
-  border-radius: 8px 8px 0 0;
+  padding: 1em 1.3em;
+  border-radius: 50%;
   cursor: pointer;
   text-align: center;
   user-select: none;
@@ -21,18 +19,34 @@
 .chatbot_body {
   border: 1px solid #ccc;
   border-top: none;
-  border-radius: 0 0 8px 8px;
-  width: 100%;
+  border-radius: 10px;
+  width: 400px;
+  right: 0px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: auto;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 75px;
+  font-size: 12px;
+  max-width: 20em;
+
+  @media (min-width: 1100px) {
+    max-width: 25em;
+  }
 }
 
 .questions_list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  max-height: calc(100% - 50px);
+  overflow-y: auto;
+
+  @media (min-width: 1100px) {
+    text-align: center;
+  }
 }
 
 .question_item {
@@ -52,6 +66,10 @@
 
 .chat_history {
   padding: 16px;
+
+  @media (min-width: 1100px) {
+    padding: 16px 0px 16px 16px;
+  }
 }
 
 .chat_bubble {
@@ -59,7 +77,7 @@
   color: #ffffff;
   padding: 10px 15px;
   border-radius: 20px;
-  margin: 10px 0;
+  margin: 10px 0px 10px 45px;
   max-width: 80%;
   align-self: flex-start;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -78,12 +96,6 @@
 
 .typing {
   font-style: italic;
+  padding-top: 10px;
   color: #666666;
-}
-
-@media (max-width: 600px) {
-  .chatbot-container {
-    width: 100%;
-    padding: 8px;
-  }
 }
