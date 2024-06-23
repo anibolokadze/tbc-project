@@ -26,7 +26,7 @@ export default function RootLayout({ children }: ChildrenProps) {
         <CartContextProvider>
           <body className={noto_Sans_Georgian.className}>
             <Theme>
-              <ToastContainer position="top-center" />
+              <ToastContainer position="bottom-left" />
               {children}
             </Theme>
           </body>

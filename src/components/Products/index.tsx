@@ -49,7 +49,9 @@ const Products = ({ searchQuery = "", products = [] }: ProductsProps) => {
   return (
     <section>
       {newCards.length === 0 ? (
-        <p>No products found</p>
+        <p className="h-[80vh] mx-auto my-0 pt-[5em] text-center">
+          No products found
+        </p>
       ) : (
         <div className={style.container}>
           {newCards.map((card) => (

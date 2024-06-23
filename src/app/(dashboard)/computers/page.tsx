@@ -53,12 +53,14 @@ const Computers = () => {
 
   return (
     <Layout>
-      <Search
-        setSearchQuery={setSearchQuery}
-        sortProducts={sortProducts}
-        currentSortOrder={"price-ascending"}
-        showSortButton={true}
-      />
+      <div className="mt-[8em]">
+        <Search
+          setSearchQuery={setSearchQuery}
+          sortProducts={sortProducts}
+          currentSortOrder={"price-ascending"}
+          showSortButton={true}
+        />
+      </div>
 
       <section>
         {loading && (
@@ -69,7 +71,9 @@ const Computers = () => {
         )}
         {!loading && error && <p>{error}</p>}
         {!loading && !error && products.length === 0 && (
-          <p>No products found in this category.</p>
+          <p className="h-[80vh] mx-auto my-0 pt-[5em]">
+            No products found in this category.
+          </p>
         )}
         {!loading && !error && products.length > 0 && (
           <Products products={products} searchQuery={searchQuery} />

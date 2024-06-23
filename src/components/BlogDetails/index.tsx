@@ -18,7 +18,7 @@ const BlogDetails = ({ blog }: Props) => {
 
   return (
     <Layout>
-      <div className="bg-white mb-[100px] dark:bg-[#121212] py-8  px-4 mx-auto max-w-screen-xl lg:py-16 lg:h-full lg:px-6 lg:flex lg:justify-center">
+      <div className="bg-white mb-[100px] mt-[5em] dark:bg-[#121212] py-8  px-4 mx-auto max-w-screen-xl lg:py-16 lg:h-full lg:px-6 lg:flex lg:justify-center">
         <article className="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 lg:w-1/2">
           <div className="flex justify-between items-center mb-10 text-gray-500">
             <span className="text-sm">{formatDate(blog.time_added)}</span>

@@ -1,6 +1,6 @@
 .alert {
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 5rem;
   font-size: 0.875rem;
   color: #1f9d55;
   background-color: #d1fae5;
@@ -10,10 +10,10 @@
 }
 
 .wrapper {
+  margin-top: 5em;
   @media (min-width: 1200px) {
     font-size: 20px;
     padding-top: 80px;
-    margin-top: 50px;
     height: 80vh;
     display: flex;
     column-gap: 50px;

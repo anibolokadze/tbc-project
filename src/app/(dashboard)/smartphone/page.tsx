@@ -52,12 +52,14 @@ const Smartphone = () => {
 
   return (
     <Layout>
-      <Search
-        setSearchQuery={setSearchQuery}
-        sortProducts={sortProducts}
-        currentSortOrder={"price-ascending"}
-        showSortButton={true}
-      />
+      <div className="mt-[8em]">
+        <Search
+          setSearchQuery={setSearchQuery}
+          sortProducts={sortProducts}
+          currentSortOrder={"price-ascending"}
+          showSortButton={true}
+        />
+      </div>
 
       <section>
         {loading && (

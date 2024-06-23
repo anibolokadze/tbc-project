@@ -47,13 +47,12 @@ export default function Header() {
   const headerButtons: HeaderButton[] = [
     { text: "cart", link: "/cart" },
     { text: "profile", link: "/profile" },
-    // { text: "swap theme", onClick: () => {} },
   ];
 
   return (
     <nav
-      className={theme === "dark" ? style.containerDark : style.containerLight}
-      // className="dark:bg-black bg-red-600"
+      // className={theme === "dark" ? style.containerDark : style.containerLight}
+      className="bg-white dark:bg-black pt-1 pb-1.5 px-3 border-b-2 border-grey-100 dark:border-none"
     >
       <div className={style.desktopMenu}>
         <div className={style.desktopButtons}>
