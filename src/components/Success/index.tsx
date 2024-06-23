@@ -12,7 +12,9 @@ const page = () => {
         <div className={style.card}>
           <FontAwesomeIcon icon={faCheck} className={style.icon} />
           <div className={style.textCenter}>
-            <h3 className={style.heading}>Payment Done!</h3>
+            <h3 className={`${style.heading} dark:text-white`}>
+              Payment Done!
+            </h3>
             <p className={style.message}>
               Thank you for completing your secure online payment.
             </p>

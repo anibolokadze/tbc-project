@@ -23,42 +23,17 @@ const BlogCreateForm = ({
   };
 
   return (
-    // <div>
-    //   <form onSubmit={handleSubmit}>
-    //     <input type="text" name="title" placeholder="Title" required />
-    //     <textarea name="description" placeholder="Description" required />
-    //     <input
-    //       type="text"
-    //       name="author_name"
-    //       placeholder="Author Name"
-    //       value={user?.nickname || ""}
-    //     />
-
-    //     <input
-    //       type="email"
-    //       name="author_email"
-    //       placeholder="Author Email"
-    //       value={user?.email || ""}
-    //     />
-    //     <input
-    //       className="hidden"
-    //       type="text"
-    //       name="time_added"
-    //       value={new Date().toISOString()}
-    //     />
-    //     <div className="w-full flex gap-3">
-    //       <button onClick={() => setOpenModal(false)}>Cancel</button>
-    //       <button type="submit">Save</button>
-    //     </div>
-    //   </form>
-    // </div>
-
     <div className="fixed inset-0 z-[2000] overflow-y-auto bg-gray-800 bg-opacity-75 flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <h2 className="text-xl font-semibold mb-4">Create Blog Post</h2>
+        <h2 className="text-xl font-semibold mb-4 dark:text-black">
+          Create Blog Post
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="title" className="block mb-2 font-medium">
+            <label
+              htmlFor="title"
+              className="block mb-2 font-medium dark:text-black"
+            >
               Title
             </label>
             <input
@@ -66,24 +41,30 @@ const BlogCreateForm = ({
               name="title"
               id="title"
               placeholder="Title"
-              className="w-full border border-gray-300 rounded-lg p-2"
+              className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
               required
             />
           </div>
           <div>
-            <label htmlFor="description" className="block mb-2 font-medium">
+            <label
+              htmlFor="description"
+              className="block mb-2 font-medium dark:text-black"
+            >
               Description
             </label>
             <textarea
               name="description"
               id="description"
               placeholder="Description"
-              className="w-full border border-gray-300 rounded-lg p-2"
+              className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
               required
             ></textarea>
           </div>
           <div>
-            <label htmlFor="author_name" className="block mb-2 font-medium">
+            <label
+              htmlFor="author_name"
+              className="block mb-2 font-medium dark:text-black"
+            >
               Author Name
             </label>
             <input
@@ -92,11 +73,14 @@ const BlogCreateForm = ({
               id="author_name"
               placeholder="Author Name"
               value={user?.nickname || ""}
-              className="w-full border border-gray-300 rounded-lg p-2"
+              className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
             />
           </div>
           <div>
-            <label htmlFor="author_email" className="block mb-2 font-medium">
+            <label
+              htmlFor="author_email"
+              className="block mb-2 font-medium dark:text-black"
+            >
               Author Email
             </label>
             <input
@@ -105,14 +89,14 @@ const BlogCreateForm = ({
               id="author_email"
               placeholder="Author Email"
               value={user?.email || ""}
-              className="w-full border border-gray-300 rounded-lg p-2"
+              className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
             />
           </div>
           <div className="flex justify-between">
             <button
               type="button"
               onClick={() => setOpenModal(false)}
-              className="text-sm text-gray-500 hover:text-gray-700"
+              className="text-sm text-gray-500 hover:text-gray-700 dark:text-black"
             >
               Cancel
             </button>

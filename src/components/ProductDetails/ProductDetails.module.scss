@@ -1,7 +1,4 @@
 $border-color: #ddd;
-$background-color-header: #f4f4f4;
-$background-color-row-even: #f4f4f4;
-
 .container {
   padding: 7em 15vw 5vw 15vw;
 }
@@ -93,16 +90,6 @@ $background-color-row-even: #f4f4f4;
 
   th {
     font-weight: bold;
-  }
-
-  tr:nth-child(odd) {
-    background-color: $background-color-row-even;
-  }
-
-  tr:hover {
-    background-color: #f7f7f7;
-    color: #333;
-    cursor: pointer;
   }
 }
 

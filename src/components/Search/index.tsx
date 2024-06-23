@@ -21,13 +21,13 @@ interface SearchAndSortProps {
   setSearchQuery: (query: string) => void;
   sortProducts: (order: SortOrder) => void;
   currentSortOrder: SortOrder;
-  showSortButton: boolean; // Add a new prop
+  showSortButton: boolean;
 }
 
 const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
   setSearchQuery,
   sortProducts,
-  showSortButton, // Destructure the new prop
+  showSortButton,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -48,7 +48,7 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
           onChange={handleSearchChange}
         />
       </div>
-      {showSortButton && ( // Conditionally render the sort button
+      {showSortButton && (
         <div className={style.sortProducts}>
           <button onClick={toggleDropdown} className={style.dropdownButton}>
             <FontAwesomeIcon icon={faFilter} />
@@ -56,19 +56,31 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
           </button>
           {isDropdownOpen && (
             <div className={style.dropdownMenu}>
-              <button onClick={() => sortProducts("price-ascending")}>
+              <button
+                onClick={() => sortProducts("price-ascending")}
+                className="dark:text-black"
+              >
                 <FontAwesomeIcon icon={faArrowUpWideShort} />
                 Price Increase
               </button>
-              <button onClick={() => sortProducts("price-descending")}>
+              <button
+                onClick={() => sortProducts("price-descending")}
+                className="dark:text-black"
+              >
                 <FontAwesomeIcon icon={faArrowDownShortWide} />
                 Price Decrease
               </button>
-              <button onClick={() => sortProducts("alphabet-ascending")}>
+              <button
+                onClick={() => sortProducts("alphabet-ascending")}
+                className="dark:text-black"
+              >
                 <FontAwesomeIcon icon={faArrowUpAZ} />
                 Alphabet A-Z
               </button>
-              <button onClick={() => sortProducts("alphabet-descending")}>
+              <button
+                onClick={() => sortProducts("alphabet-descending")}
+                className="dark:text-black"
+              >
                 <FontAwesomeIcon icon={faArrowUpZA} />
                 Alphabet Z-A
               </button>

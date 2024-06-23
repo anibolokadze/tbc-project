@@ -18,14 +18,14 @@
   margin: 1em;
   border-radius: 5px;
   min-width: 200px;
-  background-color: var(--graytheme);
+
   box-sizing: border-box;
   transition: transform 300ms;
 }
 
 .product .avatar {
-  width: 10em; /* Adjusted width */
-  height: 8em; /* Adjusted height */
+  width: 10em;
+  height: 8em;
   background-color: #ccc;
   border-radius: 25%;
   margin-bottom: 8px;
@@ -35,18 +35,18 @@
 }
 
 .product .line {
-  width: 100%; /* Adjusted width */
-  height: 12px; /* Adjusted height */
-  margin-top: 8px; /* Adjusted margin-top */
+  width: 100%;
+  height: 12px;
+  margin-top: 8px;
   border-radius: 7px;
-  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-image: linear-gradient(90deg, #ddd 0px, #9a9a9a 40px, #ddd 80px);
   background-size: 600px;
   animation: shine-lines 1.6s infinite linear;
 }
 
 .product .avatar + .line {
-  margin-top: 8px; /* Adjusted margin-top */
-  width: 8em; /* Adjusted width */
+  margin-top: 8px;
+  width: 8em;
 }
 
 .product .line ~ .line {

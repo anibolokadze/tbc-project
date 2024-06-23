@@ -70,7 +70,7 @@ const Orders: React.FC<OrdersProps> = ({ orders }) => {
       <div className={style.main}>
         <div className={style.ordersContainer}>
           <div className={style.tableHeader}>
-            <div>Order ID</div>
+            <div className="dark:text-white">Order ID</div>
             <div>Amount</div>
             <div>Status</div>
             <div className={style.filterContainer}>
@@ -106,7 +106,10 @@ const Orders: React.FC<OrdersProps> = ({ orders }) => {
           {filteredOrders.length > 0 ? (
             <ul className={style.tableBody}>
               {filteredOrders.map((order) => (
-                <li key={order.id} className={style.tableRow}>
+                <li
+                  key={order.id}
+                  className={`${style.tableRow} hover:dark:bg-[#494949]`}
+                >
                   <div className={style.orderDetail}>
                     <p
                       className={style.orderId}
@@ -126,7 +129,7 @@ const Orders: React.FC<OrdersProps> = ({ orders }) => {
                   </div>
 
                   <div className={style.orderDetail}>
-                    <p className={style.status}>
+                    <p className={`${style.status} dark:text-white`}>
                       <FontAwesomeIcon icon={faCheck} />
                       {order.status}
                     </p>

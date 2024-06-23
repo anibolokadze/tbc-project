@@ -10,7 +10,9 @@ const page = () => {
       <div className={style.container}>
         <div className={style.card}>
           <div className={style.textCenter}>
-            <h3 className={style.heading}>Order Canceled!</h3>
+            <h3 className={`${style.heading} dark:text-white`}>
+              Order Canceled!
+            </h3>
             <p className={style.message}>
               We regret to inform you that your order has been canceled.
             </p>
