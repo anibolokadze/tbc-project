@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../../../components/layout";
 import BlogDetails from "../../../../components/BlogDetails";
 import { Blog, BlogParams } from "../../../../types";
+import Loading from "../../../../components/Loading/Spin/index";
 
 export const revalidate = 0;
 
@@ -38,7 +39,7 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
   if (loading) {
     return (
       <Layout>
-        <p>Loading...</p>
+        <Loading />
       </Layout>
     );
   }

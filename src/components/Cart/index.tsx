@@ -12,6 +12,7 @@ import style from "./Cart.module.scss";
 import Image from "next/image";
 import Spin from "../Loading/Spin";
 import Empty from "./Empty";
+import { BASE_URL } from "../../../constants";
 
 const Cart = () => {
   const {
@@ -37,7 +38,7 @@ const Cart = () => {
   const checkout = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3000/api/checkout", {
+      const response = await fetch(`${BASE_URL}/api/checkout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
