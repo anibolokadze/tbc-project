@@ -28,6 +28,7 @@ interface CartContextType {
   decreaseItem: (itemId: number) => void;
   itemCount: number;
   totalCartPrice: number;
+  clearCart: () => void;
 }
 
 const defaultCartContext: CartContextType = {
@@ -38,6 +39,7 @@ const defaultCartContext: CartContextType = {
   decreaseItem: () => {},
   itemCount: 0,
   totalCartPrice: 0,
+  clearCart: () => {},
 };
 
 const CartContext = createContext<CartContextType>(defaultCartContext);
@@ -135,6 +137,12 @@ const CartContextProvider = ({ children }: CartProviderProps) => {
     setCartItems(updatedCartItems);
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+    setTotalCartPrice(0);
+    localStorage.removeItem("cartItems");
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     const totalPrice = cartItems.reduce(
@@ -154,6 +162,7 @@ const CartContextProvider = ({ children }: CartProviderProps) => {
     totalCartPrice,
     increaseItem,
     decreaseItem,
+    clearCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

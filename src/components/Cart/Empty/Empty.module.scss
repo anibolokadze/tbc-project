@@ -1,0 +1,74 @@
+.container {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 1000px) {
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: center !important;
+    align-items: center;
+  }
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 10px 30px 6px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid lightgrey;
+  text-align: center;
+  width: 400px;
+
+  .not_found img {
+    margin: 0 auto;
+  }
+
+  h3 {
+    margin: 1em 0 1.5em 0;
+  }
+}
+
+.icon {
+  color: white;
+  background-color: var(--theme);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin: 1.5rem auto;
+  padding: 1em;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.heading {
+  font-size: 1.5rem;
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.message {
+  color: #718096;
+  margin: 0.5rem 0;
+}
+
+.buttonContainer {
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.button {
+  padding: 0.75rem 3rem;
+  background-color: black;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

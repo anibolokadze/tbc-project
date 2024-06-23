@@ -1,19 +1,61 @@
 .coverWrapper {
   background-color: black;
+  height: 45em;
+  position: relative;
+  margin-top: 2em;
+  padding-top: 2em;
 
-  .cover {
-    background-image: url("../../../public/cover\ background.png");
-    height: 100vh;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  canvas {
+    @media (min-width: 600px) {
+      margin-left: 20%;
+    }
+    @media (min-width: 1000px) {
+      margin-left: 30%;
+    }
   }
 
-  h1 {
+  @media (max-width: 1000px) {
+    height: 64vw;
+  }
+
+  .cover {
+    background-image: url("../../../public/backgorund.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    background-position: right;
+    width: 100vw;
+    height: 100%;
+  }
+
+  .intro {
+    color: white;
+
+    @media (max-width: 1000px) {
+      font-size: 5vw;
+    }
+
+    text-shadow: 2px 2px 2px black;
+    font-size: 4em;
     position: absolute;
-    top: 50%;
-    color: red;
-    left: 15%;
+    left: 5%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sub_intro {
+    color: white;
+    font-weight: 300;
+
+    @media (max-width: 1000px) {
+      font-size: 2vw;
+    }
+
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.3em;
+    position: absolute;
+    left: 5%;
+    top: 60%;
+    transform: translate(-50%, -50%);
   }
 }

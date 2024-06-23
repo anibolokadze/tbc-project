@@ -1,5 +1,15 @@
 "use client";
 import { useState, ChangeEvent, FormEvent } from "react";
+import Layout from "../layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhone,
+  faEnvelope,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+import style from "./Index.module.scss";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   name: string;
@@ -29,6 +39,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [response, setResponse] = useState<ApiResponse | null>(null);
+  const { t } = useTranslation();
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
@@ -61,7 +72,6 @@ export default function Contact() {
     }
 
     try {
-      // Send form data to the API route
       const res = await fetch("/api/submit-contact", {
         method: "POST",
         headers: {
@@ -72,9 +82,11 @@ export default function Contact() {
       const data: ApiResponse = await res.json();
       setResponse(data);
       if (data.success) {
-        // Clear the form fields
         setFormData({ name: "", email: "", message: "" });
         setErrors({});
+        setTimeout(() => {
+          setResponse(null);
+        }, 2000);
       }
     } catch (error) {
       setResponse({ error: "An error occurred while submitting the form." });
@@ -91,54 +103,88 @@ export default function Contact() {
   };
 
   return (
-    <div>
-      <h1>Contact Us</h1>
-      <p>Any question or remarks? Just write us a message!</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
+    <Layout>
+      {response && (
+        <div className={style.alert}>
+          {response.error ? response.error : "Message sent successfully!"}
+        </div>
+      )}
+
+      <div className={style.wrapper}>
+        <div className={style.contact}>
+          <h2> {t("reach")}</h2>
+          <p>
+            <FontAwesomeIcon icon={faPhone} /> 555 54 50 03
+          </p>
+          <button onClick={() => (window.location.href = getMailtoLink())}>
+            <FontAwesomeIcon icon={faEnvelope} />
+            anibolokadze@gmail.com
+          </button>
+          <p>
+            <FontAwesomeIcon icon={faLocationDot} />
+            {t("place")}
+          </p>
+
+          <Image
+            src={"/Ellipse 794.png"}
+            width={200}
+            height={200}
+            alt="elipse"
+            className={style.elipse_1}
+          />
+
+          <Image
+            src={"/Ellipse 793.png"}
+            width={210}
+            height={210}
+            alt="elipse"
+            className={style.elipse_2}
+          />
+        </div>
+
+        <form onSubmit={handleSubmit} className={style.form}>
+          <label htmlFor="name">{t("name")}</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder={t("name")}
           />
           {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+
+          <label htmlFor="email">{t("email")}</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder={t("email")}
           />
           {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
-        </div>
-        <div>
-          <label htmlFor="message">Message:</label>
+
+          <label htmlFor="message">{t("message")}</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
+            placeholder={t("message")}
           ></textarea>
           {errors.message && (
             <span style={{ color: "red" }}>{errors.message}</span>
           )}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      {response && (
-        <div>
-          {response.error ? response.error : "Message sent successfully!"}
-        </div>
-      )}
-      <button onClick={() => (window.location.href = getMailtoLink())}>
-        Send Email
-      </button>
-    </div>
+
+          <div className={style.buttons}>
+            <button type="submit">{t("submit")}</button>
+            <button onClick={() => (window.location.href = getMailtoLink())}>
+              {t("client")}
+            </button>
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 }

@@ -1,4 +1,5 @@
 {
+  "chat": "chat",
   "loginText": "LOGIN NOW!",
   "welcome": "Welcome to Tech Madness",
   "welcome_2": "We are a passionate team of tech enthusiasts dedicated to providing you with the best technology products on the market",
@@ -23,7 +24,6 @@
   "theme": "theme",
   "home": "Home",
   "about": "About",
-  "contact": "Contact",
   "profile": "Profile",
   "settings": "Settings",
   "logout": "Log Out",
@@ -31,6 +31,7 @@
   "descending": "Sort Price By Descending Order",
   "clear": "Clear",
   "search": "Search...",
+  "sort": "sort products ",
   "addToCart": "Add To Cart",
   "subscribe": "Subscribe For News",
   "save": "Save",
@@ -49,5 +50,76 @@
   "login": "Log In",
 
   "loading": "Loading",
-  "language": "Selected language"
+  "language": "Selected language",
+
+  "chatbot": {
+    "title": "Chatbot"
+  },
+  "questionsAndAnswers": [
+    {
+      "question": "What are your store hours?",
+      "answer": "We are open from 9am to 9pm every day."
+    },
+    {
+      "question": "Where is your store located?",
+      "answer": "We are located at 123 Main St, Anytown, USA."
+    },
+    {
+      "question": "Do you offer online shopping?",
+      "answer": "Yes, you can shop online at our website."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "You can return any item within 30 days of purchase."
+    }
+  ],
+
+  "categories": "categories",
+  "see_more": "see more",
+  "our_brands": "our brands",
+
+  "title": "Unlock the Power of Technology",
+  "sub_title": "Revolutionizing E-Commerce with Cutting-Edge Technology",
+
+  "reach": "Reach Us",
+  "place": "Tbilisi, Georgia",
+  "company": "company",
+  "contact": "contact",
+  "blogs": "blogs",
+
+  "summary": "Order summary",
+  "price": "Total price",
+  "checkout": "checkout",
+  "empty": "Your cart is empty",
+  "shopping": "continue shopping",
+
+  "amount": "amount",
+  "status": "status",
+  "date": "date",
+
+  "modified": "last modified at",
+
+  "not_found": "Nothing found in this category",
+
+  "increase": "Price Increase",
+  "decrease": "Price Decrease",
+  "a_z": "A-Z",
+  "z_a": "Z-A",
+
+  "rating": "rating",
+  "share": "share to social media",
+  "add_to_cart": "add to cart",
+  "specifications": "specifications",
+
+  "add_blog": "add blog",
+  "blog_title": "title",
+  "description": "description",
+  "cancel": "cancel",
+  "submit": "submit",
+  "client": "Send with Email Client",
+  "required": "required",
+
+  "success": "Payment Done!",
+  "payment": "Thank you for completing your secure online payment",
+  "orders": "SEE YOUR ORDERS"
 }

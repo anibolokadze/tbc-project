@@ -1,11 +1,6 @@
-import { Product } from "../../../types";
 import Products from "../../../components/Products";
 
-interface ProductsPageProps {
-  products: Product[];
-}
-
-const ProductsPage = ({ products }: ProductsPageProps) => {
+const ProductsPage = ({ products }: any) => {
   return (
     <>
       <Products products={products} />

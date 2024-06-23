@@ -1,10 +1,7 @@
 .containerWhite,
 .containerDark {
-  position: relative;
   z-index: 110;
-
   height: var(--header-height);
-
   overflow: hidden;
 }
 
@@ -39,9 +36,9 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 900px) {
-    display: none;
-  }
+  // @media (max-width: 900px) {
+  //   display: none;
+  // }
 }
 
 .logo {
@@ -109,7 +106,7 @@
 .siteLogo {
   font-weight: bold;
   text-transform: uppercase;
-  background-color: #e15e5e;
+  background-color: var(--theme);
   color: white;
   padding: 0.5em 1.4em;
   border-radius: 40px;

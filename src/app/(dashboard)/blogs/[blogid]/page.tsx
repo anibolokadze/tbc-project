@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../../../components/layout";
 import BlogDetails from "../../../../components/BlogDetails";
 import { Blog, BlogParams } from "../../../../types";
+import Loading from "../../../../components/Loading/Spin/index";
 
 export const revalidate = 0;
 
@@ -13,6 +14,7 @@ interface BlogDetailsPageProps {
 const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
   const [loading, setLoading] = useState(true);
   const [blog, setBlog] = useState<Blog | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -23,9 +25,8 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
         }
         const data = await response.json();
         setBlog(data.blog);
-        console.log("blog", data);
       } catch (error) {
-        console.error("Error fetching blog:", error);
+        setError((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -37,7 +38,15 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
   if (loading) {
     return (
       <Layout>
-        <p>loading</p>
+        <Loading />
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <p>Error: {error}</p>
       </Layout>
     );
   }

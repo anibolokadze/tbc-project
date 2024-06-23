@@ -3,54 +3,15 @@ import { BASE_URL } from "./constants";
 export async function getBlogs() {
   const response = await fetch(BASE_URL + "/api/get-blogs");
   const { blogs } = await response.json();
-  console.log(blogs.rows);
   return blogs.rows;
 }
 
-// export async function getProducts() {
-//   const response = await fetch("/api/get-products");
-//   const { products } = await response.json();
-//   return products;
-// }
-
-// export async function getProduct(productId: number) {
-//   const response = await fetch(`${BASE_URL}/api/get-products/${productId}`);
-//   if (!response.ok) {
-//     console.error("Error fetching product:", response.statusText);
-//     throw new Error("Product not found");
-//   }
-//   const { product } = await response.json();
-//   console.log("Fetched product:", product);
-//   return product;
-// }
-
-// export async function getProducts() {
-//   const response = await fetch(`/api/get-products`);
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch products");
-//   }
-//   const { products } = await response.json();
-//   return products;
-// }
-
-// export async function getProducts(category?: string) {
-//   const url = category
-//     ? `/api/get-products?category=${category}`
-//     : `/api/get-products`;
-//   const response = await fetch(url);
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch products");
-//   }
-//   const { products } = await response.json();
-//   return products;
-// }
-export async function getProducts(category?: string, brands?: string[]) {
+export async function getProducts(category?: string) {
   let url = "/api/get-products";
-  if (category || brands?.length) {
+  if (category) {
     const params = new URLSearchParams();
     if (category) params.append("category", category);
-    if (brands?.length)
-      brands.forEach((brand) => params.append("brand", brand));
+
     url += `?${params.toString()}`;
   }
 
@@ -70,13 +31,6 @@ export async function getProduct(productId: number) {
   const { product } = await response.json();
   return product;
 }
-
-// export async function createUser(name: string, email: string, age: string) {
-//   return await fetch(BASE_URL + "/api/create-user", {
-//     method: "POST",
-//     body: JSON.stringify({ name, email, age }),
-//   });
-// }
 
 export async function createBlog(
   title: string,

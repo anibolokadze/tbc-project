@@ -4,6 +4,7 @@ import { ChildrenProps } from "../types";
 import Theme from "../theme-provider";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import CartContextProvider from "../context/CartContext";
+import { ToastContainer } from "react-toastify";
 
 const noto_Sans_Georgian = Noto_Sans_Georgian({
   subsets: ["latin"],
@@ -11,8 +12,11 @@ const noto_Sans_Georgian = Noto_Sans_Georgian({
 });
 
 export const metadata = {
-  title: "Ecomm App",
+  title: "Tech Madness",
   description: "Explore a wide range of tech products at Ecomm App",
+  icons: {
+    icon: "/icons8-new-moon-48.png",
+  },
 };
 
 export default function RootLayout({ children }: ChildrenProps) {
@@ -21,7 +25,10 @@ export default function RootLayout({ children }: ChildrenProps) {
       <UserProvider>
         <CartContextProvider>
           <body className={noto_Sans_Georgian.className}>
-            <Theme>{children}</Theme>
+            <Theme>
+              <ToastContainer position="bottom-left" />
+              {children}
+            </Theme>
           </body>
         </CartContextProvider>
       </UserProvider>

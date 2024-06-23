@@ -1,12 +1,17 @@
 .card {
-  flex: 1 0 20%;
+  flex: 1 1 calc(25% - 2em);
   padding: 10px;
   margin: 1em;
   border-radius: 5px;
   min-width: 200px;
-  background-color: var(--graytheme);
-}
+  box-sizing: border-box;
 
+  transition: transform 300ms;
+
+  &:hover {
+    transform: scale3d(1.03, 1.03, 1);
+  }
+}
 .image {
   border-radius: 5px;
 }

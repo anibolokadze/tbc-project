@@ -45,6 +45,7 @@ export interface Blog {
   description: string;
   author_name: string;
   author_email: string;
+  time_added: string;
 }
 
 export interface BlogParams {
