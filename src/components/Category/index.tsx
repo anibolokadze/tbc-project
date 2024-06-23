@@ -7,12 +7,14 @@ import { Product } from "../../types";
 import style from "./Category.module.scss";
 import SkeletonLoading from "../SkeletonLoading";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface CategoryMap {
   [key: string]: Product[];
 }
 
 const Category = () => {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState<CategoryMap>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -49,11 +51,11 @@ const Category = () => {
     return (
       <>
         <div>
-          <h2 className={style.category_loading}>categories</h2>
+          <h2 className={style.category_loading}>{t("categories")}</h2>
           <SkeletonLoading />
         </div>
         <div>
-          <h2 className={style.category_loading}>categories</h2>
+          <h2 className={style.category_loading}>{t("categories")}</h2>
           <SkeletonLoading />
         </div>
       </>
@@ -90,7 +92,7 @@ const Category = () => {
               passHref
               className={style.seemore}
             >
-              see more
+              {t("see_more")}
             </Link>
           </div>
           <Products products={categories[category]} searchQuery="" />

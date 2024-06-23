@@ -10,11 +10,13 @@ const index = () => {
         <div className={style.card}>
           <div className={style.textCenter}>
             <FontAwesomeIcon icon={faBoxOpen} className={style.icon} />
-            <h3 className={style.heading}>Your cart is empty!</h3>
+            <h3 className={`${style.heading} dark:text-white`}>
+              Your cart is empty
+            </h3>
 
             <div className={style.buttonContainer}>
               <Link href="/" className={style.button}>
-                Continue Shopping
+                continue shopping
               </Link>
             </div>
           </div>

@@ -18,6 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Product } from "../../types";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   product: Product;
@@ -78,6 +79,8 @@ export default function ProductDetails({ product }: Props) {
     );
   };
 
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <Head>
@@ -122,13 +125,13 @@ export default function ProductDetails({ product }: Props) {
           <div className={style.overeview}>
             <h1 className={style.title}>{product.title}</h1>
             <span>
-              rating:
+              {t("rating")}:
               <p className={style.ratingStars}>{renderStars(product.rating)}</p>
             </span>
             <p className={style.price}>${product.price}</p>
             <div>
               <div className={style.share}>
-                <p>share to social media:</p>
+                <p>{t("share")}::</p>
                 <div className={style.shareIcons}>
                   <FacebookShareButton
                     url={shareUrl}
@@ -148,13 +151,13 @@ export default function ProductDetails({ product }: Props) {
               </div>
 
               <button onClick={handleAddToCart} className={style.button}>
-                Add to Cart
+                {t("add_to_cart")}:
               </button>
             </div>
           </div>
         </div>
         <div className={style.specificationsContainer}>
-          <h2 className={style.specificationsTitle}>specifications</h2>
+          <h2 className={style.specificationsTitle}>{t("specifications")}:</h2>
           <table className={style.specificationsTable}>
             <tbody>
               <tr>

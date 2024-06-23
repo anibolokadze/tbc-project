@@ -25,7 +25,6 @@ const BlogDetailsPage = ({ params }: BlogDetailsPageProps) => {
         }
         const data = await response.json();
         setBlog(data.blog);
-        console.log("blog", data);
       } catch (error) {
         setError((error as Error).message);
       } finally {

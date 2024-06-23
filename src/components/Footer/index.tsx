@@ -6,12 +6,14 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <div className={style.footer}>
       <div className={style.footerColumn}>
-        <h2 className={style.columnTitle}>Reach Us</h2>
+        <h2 className={style.columnTitle}>{t("reach")}</h2>
         <p className={style.columnElement}>
           <FontAwesomeIcon icon={faPhone} className={style.icon} /> 555 54 50 03
         </p>
@@ -21,18 +23,18 @@ export default function Footer() {
         </p>
         <p className={style.columnElement}>
           <FontAwesomeIcon icon={faLocationDot} className={style.icon} />
-          Tbilisi Georgia
+          {t("place")}
         </p>
       </div>
 
       <div className={style.footerColumn}>
-        <h2 className={style.columnTitle}>Company</h2>
+        <h2 className={style.columnTitle}> {t("company")}</h2>
 
         <Link href="/contact" className={style.columnElement}>
-          Contact
+          {t("contact")}
         </Link>
         <Link href="/blogs" className={style.columnElement}>
-          Blogs
+          {t("blogs")}
         </Link>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import style from "./Cover.module.scss";
 import Spline from "@splinetool/react-spline";
+import { useTranslation } from "react-i18next";
 
 const Cover = () => {
   const [isMobile, setIsMobile] = useState(
@@ -19,6 +20,8 @@ const Cover = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -41,7 +44,7 @@ const Cover = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2 }}
         >
-          Unlock the Power of Technology
+          {t("title")}
         </motion.h1>
 
         <motion.h1
@@ -50,7 +53,7 @@ const Cover = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2 }}
         >
-          Revolutionizing E-Commerce with Cutting-Edge Technology
+          {t("sub_title")}
         </motion.h1>
       </div>
     </>

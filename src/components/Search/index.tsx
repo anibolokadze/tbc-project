@@ -10,6 +10,7 @@ import {
   faArrowUpZA,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 type SortOrder =
   | "price-ascending"
@@ -39,11 +40,13 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
     setSearchQuery(event.target.value.replace(/[^a-z0-9]/gi, ""));
   }
 
+  const { t } = useTranslation();
+
   return (
     <div className={style.searchAndSortProducts}>
       <div className={style.search}>
         <Input
-          placeholder="Type to search..."
+          placeholder={t("search")}
           type="search"
           onChange={handleSearchChange}
         />
@@ -52,7 +55,7 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
         <div className={style.sortProducts}>
           <button onClick={toggleDropdown} className={style.dropdownButton}>
             <FontAwesomeIcon icon={faFilter} />
-            Sort Products
+            {t("sort")}
           </button>
           {isDropdownOpen && (
             <div className={style.dropdownMenu}>
@@ -61,28 +64,28 @@ const SearchAndSortProducts: React.FC<SearchAndSortProps> = ({
                 className="dark:text-black"
               >
                 <FontAwesomeIcon icon={faArrowUpWideShort} />
-                Price Increase
+                {t("increase")}
               </button>
               <button
                 onClick={() => sortProducts("price-descending")}
                 className="dark:text-black"
               >
                 <FontAwesomeIcon icon={faArrowDownShortWide} />
-                Price Decrease
+                {t("decrease")}
               </button>
               <button
                 onClick={() => sortProducts("alphabet-ascending")}
                 className="dark:text-black"
               >
                 <FontAwesomeIcon icon={faArrowUpAZ} />
-                Alphabet A-Z
+                {t("a_z")}
               </button>
               <button
                 onClick={() => sortProducts("alphabet-descending")}
                 className="dark:text-black"
               >
                 <FontAwesomeIcon icon={faArrowUpZA} />
-                Alphabet Z-A
+                {t("z_a")}
               </button>
             </div>
           )}

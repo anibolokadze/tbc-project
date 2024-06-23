@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import style from "./Index.module.scss";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   name: string;
@@ -38,6 +39,7 @@ export default function Contact() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [response, setResponse] = useState<ApiResponse | null>(null);
+  const { t } = useTranslation();
 
   const validate = (): FormErrors => {
     const newErrors: FormErrors = {};
@@ -110,7 +112,7 @@ export default function Contact() {
 
       <div className={style.wrapper}>
         <div className={style.contact}>
-          <h2>Reach Us</h2>
+          <h2> {t("reach")}</h2>
           <p>
             <FontAwesomeIcon icon={faPhone} /> 555 54 50 03
           </p>
@@ -120,7 +122,7 @@ export default function Contact() {
           </button>
           <p>
             <FontAwesomeIcon icon={faLocationDot} />
-            Tbilisi Georgia
+            {t("place")}
           </p>
 
           <Image
@@ -141,44 +143,44 @@ export default function Contact() {
         </div>
 
         <form onSubmit={handleSubmit} className={style.form}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">{t("name")}</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="name"
+            placeholder={t("name")}
           />
           {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
 
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">{t("email")}</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="email"
+            placeholder={t("email")}
           />
           {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
 
-          <label htmlFor="message">Message:</label>
+          <label htmlFor="message">{t("message")}</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="type message"
+            placeholder={t("message")}
           ></textarea>
           {errors.message && (
             <span style={{ color: "red" }}>{errors.message}</span>
           )}
 
           <div className={style.buttons}>
-            <button type="submit">Submit</button>
+            <button type="submit">{t("submit")}</button>
             <button onClick={() => (window.location.href = getMailtoLink())}>
-              Send with Email Client
+              {t("client")}
             </button>
           </div>
         </form>

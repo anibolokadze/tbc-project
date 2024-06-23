@@ -10,12 +10,13 @@ import clock from "../../public/clock.png";
 import ProfileSkeletonLoading from "./ProfileSkeletonLoading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 export const revalidate = 0;
 
 const Profile = ({ authUser }: { authUser: AuthUser }) => {
   const { user, error, isLoading } = useUser();
-
+  const { t } = useTranslation();
   const [formattedDate, setFormattedDate] = useState<string | null>(null);
 
   useEffect(() => {
@@ -25,7 +26,6 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
     }
   }, [user]);
 
-  // if (isLoading) return <ProfileSkeletonLoading />;
   if (error) return <div>{error.message}</div>;
 
   return (
@@ -58,7 +58,7 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
                   htmlFor="input-group-1"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your Email
+                  {t("email")}
                 </label>
                 <div className="relative mb-6">
                   <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -79,13 +79,13 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
                 </div>
 
                 <div className="mb-5 text-sm font-medium text-gray-900 dark:text-white flex items-center justify-between">
-                  Your nickname
+                  {t("name")}
                   <p className="font-medium">{user.nickname}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 text-xs">
-                <p className="italic">last modified at:</p>
+                <p className="italic">{t("modified")}:</p>
               </div>
               <div className="flex items-center gap-1 mb-[50px] !mt-2">
                 <Image src={clock} width={20} height={20} alt="clock" />
@@ -97,7 +97,7 @@ const Profile = ({ authUser }: { authUser: AuthUser }) => {
                 className="flex justify-center items-center gap-2 !mx-auto w-[20vw]  text-white bg-red-500 hover:bg-red-600 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-500  focus:outline-none "
               >
                 <FontAwesomeIcon icon={faRightFromBracket} />
-                logout
+                {t("logout")}
               </a>
             </>
           )}

@@ -8,6 +8,7 @@ import Search from "../../../components/Search";
 
 import SkeletonLoading from "../../../components/SkeletonLoading";
 import style from "../../../components/SkeletonLoading/SkeletonLoading.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Computers = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,6 +16,7 @@ const Computers = () => {
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [, setSortOrder] = useState("price-ascending");
+  const { t } = useTranslation();
 
   useEffect(() => {
     setLoading(true);
@@ -71,9 +73,7 @@ const Computers = () => {
         )}
         {!loading && error && <p>{error}</p>}
         {!loading && !error && products.length === 0 && (
-          <p className="h-[80vh] mx-auto my-0 pt-[5em]">
-            No products found in this category.
-          </p>
+          <p className="h-[80vh] mx-auto my-0 pt-[5em]">{t("not_found")}</p>
         )}
         {!loading && !error && products.length > 0 && (
           <Products products={products} searchQuery={searchQuery} />

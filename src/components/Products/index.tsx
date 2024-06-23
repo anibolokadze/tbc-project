@@ -8,6 +8,7 @@ import Card from "./Card";
 import style from "./Products.module.scss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 export const revalidate = 0;
 
@@ -19,6 +20,7 @@ interface ProductsProps {
 const Products = ({ searchQuery = "", products = [] }: ProductsProps) => {
   const [cachedValue, setCachedValue] = useLocalStorage("selectedProducts", []);
   const [selectedProducts] = useReducer(reducer, cachedValue);
+  const { t } = useTranslation();
 
   const { addItem } = useCartContext();
 
@@ -50,7 +52,7 @@ const Products = ({ searchQuery = "", products = [] }: ProductsProps) => {
     <section>
       {newCards.length === 0 ? (
         <p className="h-[80vh] mx-auto my-0 pt-[5em] text-center">
-          No products found
+          {t("not_found")}
         </p>
       ) : (
         <div className={style.container}>

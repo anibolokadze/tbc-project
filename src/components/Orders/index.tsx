@@ -13,12 +13,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTranslation } from "react-i18next";
 
 interface OrdersProps {
   orders: Order[];
 }
 
 const Orders: React.FC<OrdersProps> = ({ orders }) => {
+  const { t } = useTranslation();
+
   const [revealedIds, setRevealedIds] = useState<string[]>([]);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
@@ -70,11 +73,11 @@ const Orders: React.FC<OrdersProps> = ({ orders }) => {
       <div className={style.main}>
         <div className={style.ordersContainer}>
           <div className={style.tableHeader}>
-            <div className="dark:text-white">Order ID</div>
-            <div>Amount</div>
-            <div>Status</div>
+            <div className="dark:text-white">ID</div>
+            <div>{t("amount")}</div>
+            <div>{t("status")}</div>
             <div className={style.filterContainer}>
-              Date:
+              {t("date")}:
               <FontAwesomeIcon
                 icon={faSort}
                 onClick={toggleFilterVisibility}

@@ -3,7 +3,6 @@ import { BASE_URL } from "./constants";
 export async function getBlogs() {
   const response = await fetch(BASE_URL + "/api/get-blogs");
   const { blogs } = await response.json();
-  console.log(blogs.rows);
   return blogs.rows;
 }
 

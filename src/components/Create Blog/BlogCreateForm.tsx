@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { createBlogAction } from "../../../actions";
+import { useTranslation } from "react-i18next";
 
 export const revalidate = 0;
 const BlogCreateForm = ({
@@ -22,11 +23,13 @@ const BlogCreateForm = ({
     router.refresh();
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="fixed inset-0 z-[2000] overflow-y-auto bg-gray-800 bg-opacity-75 flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <h2 className="text-xl font-semibold mb-4 dark:text-black">
-          Create Blog Post
+          {t("add_blog")}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -34,13 +37,13 @@ const BlogCreateForm = ({
               htmlFor="title"
               className="block mb-2 font-medium dark:text-black"
             >
-              Title
+              {t("blog_title")}
             </label>
             <input
               type="text"
               name="title"
               id="title"
-              placeholder="Title"
+              placeholder={t("blog_title")}
               className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
               required
             />
@@ -50,12 +53,12 @@ const BlogCreateForm = ({
               htmlFor="description"
               className="block mb-2 font-medium dark:text-black"
             >
-              Description
+              {t("description")}
             </label>
             <textarea
               name="description"
               id="description"
-              placeholder="Description"
+              placeholder={t("description")}
               className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
               required
             ></textarea>
@@ -65,13 +68,13 @@ const BlogCreateForm = ({
               htmlFor="author_name"
               className="block mb-2 font-medium dark:text-black"
             >
-              Author Name
+              {t("name")}
             </label>
             <input
               type="text"
               name="author_name"
               id="author_name"
-              placeholder="Author Name"
+              placeholder={t("name")}
               value={user?.nickname || ""}
               className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
             />
@@ -81,13 +84,13 @@ const BlogCreateForm = ({
               htmlFor="author_email"
               className="block mb-2 font-medium dark:text-black"
             >
-              Author Email
+              {t("email")}
             </label>
             <input
               type="email"
               name="author_email"
               id="author_email"
-              placeholder="Author Email"
+              placeholder={t("email")}
               value={user?.email || ""}
               className="w-full border border-gray-300 rounded-lg p-2 dark:text-black dark:bg-white"
             />
@@ -98,13 +101,13 @@ const BlogCreateForm = ({
               onClick={() => setOpenModal(false)}
               className="text-sm text-gray-500 hover:text-gray-700 dark:text-black"
             >
-              Cancel
+              {t("cancel")}
             </button>
             <button
               type="submit"
               className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg px-4 py-2"
             >
-              Save
+              {t("save")}
             </button>
           </div>
         </form>

@@ -6,6 +6,7 @@ import BlogCreateButton from "../Create Blog/BlogCreateButton";
 import { useDebounce } from "../../hooks";
 import { Blog } from "../../types";
 import Search from "../Search";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   blogs: Blog[];
@@ -44,6 +45,8 @@ const Blogs = ({ blogs }: Props) => {
         .includes(debouncedSearchQuery.toLowerCase())
   );
 
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <div className="mt-[8em]">
@@ -61,7 +64,7 @@ const Blogs = ({ blogs }: Props) => {
       <div className="bg-white dark:bg-[#121212] py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         {filteredBlogs.length === 0 ? (
           <p className="h-[80vh] mx-auto my-0 pt-[5em] text-center">
-            No blogs found
+            {t("not_found")}
           </p>
         ) : (
           <div className="grid gap-8 lg:grid-cols-2">
@@ -94,7 +97,7 @@ const Blogs = ({ blogs }: Props) => {
                     href={`/blogs/${blog.id}`}
                     className="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
                   >
-                    Read more
+                    {t("see_more")}
                     <svg
                       className="ml-2 w-4 h-4"
                       fill="currentColor"

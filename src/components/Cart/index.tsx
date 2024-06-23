@@ -11,8 +11,9 @@ import {
 import style from "./Cart.module.scss";
 import Image from "next/image";
 import Spin from "../Loading/Spin";
-import Empty from "./Empty";
+import Empty from "./Empty/Empty";
 import { BASE_URL } from "../../../constants";
+import { useTranslation } from "react-i18next";
 
 const Cart = () => {
   const {
@@ -26,6 +27,7 @@ const Cart = () => {
 
   const [, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -117,13 +119,13 @@ const Cart = () => {
           </div>
 
           <div className={style.order}>
-            <h2>Order Summary</h2>
+            <h2>{t("summary")}: </h2>
             <h4>
-              Total Price: <span>$ {totalCartPrice}</span>
+              {t("price")}: <span>$ {totalCartPrice}</span>
             </h4>
             <button onClick={checkout}>
               <FontAwesomeIcon icon={faHandHoldingDollar} className="mr-2" />
-              Checkout
+              {t("checkout")}
             </button>
           </div>
         </div>

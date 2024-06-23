@@ -50,10 +50,7 @@ export default function Header() {
   ];
 
   return (
-    <nav
-      // className={theme === "dark" ? style.containerDark : style.containerLight}
-      className="bg-white dark:bg-black pt-1 pb-1.5 px-3 border-b-2 border-grey-100 dark:border-none"
-    >
+    <nav className="bg-white dark:bg-black pt-1 pb-1.5 px-3 border-b-2 border-grey-100 dark:border-none">
       <div className={style.desktopMenu}>
         <div className={style.desktopButtons}>
           <Link href="/">
